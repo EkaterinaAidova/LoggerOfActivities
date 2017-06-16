@@ -20,31 +20,31 @@ namespace ActivityLogger.Models.Repositories
             }
             return timeLogs;
         }
-        public Project Get(int id)
+        public TimeLog Get(int id)
         {
-            Project project = null;
+            TimeLog timeLog = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                project = db.Query<Project>("SELECT * FROM Projects WHERE Id = @id", new { id }).FirstOrDefault();
+                timeLog = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE Id = @id", new { id }).FirstOrDefault();
             }
-            return project;
+            return  timeLog;
         }
-        public Project Create(Project project)
+        public TimeLog Create(TimeLog timeLog)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Projects (Name) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
-                int? projectId = db.Query<int>(sqlQuery, project).FirstOrDefault();
-                project.ID = projectId.Value;
+                var sqlQuery = "INSERT INTO TimeLogs (UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime) VALUES(@UserID, @ProjectID, @ActivityID, @Status, @StartWorkTime, @LastPauseTime, @LastResumeTime, @EndWorkTime, @SpendingTime); SELECT CAST(SCOPE_IDENTITY() as int)";
+                int? timeLogId = db.Query<int>(sqlQuery, timeLog).FirstOrDefault();
+                timeLog.TaskID = timeLogId.Value;
             }
-            return project;
+            return timeLog;
         }
-        public void Update(Project project)
+        public void Update(TimeLog timeLog)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Projects SET Name = @Name WHERE Id = @Id";
-                db.Execute(sqlQuery, project);
+                var sqlQuery = "UPDATE TimeLogs SET UserID = @UserID, ProjectID = @ProjectID, ActivityID = @ActivityID, Status = @Status, StartWorkTime = @StartWorkTime, LastPauseTime = @LastPauseTime, LastResumeTime = @LastResumeTime, EndWorkTime = @EndWorkTime, SpendingTime = @SpendingTime  WHERE Id = @Id";
+                db.Execute(sqlQuery, timeLog);
             }
         }
         public void Delete(int id)
@@ -56,5 +56,5 @@ namespace ActivityLogger.Models.Repositories
             }
         }
     }
-    }
+
 }
