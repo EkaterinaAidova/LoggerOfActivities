@@ -16,7 +16,7 @@ namespace ActivityLogger.Models.Repositories
             List<Activity> activities = new List<Activity>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activities = db.Query<Activity>("SELECT * FROM Activities").ToList();
+                activities = db.Query<Activity>("SELECT * FROM Activity").ToList();
             }
             return activities;
         }
@@ -25,7 +25,7 @@ namespace ActivityLogger.Models.Repositories
             Activity activity = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activity = db.Query<Activity>("SELECT * FROM Activities WHERE Id = @id", new { id }).FirstOrDefault();
+                activity = db.Query<Activity>("SELECT * FROM Activity WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return activity;
         }
