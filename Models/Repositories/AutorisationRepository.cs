@@ -6,12 +6,13 @@ using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Models.Repositories
 {
-    public class AutorisationRepository
+    public class AutorisationRepository: IAutorisationRepository
     {
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        public List<Autorisation> GetAutorisationList()
+        private List<Autorisation> GetAutorisationList()
         {
             List<Autorisation> autorisationList = new List<Autorisation>();
             using (IDbConnection db = new SqlConnection(connectionString))
@@ -39,7 +40,7 @@ namespace ActivityLogger.Models.Repositories
             return autorisation;
         }
 
-        public Autorisation Create(Autorisation autorisation)
+        private Autorisation Create(Autorisation autorisation)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -57,7 +58,7 @@ namespace ActivityLogger.Models.Repositories
                 db.Execute(sqlQuery, autorisation);
             }
         }
-        public void Delete(int id)
+        private void Delete(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {

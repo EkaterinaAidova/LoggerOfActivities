@@ -5,12 +5,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Controllers
 {
     public class TimeLogsController : ApiController
     {
-        TimeLogsRepository repository = new TimeLogsRepository();
+        ITimeLogsRepository repository;
+        public TimeLogsController(ITimeLogsRepository rep)
+        {
+            repository = rep;
+        }
         [HttpPost]
         public void Post([FromBody]TimeLog ourLog)
         {

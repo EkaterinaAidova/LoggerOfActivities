@@ -5,12 +5,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Controllers
 {
     public class ActivityController : ApiController
     {
-        ActivityRepository repository = new ActivityRepository();
+        IActivityRepository repository;
+        public ActivityController(IActivityRepository rep)
+        {
+            repository = rep;
+        }
         [HttpPost]
         public void Post([FromBody]Activity ourActivity)
         {

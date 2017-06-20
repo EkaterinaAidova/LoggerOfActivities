@@ -6,9 +6,10 @@ using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Models.Repositories
 {
-    public class TimeLogsRepository
+    public class TimeLogsRepository: ITimeLogsRepository
     {
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
          public List<TimeLog> GetTimeLogs()
@@ -20,6 +21,15 @@ namespace ActivityLogger.Models.Repositories
             }
             return timeLogs;
         }
+         public List<TimeLog> GetUserTimeLogs(int userID)
+         {
+             List<TimeLog> timeLogs = new List<TimeLog>();
+             using (IDbConnection db = new SqlConnection(connectionString))
+             {
+                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID").ToList();
+             }
+             return timeLogs;
+         }
         public TimeLog Get(int id)
         {
             TimeLog timeLog = null;
@@ -55,15 +65,7 @@ namespace ActivityLogger.Models.Repositories
                 db.Execute(sqlQuery, new { id });
             }
         }
-        public List<TimeLog> GetUserTimeLogs(int userID)
-        {
-            List<TimeLog> timeLogs = new List<TimeLog>();
-            using (IDbConnection db = new SqlConnection(connectionString))
-            {
-                timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID").ToList();
-            }
-            return timeLogs;
-        }
+       
     }
 
 }

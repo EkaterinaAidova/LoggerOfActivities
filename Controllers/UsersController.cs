@@ -1,4 +1,4 @@
-﻿using ActivityLogger.Models.Repositories;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.Models;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Controllers
 {
     public class UsersController : ApiController
     {
-        UserRepository repository = new UserRepository();
+        IUserRepository repository;
+        public UsersController(IUserRepository rep)
+        {
+            repository = rep;
+        }
         [HttpPost]
         public void Post([FromBody]User ourUser)
         {

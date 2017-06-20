@@ -5,13 +5,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Controllers
 {
     public class AutorisationController : ApiController
     {
-        AutorisationRepository repository = new AutorisationRepository();
-        [HttpPost]
+        IAutorisationRepository repository;
+        public AutorisationController(IAutorisationRepository rep)
+        {
+            repository = rep;
+        }
+       /* [HttpPost]
         public void Post([FromBody] Autorisation ourData)
         {
             repository.Create(ourData);
@@ -25,7 +29,7 @@ namespace ActivityLogger.Controllers
         private Autorisation Get(int id)
         {
             return repository.Get(id);
-        }
+        }*/
         [HttpGet]
         private Autorisation Get(string login, string password)
         {
@@ -36,10 +40,10 @@ namespace ActivityLogger.Controllers
         {
             repository.Update(ourData);
         }
-        [HttpDelete]
+        /*[HttpDelete]
         private void Delete(int id)
         {
             repository.Delete(id);
-        }
+        }*/
     }
 }
