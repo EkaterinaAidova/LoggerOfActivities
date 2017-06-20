@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ActivityLogger.Models.Repositories.Contracts
 {
-    interface IUserRepository
+     public interface IUserRepository
     {
         List<User> GetUsers();
         User Get(int id);

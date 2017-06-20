@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ActivityLogger.Models.Repositories.Contracts
 {
-    interface IAutorisationRepository
+     public interface IAutorisationRepository
     {
         Autorisation Get(string login, string password);
         void Update(Autorisation autorisation);

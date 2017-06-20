@@ -30,8 +30,12 @@ namespace ActivityLogger.Util
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
             //Register your Web API controllers.  
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
+           // builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterType<ActivityController>().WithParameter("rep", new ActivityRepository()).InstancePerRequest();
+            builder.RegisterType<AutorisationController>().WithParameter("rep", new AutorisationRepository()).InstancePerRequest();
+            builder.RegisterType<UsersController>().WithParameter("rep", new UserRepository()).InstancePerRequest();
+            builder.RegisterType<ProjectController>().WithParameter("rep", new ProjectRepository()).InstancePerRequest();
+            builder.RegisterType<TimeLogsController>().WithParameter("rep", new TimeLogsRepository()).InstancePerRequest();
             builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();
             builder.RegisterType<AutorisationRepository>().As<IAutorisationRepository>().InstancePerRequest();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();

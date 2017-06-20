@@ -28,3 +28,9 @@ c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLo
 c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Dapper.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\log4net.dll
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\log4net.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.Mvc.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.WebApi.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.Mvc.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.WebApi.xml

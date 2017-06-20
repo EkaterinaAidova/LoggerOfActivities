@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ActivityLogger.Models.Repositories.Contracts
 {
-    interface IActivityRepository
+     public interface IActivityRepository
     {
-        List<Activity> GetActivities();
-        Activity Get(int id);
-        Activity Create(Activity activity);
-        void Update(Activity activity);
-        void Delete(int id);
+       List<Activity> GetActivities();
+       Activity Get(int id);
+       Activity Create(Activity activity);
+       void Update(Activity activity);
+       void Delete(int id);
     }
 
 }

@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.Models.Repositories;
 namespace ActivityLogger.Models.Repositories
 {
     public class ActivityRepository: IActivityRepository
