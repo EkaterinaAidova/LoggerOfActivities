@@ -14,6 +14,7 @@ namespace ActivityLogger
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+           
         }
     }
 }

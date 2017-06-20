@@ -51,9 +51,18 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Projects WHERE Id = @id";
+                var sqlQuery = "DELETE FROM TimeLogs WHERE Id = @id";
                 db.Execute(sqlQuery, new { id });
             }
+        }
+        public List<TimeLog> GetUserTimeLogs(int userID)
+        {
+            List<TimeLog> timeLogs = new List<TimeLog>();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID").ToList();
+            }
+            return timeLogs;
         }
     }
 
