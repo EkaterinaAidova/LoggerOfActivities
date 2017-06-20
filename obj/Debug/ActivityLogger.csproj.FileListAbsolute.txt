@@ -26,3 +26,5 @@ c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLo
 c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\obj\Debug\ActivityLogger.pdb
 c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Dapper.dll
 c:\users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Dapper.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\log4net.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\log4net.xml

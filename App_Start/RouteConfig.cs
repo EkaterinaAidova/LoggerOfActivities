@@ -11,6 +11,7 @@ namespace ActivityLogger
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            Logger.InitLogger();
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
