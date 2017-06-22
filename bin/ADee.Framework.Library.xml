@@ -1,0 +1,829 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ADee.Framework.Library</name>
+    </assembly>
+    <members>
+        <member name="T:ADee.Framework.Library.Config.PropertyHelper">
+            <summary>
+            字段Helper
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            Initializes a fast property helper. This constructor does not cache the helper.
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.MakeFastPropertySetter``1(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property setter. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
+            <returns>a fast setter.</returns>
+            <remarks>This method is more memory efficient than a dynamically compiled lambda, and about the same speed.</remarks>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.GetValue(System.Object)">
+            <summary>
+            字段值
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.GetProperties(System.Object)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the underlying type.
+            </summary>
+            <param name="instance">the instance to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the underlying type of this instance.</returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.MakeFastPropertyGetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property getter. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>This method is more memory efficient than a dynamically compiled lambda, and about the same speed.</remarks>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.PropertyHelper.GetProperties(System.Object,System.Func{System.Reflection.PropertyInfo,ADee.Framework.Library.Config.PropertyHelper},System.Collections.Concurrent.ConcurrentDictionary{System.Type,ADee.Framework.Library.Config.PropertyHelper[]})">
+            <summary>
+            
+            </summary>
+            <param name="instance"></param>
+            <param name="createPropertyHelper"></param>
+            <param name="cache"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ADee.Framework.Library.Config.PropertyHelper.Name">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="T:ADee.Framework.Library.Config.ObjectPropertyHelper">
+            <summary>
+            对象字段Helper
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.ObjectPropertyHelper.GetProperties(System.Object)">
+            <summary>
+            获取对象字段
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.ObjectPropertyHelper.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            
+            </summary>
+            <param name="property"></param>
+        </member>
+        <member name="P:ADee.Framework.Library.Config.ObjectPropertyHelper.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:ADee.Framework.Library.Config.UrlHelper">
+            <summary>
+            UrlHelper
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.UrlHelper.Combine(System.Object[])">
+            <summary>
+            合并url
+            </summary>
+            <param name="parts">url字符</param>
+            <returns></returns>
+        </member>
+        <member name="T:ADee.Framework.Library.Config.ConfigHelper">
+            <summary>
+            WebConfigHelper
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.ConfigHelper.GetAppSettingValue(System.String)">
+            <summary>
+            获取AppSetting值
+            </summary>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Config.ConfigHelper.GetConnectionStringValue(System.String)">
+            <summary>
+            获取ConnectionString值
+            </summary>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:ADee.Framework.Library.Exceptions.JsonResponseException">
+            <summary>
+            json响应异常
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Exceptions.JsonResponseException.#ctor(System.Linq.JsonResponse)">
+            <summary>
+            初始化
+            </summary>
+            <param name="jsonResponse"></param>
+        </member>
+        <member name="P:ADee.Framework.Library.Exceptions.JsonResponseException.JsonResponse">
+            <summary>
+            json响应数据
+            </summary>
+        </member>
+        <member name="P:ADee.Framework.Library.Exceptions.JsonResponseException.Message">
+            <summary>
+            异常消息
+            </summary>
+        </member>
+        <member name="T:System.Linq.ExpressionExtension">
+            <summary>
+            表达式扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.ExpressionExtension.Where``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            条件拼接
+            </summary>
+            <typeparam name="TSource">实体类型</typeparam>
+            <param name="expression">原表达式</param>
+            <param name="secondExpression">拼接表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            条件Or
+            </summary>
+            <typeparam name="TSource">实体类型</typeparam>
+            <param name="expression">原表达式</param>
+            <param name="secondExpression">拼接表达式</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.ConditionExpressionVisitor`1">
+            <summary>
+            条件表达式访问者
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+        </member>
+        <member name="M:System.Linq.ConditionExpressionVisitor`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            实例化
+            </summary>
+            <param name="expression"></param>
+            <param name="secondExpression"></param>
+        </member>
+        <member name="M:System.Linq.ConditionExpressionVisitor`1.GetAndExpression">
+            <summary>
+            And操作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ConditionExpressionVisitor`1.GetOrExpression">
+            <summary>
+            Or操作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ConditionExpressionVisitor`1.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            参数浏览
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.DateTimeExtension">
+            <summary>
+            日期时间扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.DateTimeExtension.ToDateTimeString(System.DateTime,System.String)">
+            <summary>
+            转换为格式字符
+            </summary>
+            <param name="obj"></param>
+            <param name="format">格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.DateTimeExtension.ToDateTimeString(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            转换为格式字符
+            </summary>
+            <param name="obj"></param>
+            <param name="format">格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.DateTimeExtension.GetQuarterDateTime(System.DateTime)">
+            <summary>
+            获取当前日期的所在季度，比如2015-1-5返回值[2015-1-1,2015-2-1,2015-3-1]
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.DateTimeExtension.GetWeekDate(System.DateTime)">
+            <summary>
+            获取当前时间的所在一周时间
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.DictionaryExtension">
+            <summary>
+            字典扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.DictionaryExtension.AddOrKeep``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            添加键值（如果键已存在则放弃覆盖值）
+            </summary>
+            <typeparam name="TKey">键</typeparam>
+            <typeparam name="TValue">值</typeparam>
+            <param name="obj"></param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:System.Linq.DictionaryExtension.AddOrReplace``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            添加键值（如果键已存在则覆盖值）
+            </summary>
+            <typeparam name="TKey">键</typeparam>
+            <typeparam name="TValue">值</typeparam>
+            <param name="obj"></param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:System.Linq.DictionaryExtension.ForEach``2(System.Collections.Generic.IDictionary{``0,``1},System.Action{``0,``1})">
+            <summary>
+            循环遍历字典
+            </summary>
+            <typeparam name="TKey">键类型</typeparam>
+            <typeparam name="TValue">值类型</typeparam>
+            <param name="obj"></param>
+            <param name="func">循环遍历回调函数</param>
+        </member>
+        <member name="M:System.Linq.DictionaryExtension.AddOrAppend(System.Collections.Generic.IDictionary{System.String,System.Object},System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="JoinString">连接字符</param>
+            <param name="IsAfter">value加后面, false:value加前面</param>
+        </member>
+        <member name="T:System.Linq.EncryptionExtension">
+            <summary>
+            加密扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.EncryptionExtension.DESEncrypt(System.String)">
+            <summary>
+            DES加密
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.EncryptionExtension.DESDecrypt(System.String)">
+            <summary>
+            DES解密
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.EnumExtension">
+            <summary>
+            枚举扩展
+            </summary>
+        </member>
+        <member name="M:System.EnumExtension.GetAttribute``1(System.Object)">
+            <summary>
+            获得枚举字段的特性(Attribute)，该属性不允许多次定义。
+            </summary>
+            <typeparam name="TSource">特性类型</typeparam>
+            <param name="obj"></param>
+            <returns>枚举字段的扩展属性</returns>
+        </member>
+        <member name="M:System.EnumExtension.Desc``1(System.Enum)">
+            <summary>
+            获得Desc特性的值
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.EnumHelper">
+            <summary>
+            枚举Helper
+            </summary>
+        </member>
+        <member name="M:System.EnumHelper.GetDescs``1">
+            <summary>
+            获得该枚举所有Desc的特性值
+            </summary>
+            <typeparam name="TSource">枚举</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumHelper.GetDesc``1(System.Int32,System.String)">
+            <summary>
+            获得对应枚举的Desc特性值
+            </summary>
+            <typeparam name="TSource">枚举</typeparam>
+            <param name="key">枚举对应值</param>
+            <param name="defaultValue">没有找到对应的Desc特性默认值</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Enum`1">
+            <summary>
+            TSource 类型枚举列表
+            </summary>
+            <typeparam name="TSource">枚举类型</typeparam>
+        </member>
+        <member name="M:System.Enum`1.AsEnumerable">
+            <summary>
+            返回类型为 IEnumerable&lt;TSource&gt; 的输入。
+            </summary>
+            <returns>类型为 IEnumerable&lt;TSource&gt; 的序列。</returns>
+        </member>
+        <member name="M:System.Enum`1.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举数。
+            </summary>
+            <returns>可用于循环访问集合的 IEnumerator&lt;TSource&gt; 。</returns>
+        </member>
+        <member name="M:System.Enum`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举数。
+            </summary>
+            <returns>可用于循环访问集合的 IEnumerator 。</returns>
+        </member>
+        <member name="M:System.Enum`1.System#Collections#Generic#IEnumerable{TSource}#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举数。
+            </summary>
+            <returns>可用于循环访问集合的 IEnumerator&lt;TSource&gt; 。</returns>
+        </member>
+        <member name="T:System.DescAttribute">
+            <summary>
+            字段或属性的中文解释属性
+            </summary>
+        </member>
+        <member name="M:System.DescAttribute.#ctor(System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="value">字段或属性的解释说明.</param>
+        </member>
+        <member name="P:System.DescAttribute.Value">
+            <summary>
+            获得字段或属性的中文解释.
+            </summary>
+            <value>字段或属性的中文解释.</value>
+        </member>
+        <member name="T:System.ExceptionExtension">
+            <summary>
+            异常扩展
+            </summary>
+        </member>
+        <member name="M:System.ExceptionExtension.SummaryMessage(System.Exception)">
+            <summary>
+            异常信息，如果子异常不为空，则包含子异常信息
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.JsonResponse">
+            <summary>
+            返回json结果集
+            </summary>
+        </member>
+        <member name="P:System.Linq.JsonResponse.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:System.Linq.JsonResponse.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:System.Linq.JsonResponse.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:System.Linq.HttpClient`1">
+            <summary>
+            网络请求客户端，不设置Domain将使用<c>WebConfig.WebApiUrl</c>的值
+            </summary>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Get(System.String,System.Object)">
+            <summary>
+            Get操作
+            </summary>
+            <param name="resource">资源，api/a/b可以写:a/b</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Post``1(System.String,``0,System.Object)">
+            <summary>
+            Post操作
+            </summary>
+            <typeparam name="TModel">post内容类型</typeparam>
+            <param name="resource">资源，api/a/b可以写:a/b</param>
+            <param name="model">post内容，body内容为空是设置null</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Post(System.String,System.Object)">
+            <summary>
+            Post操作
+            </summary>
+            <param name="resource">资源，api/a/b可以写:a/b</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Delete(System.String,System.Object)">
+            <summary>
+            删除操作
+            </summary>
+            <param name="resource">资源，api/a/b可以写:a/b</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Request(System.String,System.Object,System.Func{System.Net.Http.HttpClient,System.String,System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage}})">
+            <summary>
+            统一请求处理
+            </summary>
+            <param name="resource">资源，api/a/b可以写:a/b</param>
+            <param name="parameters">参数</param>
+            <param name="predicate">请求体表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.GetResource(System.String,System.Object)">
+            <summary>
+            参数处理
+            </summary>
+            <param name="resource">资源</param>
+            <param name="parameters">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.HttpClient`1.Result(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            结果处理
+            </summary>
+            <param name="response">响应流</param>
+            <returns></returns>
+        </member>
+        <member name="P:System.Linq.HttpClient`1.Domain">
+            <summary>
+            请求的域名
+            </summary>
+        </member>
+        <member name="P:System.Linq.HttpClient`1.TimeOut">
+            <summary>
+            请求超时，单位：秒
+            </summary>
+        </member>
+        <member name="T:System.Linq.IEnumerableExtension">
+            <summary>
+            IEnumerable扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.IsNotNullAndAny``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            是否不为空且包含数据
+            </summary>
+            <typeparam name="TSource">集合类型</typeparam>
+            <param name="lists"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.Join``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            集合合并为字符串
+            </summary>
+            <typeparam name="TSource">集合类型</typeparam>
+            <param name="lists"></param>
+            <param name="separator">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            循环遍历
+            </summary>
+            <typeparam name="TSource">集合类型</typeparam>
+            <param name="lists"></param>
+            <param name="func">循环回调函数</param>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.AverageCanNull(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary>
+            平均值可空
+            </summary>
+            <param name="objs"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.ListExtension">
+            <summary>
+            List扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.ListExtension.Join``1(System.Collections.Generic.List{``0},System.String)">
+            <summary>
+            集合合并为字符串
+            </summary>
+            <typeparam name="TSource">源类型</typeparam>
+            <param name="lists"></param>
+            <param name="separator">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ListExtension.Join``1(``0[],System.String)">
+            <summary>
+            集合合并为字符串
+            </summary>
+            <typeparam name="TSource">源类型</typeparam>
+            <param name="lists"></param>
+            <param name="separator">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ListExtension.ForEachInt(System.Int32,System.Action{System.Int32},System.Int32)">
+            <summary>
+            整型遍历，变形的For，最终循环intObj次
+            </summary>
+            <param name="intObj"></param>
+            <param name="predicate"></param>
+            <param name="startIndex">开始下标</param>
+        </member>
+        <member name="M:System.Linq.ListExtension.SelectInt``1(System.Int32,System.Func{System.Int32,``0},System.Int32)">
+            <summary>
+            整型Select，最终循环intObj次
+            </summary>
+            <typeparam name="TResult">返回值类型</typeparam>
+            <param name="intObj"></param>
+            <param name="predicate"></param>
+            <param name="startIndex">开始下标</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.ObjectExtension">
+            <summary>
+            对象扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.IsNull``1(``0)">
+            <summary>
+            是否为空对象
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.IsNotNull``1(``0)">
+            <summary>
+            是否不是空对象
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.SelectOrDefault``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            获得对象的属性值
+            </summary>
+            <typeparam name="TSource">对象类型</typeparam>
+            <typeparam name="TProperty">对象类型的属性类型</typeparam>
+            <param name="obj">操作的对象</param>
+            <param name="predicate">操作用的表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.ToStr(System.Object,System.String)">
+            <summary>
+            具有Null判断的ToString
+            </summary>
+            <param name="obj"></param>
+            <param name="defaultValue">默认空字符</param>
+            <returns>对象为空时，返回String.Empty；不为空，返回对象的ToString()</returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.IsNullableType(System.Type)">
+            <summary>
+            是否为可空类型
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.ToValueType(System.Type)">
+            <summary>
+            获取值类型
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.ToJsonString(System.Object)">
+            <summary>
+            对象序列化为Json字符
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object)">
+            <summary>
+            将当前对象原样克隆成新对象
+            </summary>
+            <typeparam name="TSource">新对象类型</typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object,System.Collections.Generic.List{System.String})">
+            <summary>
+            将当前对象原样克隆成新对象
+            </summary>
+            <typeparam name="TSource">新对象类型</typeparam>
+            <param name="obj"></param>
+            <param name="exceptPropertyNames">排除复制的字段，不区分大小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object,System.Action{``0})">
+            <summary>
+            将当前对象原样克隆成新对象
+            </summary>
+            <typeparam name="TSource">新对象类型</typeparam>
+            <param name="obj"></param>
+            <param name="convertPredicate">转换回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object,System.Collections.Generic.List{System.String},System.Action{``0})">
+            <summary>
+            将当前对象原样克隆成新对象
+            </summary>
+            <typeparam name="TSource">新对象类型</typeparam>
+            <param name="obj"></param>
+            /// <param name="exceptPropertyNames">排除复制的字段，不区分大小写</param>
+            <param name="convertPredicate">转换回调函数</param>        
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object,``0)">
+            <summary>
+            将当前对象克隆到<para>toSource</para>
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="obj"></param>
+            <param name="toSource"></param>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.CloneObject``1(System.Object,``0,System.Collections.Generic.List{System.String})">
+            <summary>
+            将当前对象克隆到<para>toSource</para>
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="obj"></param>
+            <param name="toSource"></param>
+            <param name="exceptPropertyNames">排除复制的字段，不区分大小写</param>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.ToDictionary(System.Object)">
+            <summary>
+            将对象的字段名称、字段值形成字典
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.To``1(System.Object,``0)">
+            <summary>
+            将对象转换为<typeparamref name="TSource"/>类型对象
+            </summary>
+            <typeparam name="TSource">目标对象类型</typeparam>
+            <param name="obj">转换对象</param>
+            <param name="defaultValue">转换失败的默认值</param>
+            <returns>安全的返回目标对象值</returns>
+        </member>
+        <member name="M:System.Linq.ObjectExtension.Is``1(System.Object)">
+            <summary>
+            是否为<typeparamref name="TSource"/>对象
+            </summary>
+            <typeparam name="TSource">目标对象类型</typeparam>
+            <param name="obj">判断对象</param>
+            <returns>返回判断结果</returns>
+        </member>
+        <member name="T:System.Linq.StringExtension">
+            <summary>
+            String扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.StringExtension.SubText(System.String,System.String,System.Int32)">
+            <summary>
+            截取字符串，超出部分以省略符号代替
+            </summary>
+            <param name="obj"></param>
+            <param name="omitString">省略符号</param>
+            <param name="stringLength">截取长度，包含省略符号</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.StringExtension.FixLength(System.String,System.Int32,System.Char)">
+            <summary>
+            定长字符串，不够长的字符串回居中，左右以replaceString填充
+            </summary>
+            <param name="obj">源字符串</param>
+            <param name="stringLength">定长长度</param>
+            <param name="replaceString">填充字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.StringExtension.FormatString(System.String,System.Object[])">
+            <summary>
+            等同于string.Format
+            </summary>
+            <param name="obj"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.StringExtension.TrimEnd(System.String,System.String)">
+            <summary>
+            截断尾部
+            </summary>
+            <param name="obj"></param>
+            <param name="endStr">截断字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.StringExtension.TrimStart(System.String,System.String)">
+            <summary>
+            截断头部
+            </summary>
+            <param name="obj"></param>
+            <param name="startStr">截断字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.StringExtension.ToJsonObject``1(System.String)">
+            <summary>
+            Json字符反序列化为对象
+            </summary>
+            <typeparam name="TSource">对象类型</typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ADee.Framework.Library.Image.ImageHelper">
+            <summary>
+            图片处理
+            </summary>
+        </member>
+        <member name="F:ADee.Framework.Library.Image.ImageHelper.ImageMimeType">
+            <summary>
+            图片类型集合
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.CutForSquare(System.String,System.String,System.Drawing.Point,System.Int32)">
+            <summary>
+            正方形裁剪
+            </summary>
+            <param name="fromFileName">原图路径</param>
+            <param name="saveFileName">保存路径</param>
+            <param name="cutPoint">裁剪点</param>
+            <param name="size">宽度</param>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.CutForCustom(System.String,System.String,System.Drawing.Rectangle)">
+            <summary>
+            指定长宽裁剪
+            按模版比例最大范围的裁剪图片并缩放至模版尺寸
+            </summary>
+            <param name="fromFileName">原图路径</param>
+            <param name="saveFileName">保存路径</param>
+            <param name="cutRectangle">裁剪位置</param>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.ZoomAuto(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            图片等比缩放
+            </summary>
+            <param name="fromFileName">原图路径</param>
+            <param name="saveFileName">缩略图路径</param>
+            <param name="targetWidth">指定的最大宽度</param>
+            <param name="targetHeight">指定的最大高度</param>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.CutForSquareCenter(System.String,System.String,System.Int32)">
+            <summary>
+            裁剪图片中心(<paramref name="fromFileName"/>)最大的正方形，并将缩放成尺寸为<paramref name="size"/>的图片保存到<paramref name="saveFileName"/>路径
+            </summary>
+            <param name="fromFileName"></param>
+            <param name="saveFileName"></param>
+            <param name="size"></param>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.IsWebImage(System.String)">
+            <summary>
+            判断文件类型是否为WEB格式图片
+            (注：JPG,GIF,BMP,PNG)
+            </summary>
+            <param name="contentType">HttpPostedFile.ContentType</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.IsPNG(System.Drawing.Image)">
+            <summary>
+            是否为PNG图片
+            </summary>
+            <param name="image">图片</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.IsPNG(System.String)">
+            <summary>
+            是否为PNG图片
+            </summary>
+            <param name="filename">图片类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADee.Framework.Library.Image.ImageHelper.DrawNewImage(System.Drawing.Size,System.String,System.Action{System.Drawing.Graphics})">
+            <summary>
+            画新图片
+            </summary>
+            <param name="newImageSize">刻画大小</param>
+            <param name="saveFileName">保存路径</param>
+            <param name="drawPredicate">设置画笔的回调函数</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

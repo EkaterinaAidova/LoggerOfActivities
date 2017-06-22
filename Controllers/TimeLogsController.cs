@@ -25,6 +25,11 @@ namespace ActivityLogger.Controllers
         {
             return repository.GetTimeLogs();
         }
+        [HttpGet]
+        public IEnumerable<TimeLog> Get(int idUser, int status)
+        {
+            return repository.GetUserLogsWithStatus(idUser, status);
+        }
           
        /*
         [HttpGet]

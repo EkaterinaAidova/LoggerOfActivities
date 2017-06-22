@@ -30,6 +30,15 @@ namespace ActivityLogger.Models.Repositories
              }
              return timeLogs;
          }
+         public List<TimeLog> GetUserLogsWithStatus(int idUser, int status)
+         {
+             List<TimeLog> timeLogs = new List<TimeLog>();
+             using (IDbConnection db = new SqlConnection(connectionString))
+             {
+                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID AND Status= @status ").ToList();
+             }
+             return timeLogs;
+         }
         public TimeLog Get(int id)
         {
             TimeLog timeLog = null;

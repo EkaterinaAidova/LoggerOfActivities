@@ -34,3 +34,16 @@ C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.Mvc.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Autofac.Integration.WebApi.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Net.Http.Formatting.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.WebHost.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Net.Http.Formatting.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.WebHost.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.Library.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.WebAPI.Cors.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Cors.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.Cors.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.Library.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.WebAPI.Cors.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.Cors.xml
