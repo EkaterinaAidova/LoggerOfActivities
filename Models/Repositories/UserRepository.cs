@@ -6,9 +6,10 @@ using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using ActivityLogger.Models.Repositories.Contracts;
 namespace ActivityLogger.Models.Repositories
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public List<User> GetUsers()

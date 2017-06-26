@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using ActivityLogger.Models;
+using ActivityLogger.Models.Repositories;
 namespace ActivityLogger.Controllers
 {
     public class HomeController : Controller
-    {
+    {  
         public ActionResult Index()
         {
             return View();

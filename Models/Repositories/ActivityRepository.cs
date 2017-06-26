@@ -6,9 +6,11 @@ using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.Models.Repositories;
 namespace ActivityLogger.Models.Repositories
 {
-    public class ActivityRepository
+    public class ActivityRepository: IActivityRepository
     {
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public List<Activity> GetActivities()
@@ -16,7 +18,7 @@ namespace ActivityLogger.Models.Repositories
             List<Activity> activities = new List<Activity>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activities = db.Query<Activity>("SELECT * FROM Activities").ToList();
+                activities = db.Query<Activity>("SELECT * FROM Activity").ToList();
             }
             return activities;
         }
@@ -25,7 +27,7 @@ namespace ActivityLogger.Models.Repositories
             Activity activity = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activity = db.Query<Activity>("SELECT * FROM Activities WHERE Id = @id", new { id }).FirstOrDefault();
+                activity = db.Query<Activity>("SELECT * FROM Activity WHERE ID = @ID", new { id }).FirstOrDefault();
             }
             return activity;
         }
@@ -33,7 +35,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Activities (Position) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Activity (Position) VALUES(@Position); SELECT CAST(SCOPE_IDENTITY() as int)";
                 int? activityId = db.Query<int>(sqlQuery, activity).FirstOrDefault();
                 activity.ID = activityId.Value;
             }
@@ -43,7 +45,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Activities SET Name = @Name WHERE Id = @Id";
+                var sqlQuery = "UPDATE Activity SET Position = @Position WHERE ID = @ID";
                 db.Execute(sqlQuery, activity);
             }
         }
@@ -51,7 +53,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Activities WHERE Id = @id";
+                var sqlQuery = "DELETE FROM Activity WHERE Id = @id";
                 db.Execute(sqlQuery, new { id });
             }
         }

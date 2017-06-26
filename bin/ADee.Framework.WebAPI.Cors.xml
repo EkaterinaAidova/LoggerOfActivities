@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ADee.Framework.WebAPI.Cors</name>
+    </assembly>
+    <members>
+        <member name="T:ADee.Framework.WebAPI.Cors.ConfigHelper">
+            <summary>
+            配置管理
+            </summary>
+        </member>
+        <member name="P:ADee.Framework.WebAPI.Cors.ConfigHelper.Origins">
+            <summary>
+            Origin列表，使用|分隔，默认为*
+            </summary>
+        </member>
+        <member name="P:ADee.Framework.WebAPI.Cors.ConfigHelper.Headers">
+            <summary>
+            Header列表，使用|分隔，默认为*
+            </summary>
+        </member>
+        <member name="P:ADee.Framework.WebAPI.Cors.ConfigHelper.Methods">
+            <summary>
+            Method列表，使用|分隔，默认为*
+            </summary>
+        </member>
+        <member name="T:ADee.Framework.WebAPI.Cors.EnableCoreAttribute">
+            <summary>
+            启用跨域过滤器
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.WebAPI.Cors.EnableCoreAttribute.#ctor">
+            <summary>
+            实例化，默认origins:*,headers:*,methods:*
+            origins:可以多个，使用|分隔
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.WebAPI.Cors.EnableCoreAttribute.GetCorsPolicyAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            获取跨域策略
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ADee.Framework.WebAPI.Cors.SubDomainCorsEngine">
+            <summary>
+            二级域名验证引擎
+            </summary>
+        </member>
+        <member name="M:ADee.Framework.WebAPI.Cors.SubDomainCorsEngine.TryValidateOrigin(System.Web.Cors.CorsRequestContext,System.Web.Cors.CorsPolicy,System.Web.Cors.CorsResult)">
+            <summary>
+            Origin验证策略
+            </summary>
+            <param name="requestContext">上下文</param>
+            <param name="policy">策略</param>
+            <param name="result">跨域验证结果</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
