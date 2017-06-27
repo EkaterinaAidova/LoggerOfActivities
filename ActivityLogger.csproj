@@ -184,6 +184,9 @@
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
     <Compile Include="Models\Repositories\TimeLogsRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
+    <Compile Include="Models\Services\Contracts\ILoginingService.cs" />
+    <Compile Include="Models\Services\Contracts\IWorkWithLogsService.cs" />
+    <Compile Include="Models\Services\WorkWithLogsService.cs" />
     <Compile Include="Models\TimeLog.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\UsersController.cs" />
