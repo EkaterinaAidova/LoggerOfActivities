@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Http;
 using ActivityLogger.Models.Repositories;
 using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services;
+using ActivityLogger.BusinessLogic.Services.Contracts;
+
 
 namespace ActivityLogger.Util
 {
@@ -36,7 +39,7 @@ namespace ActivityLogger.Util
             builder.RegisterType<UsersController>().WithParameter("rep", new UserRepository()).InstancePerRequest();
             builder.RegisterType<ProjectController>().WithParameter("rep", new ProjectRepository()).InstancePerRequest();
             builder.RegisterType<TimeLogsController>().WithParameter("rep", new TimeLogsRepository()).InstancePerRequest();*/
-
+            builder.RegisterType<LoginingServiice>().As<ILoginingService>().InstancePerRequest();
             builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();
             builder.RegisterType<AutorisationRepository>().As<IAutorisationRepository>().InstancePerRequest();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();

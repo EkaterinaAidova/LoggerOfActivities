@@ -31,12 +31,16 @@
             LogOn();
         });
     });
-    // Получение всех книг по ajax-запросу
     function LogOn() {
+        var loginAndPassword ={
+            Login: $('#insertLogin').val(),
+            Password:$('#isertPassword').val()
+        };
         $.ajax({
-            url: '/api/autorisation'+'#insertLogin'+'#insertPassword',
+            url: '/api/autorisation',
             type: 'GET',
             dataType: 'json',
+            data: JSON.stringify(loginAndPassword),
             success: function (data) {
                 $("#LoginBlock").css('display', 'none');
                 getActivityList(data);

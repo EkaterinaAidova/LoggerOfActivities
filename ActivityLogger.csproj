@@ -162,6 +162,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
+    <Compile Include="BusinessLogic\Services\LoginingServiice.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AutorisationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -184,9 +186,9 @@
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
     <Compile Include="Models\Repositories\TimeLogsRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
-    <Compile Include="Models\Services\Contracts\ILoginingService.cs" />
-    <Compile Include="Models\Services\Contracts\IWorkWithLogsService.cs" />
-    <Compile Include="Models\Services\WorkWithLogsService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\ILoginingService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IWorkWithLogsService.cs" />
+    <Compile Include="BusinessLogic\Services\WorkWithLogsService.cs" />
     <Compile Include="Models\TimeLog.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -301,12 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
-      <Project>{733815e2-630c-4e9b-93bc-4a0e562fbcda}</Project>
-      <Name>BusinessLogicLayer</Name>
-    </ProjectReference>
+    <Folder Include="BusinessLogic\Services\Infrastructure\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
