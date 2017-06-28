@@ -5,9 +5,6 @@ using System.Web;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
-using System.Web.Http;
-using System.Net.Http;
-using System.Web.Http.Results;
 using ActivityLogger.Models;
 using AutoMapper;
 namespace ActivityLogger.BusinessLogic.Services

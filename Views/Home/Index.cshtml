@@ -39,15 +39,34 @@
         $.ajax({
             url: '/api/autorisation?login='+login+"&password="+password,
             type: 'GET',
+            dataType: 'json',
             success: function (data) {
                 $("#LoginBlock").css('display', 'none');
-                //getActivityList(data);
+                SetUserInfo(data);
                 // WriteResponse(data);
             },
             error: function (x, y) {
                 alert(x + '\n' + y );
             }
         });
+    }
+    function SetUserInfo(autorisationData)
+    {
+        var id = autorisationData.ID;
+        $.ajax({
+            url: '/api/users/'+id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var name = data.Name;
+                $("#Username").text(name);
+              
+            },
+            error: function (x, y) {
+                alert(x + '\n' + y);
+            }
+        });
+
     }
 </script>
     }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ActivityLogger.Models;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
 namespace ActivityLogger.Controllers

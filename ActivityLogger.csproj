@@ -168,6 +168,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\UserInfo.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineUserService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineUserService.cs" />
     <Compile Include="BusinessLogic\Services\LoginingServiice.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AutorisationController.cs" />

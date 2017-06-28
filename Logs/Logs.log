@@ -5,3 +5,16 @@
 2017-06-28 17:23:47,315  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
 2017-06-28 17:23:57,060  INFO  Controller: autorisation  - Auturisation is success. Data is got
 2017-06-28 17:24:56,224  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 17:53:18,353  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:18:30,387  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:19:53,327  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:20:49,003  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:21:57,433  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:23:19,759  INFO  Controller: users - User7is logged in
+2017-06-28 18:26:18,670  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:29:16,379  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:29:56,908  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:31:01,511  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:31:04,812  INFO  Controller: users - User7is logged in
+2017-06-28 18:33:03,772  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-28 18:33:07,802  INFO  Controller: users - User 7 is logged in
