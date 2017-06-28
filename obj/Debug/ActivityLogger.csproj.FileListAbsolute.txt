@@ -47,3 +47,5 @@ C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.Library.xml
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ADee.Framework.WebAPI.Cors.xml
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.Cors.xml
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.dll
+C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.xml

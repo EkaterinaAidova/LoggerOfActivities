@@ -23,6 +23,8 @@
 <div id="Error">
     </div>
 </div>
+@section scripts
+{
 <script type="text/javascript">
     $(document).ready(function () {
  
@@ -32,22 +34,20 @@
         });
     });
     function LogOn() {
-        var loginAndPassword ={
-            Login: $('#insertLogin').val(),
-            Password:$('#isertPassword').val()
-        };
+        var login = $('#insertLogin').val();
+        var   password = $('#insertPassword').val();
         $.ajax({
-            url: '/api/autorisation',
+            url: '/api/autorisation?login='+login+"&password="+password,
             type: 'GET',
-            dataType: 'json',
-            data: JSON.stringify(loginAndPassword),
             success: function (data) {
                 $("#LoginBlock").css('display', 'none');
-                getActivityList(data);
-               // WriteResponse(data);
+                //getActivityList(data);
+                // WriteResponse(data);
             },
             error: function (x, y) {
                 alert(x + '\n' + y );
             }
         });
+    }
+</script>
     }

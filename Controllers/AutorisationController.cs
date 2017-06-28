@@ -32,9 +32,21 @@ namespace ActivityLogger.Controllers
             return repository.Get(id);
         }*/
         [HttpGet]
-        private int Get(LoginAndPassword data)
+        public IHttpActionResult Get( string login, string password)
         {
-            return loginingService.LogIn(data);
+            if (loginingService.IsInsertValid(login, password))
+            {
+                var loginingResult = loginingService.LogIn(login, password);
+                if (loginingResult == null)
+                {
+                    Logger.Log.Error("Controller: autorisation  - Autorisation is failed. User is not found.");
+                    return NotFound();
+                }
+                Logger.Log.Info("Controller: autorisation  - Auturisation is success. Data is got");
+                return Ok(loginingResult);
+            }
+            Logger.Log.Error("Controller: autorisation  - Autorisation is failed. Data is not valid.");
+            return BadRequest();
         }
        /* [HttpPut]
         public void Put([FromBody]Autorisation ourData)
