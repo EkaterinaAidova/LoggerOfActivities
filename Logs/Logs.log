@@ -29,3 +29,5 @@
 2017-06-29 16:31:12,172  INFO  Controller: users - User 7 is logged in
 2017-06-29 16:37:31,890  INFO  Controller: autorisation  - Auturisation is success. Data is got
 2017-06-29 16:37:32,051  INFO  Controller: users - User 7 is logged in
+2017-06-29 16:50:15,432  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 16:50:15,602  INFO  Controller: users - User 7 is logged in

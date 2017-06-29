@@ -16,9 +16,10 @@ namespace ActivityLogger.Controllers
             timeLogService = service;
         }
         [HttpGet]
-        public IEnumerable<TimeLogInfo> GetUsersLogs(int id)
+        public IHttpActionResult GetUsersLogs(int id)
         {
-            return timeLogService.ShowLogsList(id);
+            Logger.Log.Info(string.Concat("Controller: timeLogs  - list of tasks of user ", id.ToString(), " is recieved"));
+            return Ok(timeLogService.ShowLogsList(id));
         }
        /* ITimeLogsRepository repository;
         public TimeLogsController(ITimeLogsRepository rep)

@@ -18,6 +18,7 @@ namespace ActivityLogger.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
+            Logger.Log.Info("Controller: activity - Activities' list is received");
             return Ok(activityService.GetActivityList());
         }
         [HttpGet]
@@ -26,8 +27,10 @@ namespace ActivityLogger.Controllers
             var activity = activityService.GetActivity(id);
             if (activity.IsNotNull())
             {
+                Logger.Log.Info(string.Concat("Controller: activity  - info about activity ", id.ToString(), " is recieved"));
                 return Ok(activity);
             }
+            Logger.Log.Error("Controller: activity  - Activity is not found.");
             return NotFound();
         }
 
