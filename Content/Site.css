@@ -35,6 +35,9 @@ header, footer, hgroup,
 nav, section {
     display: block;
 }
+#tableBlock {
+    width:auto;
+}
 
 mark {
     background-color: #a6dbed;
