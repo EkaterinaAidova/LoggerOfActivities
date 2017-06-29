@@ -7,10 +7,14 @@
     </div>
 </header>
 <div id="body">
+<div id="userIdentity" type="hidden">
 <div id="Username">
     </div>
-    <div id="LastRefresh">
+<button id="buttonExit">Выйти</button>
     </div>
+    <!--div id="currentTime"-->
+    <!--/div-->
+</div>
    <div id="tableBlock"></div>
     <div id="LoginBlock"><h3>Вход</h3>
     <table>
@@ -27,10 +31,15 @@
 {
 <script type="text/javascript">
     $(document).ready(function () {
- 
+        var userID;
+        $("#userIdentity").css('display', 'none');
         $("#buttonLogin").click(function (event) {
             event.preventDefault();
             LogOn();
+        });
+        $("#buttonExit").click(function (event) {
+            event.preventDefault();
+            Exit();
         });
     });
     function LogOn() {
@@ -41,8 +50,10 @@
             type: 'GET',
             dataType: 'json',
             success: function (data) {
-                $("#LoginBlock").css('display', 'none');
+                
                 SetUserInfo(data);
+                $('#insertLogin').val("");
+                $('#insertPassword').val("");
                 // WriteResponse(data);
             },
             error: function (x, y) {
@@ -52,21 +63,28 @@
     }
     function SetUserInfo(autorisationData)
     {
-        var id = autorisationData.ID;
+         userID = autorisationData.ID;
         $.ajax({
-            url: '/api/users/'+id,
+            url: '/api/users/'+userID,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
                 var name = data.Name;
-                $("#Username").text(name);
-              
+                $("#Username").text("Сотрудник: "+name);
+                $("#LoginBlock").css('display', 'none');
+                $("#userIdentity").css('display', 'block');
             },
             error: function (x, y) {
                 alert(x + '\n' + y);
             }
         });
 
+    }
+    function Exit()
+    {
+        userID = undefined;
+        $("#LoginBlock").css('display', 'block');
+        $("#userIdentity").css('display', 'none');
     }
 </script>
     }

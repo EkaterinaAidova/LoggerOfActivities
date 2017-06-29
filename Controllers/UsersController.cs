@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+using System.Net.Http.Headers;
 namespace ActivityLogger.Controllers
 {
     public class UsersController : ApiController
@@ -22,7 +23,7 @@ namespace ActivityLogger.Controllers
             var user = definingService.GetUser(id);
             if (user.IsNotNull())
             {
-                Logger.Log.Info(String.Concat("Controller: users - User ", user.ID.ToString(), " is logged in")); 
+                Logger.Log.Info(String.Concat("Controller: users - User ", user.ID.ToString(), " is logged in"));
                 return Ok(user);
             }
             Logger.Log.Error(String.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));

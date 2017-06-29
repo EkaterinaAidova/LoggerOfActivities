@@ -1,20 +1,25 @@
-2017-06-28 17:16:16,596  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
-2017-06-28 17:16:37,282  ERROR Controller: autorisation  - Autorisation is failed. Data is not valid.
-2017-06-28 17:22:23,457  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
-2017-06-28 17:22:39,535  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
-2017-06-28 17:23:47,315  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
-2017-06-28 17:23:57,060  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 17:24:56,224  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 17:53:18,353  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:18:30,387  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:19:53,327  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:20:49,003  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:21:57,433  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:23:19,759  INFO  Controller: users - User7is logged in
-2017-06-28 18:26:18,670  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:29:16,379  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:29:56,908  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:31:01,511  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:31:04,812  INFO  Controller: users - User7is logged in
-2017-06-28 18:33:03,772  INFO  Controller: autorisation  - Auturisation is success. Data is got
-2017-06-28 18:33:07,802  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:25:34,088  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:25:38,443  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:30:21,526  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:30:21,543  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:38:42,653  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:38:42,670  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:39:01,321  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:39:01,333  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:39:16,363  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:39:16,367  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:44:14,372  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:44:14,386  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:47:24,238  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:47:28,130  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:47:28,294  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:48:01,060  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:48:01,068  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:49:33,507  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:49:33,508  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:49:46,570  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:49:46,579  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:55:01,012  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:55:01,020  INFO  Controller: users - User 7 is logged in
+2017-06-29 14:55:05,098  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-29 14:55:05,100  INFO  Controller: users - User 7 is logged in
