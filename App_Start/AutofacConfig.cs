@@ -34,8 +34,13 @@ namespace ActivityLogger.Util
         {
             //Register your Web API controllers.  
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //services
             builder.RegisterType<LoginingServiice>().As<ILoginingService>().InstancePerRequest();
             builder.RegisterType<DefineUserService>().As<IDefineUserService>().InstancePerRequest();
+            builder.RegisterType<DefineProjectService>().As<IDefineProjectService>().InstancePerRequest();
+            builder.RegisterType<DefineActivityService>().As<IDefineActivityService>().InstancePerRequest();
+            builder.RegisterType<WorkWithLogsService>().As<IWorkWithLogsService>().InstancePerRequest();
+            //repositories
             builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();
             builder.RegisterType<AutorisationRepository>().As<IAutorisationRepository>().InstancePerRequest();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();

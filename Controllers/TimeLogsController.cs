@@ -4,13 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services.Contracts;
+using ActivityLogger.BusinessLogic.DataTransferObjects;
 namespace ActivityLogger.Controllers
 {
     public class TimeLogsController : ApiController
     {
-        ITimeLogsRepository repository;
+        IWorkWithLogsService timeLogService;
+        public TimeLogsController(IWorkWithLogsService service)
+        {
+            timeLogService = service;
+        }
+        [HttpGet]
+        public IEnumerable<TimeLogInfo> GetUsersLogs(int id)
+        {
+            return timeLogService.ShowLogsList(id);
+        }
+       /* ITimeLogsRepository repository;
         public TimeLogsController(ITimeLogsRepository rep)
         {
             repository = rep;
@@ -30,13 +40,11 @@ namespace ActivityLogger.Controllers
         {
             return repository.GetUserLogsWithStatus(idUser, status);
         }
-          
-       /*
         [HttpGet]
         public TimeLog Get(int id)
         {
             return repository.Get(id);
-        }*/
+        }
         [HttpGet]
         public IEnumerable<TimeLog> GetUsersLogs(int id)
         {
@@ -51,6 +59,7 @@ namespace ActivityLogger.Controllers
         public void Delete(int id)
         {
             repository.Delete(id);
-        }
+        }*/
+
     }
 }

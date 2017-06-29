@@ -15,6 +15,8 @@ namespace ActivityLogger.App_Start
             {
                 config.CreateMap<Autorisation, LoginAndPassword>().ReverseMap();
                 config.CreateMap<User, UserInfo>().ReverseMap();
+                config.CreateMap<Activity, ActivityInfo>().ReverseMap();
+                config.CreateMap<Project, ProjectInfo>().ReverseMap();
             });
         }
      }

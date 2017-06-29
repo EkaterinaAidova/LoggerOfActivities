@@ -167,9 +167,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\ActivityInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\ProjectInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\TimeLogInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\UserInfo.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineActivityService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineProjectService.cs" />
     <Compile Include="BusinessLogic\Services\Contracts\IDefineUserService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineProjectService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineActivityService.cs" />
     <Compile Include="BusinessLogic\Services\DefineUserService.cs" />
     <Compile Include="BusinessLogic\Services\LoginingServiice.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
@@ -311,7 +318,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BusinessLogic\Services\Infrastructure\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

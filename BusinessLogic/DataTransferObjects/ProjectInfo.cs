@@ -7,5 +7,7 @@ namespace ActivityLogger.BusinessLogic.DataTransferObjects
 {
     public class ProjectInfo
     {
+        int ID { get; set; }
+        string Name { get; set;}
     }
 }

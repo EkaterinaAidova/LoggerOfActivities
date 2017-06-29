@@ -8,8 +8,8 @@ namespace ActivityLogger.BusinessLogic.DataTransferObjects
     {
         public int TaskID { get; set; }
         public int UserID { get; set; }
-        public ProjectInfo project{ get; set; }
-        public ActivityInfo activity{ get; set; }
+        public ProjectInfo Project{ get; set; }
+        public ActivityInfo Activity{ get; set; }
         public int Status { get; set; }
         public DateTime StartWorkTime { get; set; }
         public DateTime LastPauseTime { get; set; }

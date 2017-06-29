@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ActivityLogger.BusinessLogic.DataTransferObjects;
 namespace ActivityLogger.BusinessLogic.Services.Contracts
 {
-    interface IDefineProjectService
+    public interface IDefineProjectService
     {
+        IEnumerable<ProjectInfo> GetProjectsList();
+        ProjectInfo GetProject(int id);
     }
 }

@@ -54,7 +54,7 @@
                 SetUserInfo(data);
                 $('#insertLogin').val("");
                 $('#insertPassword').val("");
-                // WriteResponse(data);
+                ShowTaskList();
             },
             error: function (x, y) {
                 alert(x + '\n' + y );
@@ -85,6 +85,10 @@
         userID = undefined;
         $("#LoginBlock").css('display', 'block');
         $("#userIdentity").css('display', 'none');
+    }
+    function ShowTaskList()
+    {
+
     }
 </script>
     }
