@@ -13,5 +13,6 @@ namespace ActivityLogger.BusinessLogic.Services.Contracts
          bool IsInsertValid(string insertLogin, string insertPassword);
         // int? GetUserID(LoginAndPassword insertData);
          LoginAndPassword LogIn(string insertLogin, string insertPassword);
+
     }
 }

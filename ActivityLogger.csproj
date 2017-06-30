@@ -170,6 +170,7 @@
     <Compile Include="BusinessLogic\DataTransferObjects\ActivityInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\ProjectInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\TimeLogForCreationInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\TimeLogInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\UserInfo.cs" />
     <Compile Include="BusinessLogic\Services\Contracts\IDefineActivityService.cs" />

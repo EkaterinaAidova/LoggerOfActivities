@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+using ActivityLogger.Models;
 namespace ActivityLogger.BusinessLogic.Services.Contracts
 {
     public interface IWorkWithLogsService
     {
-        void AddNewLog();
-        void SetLogOnPause(int id);
-        void FinishWorkLog(int id);
-        void RestartWorkLog(int id);
+        void AddNewLog(TimeLogForCreationInfo info);
         IEnumerable<TimeLogInfo> ShowLogsList(int userID);
-        void SetLogOnPauseWithTime(int id, DateTime time);
-        void FinishWorkWithTime(int id, DateTime time);
+        bool SetLogOnPauseWithTime(int id, DateTime time);
+        bool FinishWorkWithTime(int id, DateTime time);
+        void ResumeWork(int id, DateTime time);
+        IEnumerable<TimeLogInfo> GetUserLogWithStatus(int idUser, int status);
+        void UpdateTimeLog(TimeLogInfo timeLog);
+        TimeLog CreateTimeLog(TimeLogInfo timeLog);
+        bool IsLogValid(TimeLogForCreationInfo info);
     }
 }
