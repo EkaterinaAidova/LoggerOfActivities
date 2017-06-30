@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Http;
 using ActivityLogger.Models.Repositories;
 using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services;
+using ActivityLogger.BusinessLogic.Services.Contracts;
+
 
 namespace ActivityLogger.Util
 {
@@ -31,17 +34,19 @@ namespace ActivityLogger.Util
         {
             //Register your Web API controllers.  
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-           /* builder.RegisterType<ActivityController>().WithParameter("rep", new ActivityRepository()).InstancePerRequest();
-            builder.RegisterType<AutorisationController>().WithParameter("rep", new AutorisationRepository()).InstancePerRequest();
-            builder.RegisterType<UsersController>().WithParameter("rep", new UserRepository()).InstancePerRequest();
-            builder.RegisterType<ProjectController>().WithParameter("rep", new ProjectRepository()).InstancePerRequest();
-            builder.RegisterType<TimeLogsController>().WithParameter("rep", new TimeLogsRepository()).InstancePerRequest();*/
-
+            //services
+            builder.RegisterType<LoginingServiice>().As<ILoginingService>().InstancePerRequest();
+            builder.RegisterType<DefineUserService>().As<IDefineUserService>().InstancePerRequest();
+            builder.RegisterType<DefineProjectService>().As<IDefineProjectService>().InstancePerRequest();
+            builder.RegisterType<DefineActivityService>().As<IDefineActivityService>().InstancePerRequest();
+            builder.RegisterType<WorkWithLogsService>().As<IWorkWithLogsService>().InstancePerRequest();
+            //repositories
             builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();
             builder.RegisterType<AutorisationRepository>().As<IAutorisationRepository>().InstancePerRequest();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
             builder.RegisterType<ProjectRepository>().As<IProjectRepository>().InstancePerRequest();
             builder.RegisterType<TimeLogsRepository>().As<ITimeLogsRepository>().InstancePerRequest();
+
 
             //Set the dependency resolver to be Autofac.  
             Container = builder.Build();

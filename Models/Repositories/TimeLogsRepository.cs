@@ -26,7 +26,7 @@ namespace ActivityLogger.Models.Repositories
              List<TimeLog> timeLogs = new List<TimeLog>();
              using (IDbConnection db = new SqlConnection(connectionString))
              {
-                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID").ToList();
+                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID = @userID", new { userID }).ToList();
              }
              return timeLogs;
          }

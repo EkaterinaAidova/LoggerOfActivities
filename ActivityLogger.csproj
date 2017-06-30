@@ -59,6 +59,10 @@
       <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
     </Reference>
@@ -157,11 +161,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\ActivityInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\ProjectInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\TimeLogForCreationInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\TimeLogInfo.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\UserInfo.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineActivityService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineProjectService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IDefineUserService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineProjectService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineActivityService.cs" />
+    <Compile Include="BusinessLogic\Services\DefineUserService.cs" />
+    <Compile Include="BusinessLogic\Services\LoginingServiice.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AutorisationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -184,6 +202,9 @@
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
     <Compile Include="Models\Repositories\TimeLogsRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\ILoginingService.cs" />
+    <Compile Include="BusinessLogic\Services\Contracts\IWorkWithLogsService.cs" />
+    <Compile Include="BusinessLogic\Services\WorkWithLogsService.cs" />
     <Compile Include="Models\TimeLog.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -298,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Util\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

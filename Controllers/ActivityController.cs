@@ -4,13 +4,38 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services.Contracts;
+using ActivityLogger.BusinessLogic.DataTransferObjects;
 namespace ActivityLogger.Controllers
 {
     public class ActivityController : ApiController
     {
-        IActivityRepository repository;
+        IDefineActivityService activityService;
+        public ActivityController(IDefineActivityService service)
+        {
+            activityService = service;
+        }
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            Logger.Log.Info("Controller: activity - Activities' list is received");
+            return Ok(activityService.GetActivityList());
+        }
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            var activity = activityService.GetActivity(id);
+            if (activity.IsNotNull())
+            {
+                Logger.Log.Info(string.Concat("Controller: activity  - info about activity ", id.ToString(), " is recieved"));
+                return Ok(activity);
+            }
+            Logger.Log.Error("Controller: activity  - Activity is not found.");
+            return NotFound();
+        }
+
+
+       /* IActivityRepository repository;
         public ActivityController(IActivityRepository rep)
         {
             repository = rep;
@@ -39,6 +64,6 @@ namespace ActivityLogger.Controllers
         public void Delete(int id)
         {
             repository.Delete(id);
-        }
+        }*/
     }
 }

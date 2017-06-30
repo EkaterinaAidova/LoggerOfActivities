@@ -4,16 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ActivityLogger.Models;
-using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services.Contracts;
+using ActivityLogger.BusinessLogic.DataTransferObjects;
 namespace ActivityLogger.Controllers
 {
     public class AutorisationController : ApiController
     {
-        IAutorisationRepository repository;
-        public AutorisationController(IAutorisationRepository rep)
+        ILoginingService loginingService;
+        public AutorisationController(ILoginingService service)
         {
-            repository = rep;
+            loginingService = service;
         }
        /* [HttpPost]
         public void Post([FromBody] Autorisation ourData)
@@ -31,15 +31,27 @@ namespace ActivityLogger.Controllers
             return repository.Get(id);
         }*/
         [HttpGet]
-        private Autorisation Get(string login, string password)
+        public IHttpActionResult Get( string login, string password)
         {
-            return repository.Get(login, password);
+            if (loginingService.IsInsertValid(login, password))
+            {
+                var loginingResult = loginingService.LogIn(login, password);
+                if (loginingResult == null)
+                {
+                    Logger.Log.Error("Controller: autorisation  - Autorisation is failed. User is not found.");
+                    return NotFound();
+                }
+                Logger.Log.Info("Controller: autorisation  - Auturisation is success. Data is got");
+                return Ok(loginingResult);
+            }
+            Logger.Log.Error("Controller: autorisation  - Autorisation is failed. Data is not valid.");
+            return BadRequest();
         }
-        [HttpPut]
+       /* [HttpPut]
         public void Put([FromBody]Autorisation ourData)
         {
             repository.Update(ourData);
-        }
+        }*/
         /*[HttpDelete]
         private void Delete(int id)
         {

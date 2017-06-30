@@ -26,7 +26,7 @@ namespace ActivityLogger.Models.Repositories
             Autorisation autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorisation>("SELECT * FROM Autorisation WHERE Login = @login, Password = @password", new { login, password}).FirstOrDefault();
+                autorisation = db.Query<Autorisation>("SELECT * FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
             }
             return autorisation;
         }

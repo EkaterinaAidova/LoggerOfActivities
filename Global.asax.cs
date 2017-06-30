@@ -19,6 +19,7 @@ namespace ActivityLogger
         {
             AreaRegistration.RegisterAllAreas();
             Bootstrapper.Run();
+            AutoMapperConfig.Initialize();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
