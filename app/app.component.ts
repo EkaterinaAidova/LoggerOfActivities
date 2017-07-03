@@ -1,11 +1,11 @@
 ﻿import { Component } from '@angular/core';
+import { LoginComponent } from './login';
 
 @Component({
     selector: 'my-app',
-    template: `<h1>Добро пожаловать {{name}}!</h1>
-                <label>Введите имя:</label>
-                <input [(ngModel)]="name" placeholder="name">`
+    
+    template: `<login> <\login>`
 })
 export class AppComponent {
-    name = '';
+   
 }

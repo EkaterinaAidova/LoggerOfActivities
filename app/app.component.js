@@ -10,16 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 let AppComponent = class AppComponent {
-    constructor() {
-        this.name = '';
-    }
 };
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: `<h1>Добро пожаловать {{name}}!</h1>
-                <label>Введите имя:</label>
-                <input [(ngModel)]="name" placeholder="name">`
+        template: `<login> <\login>`
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);

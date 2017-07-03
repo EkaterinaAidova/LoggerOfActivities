@@ -9,22 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const forms_1 = require('@angular/forms');
-const app_component_1 = require('./app.component');
-const login_1 = require('./login');
-const login_service_1 = require('./services/login.service');
 const http_1 = require('@angular/http');
-let AppModule = class AppModule {
+const Observable_1 = require('rxjs/Observable');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/do');
+require('rxjs/add/operator/catch');
+let LoginService = class LoginService {
+    constructor(_http) {
+        this._http = _http;
+    }
+    get(url, login, password) {
+        return this._http.get(url + "?login=" + login + "&password=" + password);
+    }
+    handleError(error) {
+        console.error(error);
+        return Observable_1.Observable.throw(error.json().error || 'Server error');
+    }
 };
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, login_1.LoginComponent],
-        providers: [login_service_1.LoginService],
-        bootstrap: [app_component_1.AppComponent]
-    }), 
-    __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+LoginService = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [http_1.Http])
+], LoginService);
+exports.LoginService = LoginService;
+//# sourceMappingURL=login.service.js.map
