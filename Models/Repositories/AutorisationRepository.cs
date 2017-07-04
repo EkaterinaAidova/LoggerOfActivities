@@ -17,7 +17,7 @@ namespace ActivityLogger.Models.Repositories
             List<Autorisation> autorisationList = new List<Autorisation>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisationList = db.Query<Autorisation>("SELECT * FROM Autorisation").ToList();
+                autorisationList = db.Query<Autorisation>("SELECT ID, Login, Password  FROM Autorisation").ToList();
             }
             return autorisationList;
         }
@@ -26,7 +26,7 @@ namespace ActivityLogger.Models.Repositories
             Autorisation autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorisation>("SELECT * FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
+                autorisation = db.Query<Autorisation>("SELECT ID, Login, Password FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
             }
             return autorisation;
         }
@@ -35,7 +35,7 @@ namespace ActivityLogger.Models.Repositories
             Autorisation autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorisation>("SELECT * FROM Autorisation WHERE Id = @id", new { id }).FirstOrDefault();
+                autorisation = db.Query<Autorisation>("SELECT ID, Login, Password  FROM Autorisation WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return autorisation;
         }
@@ -44,7 +44,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Autorisation (Position) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Autorisation (Position) VALUES(@Name) OUTPUT INSERTED.ID";
                 int? autorisationId = db.Query<int>(sqlQuery, autorisation).FirstOrDefault();
                 autorisation.ID = autorisationId.Value;
             }

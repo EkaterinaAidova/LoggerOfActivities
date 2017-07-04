@@ -17,7 +17,7 @@ namespace ActivityLogger.Models.Repositories
             List<TimeLog> timeLogs = new List<TimeLog>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs").ToList();
+                timeLogs = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs").ToList();
             }
             return timeLogs;
         }
@@ -26,7 +26,7 @@ namespace ActivityLogger.Models.Repositories
              List<TimeLog> timeLogs = new List<TimeLog>();
              using (IDbConnection db = new SqlConnection(connectionString))
              {
-                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID = @userID", new { userID }).ToList();
+                 timeLogs = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE UserID = @userID", new { userID }).ToList();
              }
              return timeLogs;
          }
@@ -35,7 +35,7 @@ namespace ActivityLogger.Models.Repositories
              List<TimeLog> timeLogs = new List<TimeLog>();
              using (IDbConnection db = new SqlConnection(connectionString))
              {
-                 timeLogs = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE UserID= @userID AND Status= @status ").ToList();
+                 timeLogs = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE UserID= @userID AND Status= @status ").ToList();
              }
              return timeLogs;
          }
@@ -44,7 +44,7 @@ namespace ActivityLogger.Models.Repositories
             TimeLog timeLog = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                timeLog = db.Query<TimeLog>("SELECT * FROM TimeLogs WHERE Id = @id", new { id }).FirstOrDefault();
+                timeLog = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return  timeLog;
         }
@@ -52,7 +52,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO TimeLogs (UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime) VALUES(@UserID, @ProjectID, @ActivityID, @Status, @StartWorkTime, @LastPauseTime, @LastResumeTime, @EndWorkTime, @SpendingTime); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO TimeLogs (UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime) VALUES(@UserID, @ProjectID, @ActivityID, @Status, @StartWorkTime, @LastPauseTime, @LastResumeTime, @EndWorkTime, @SpendingTime) OUTPUT INSERTED.ID";
                 int? timeLogId = db.Query<int>(sqlQuery, timeLog).FirstOrDefault();
                 timeLog.TaskID = timeLogId.Value;
             }

@@ -26,7 +26,7 @@ namespace ActivityLogger.Models.Repositories
             User user = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                user = db.Query<User>("SELECT * FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
+                user = db.Query<User>("SELECT ID, Name FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return user;
         }
@@ -34,7 +34,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Users (Name) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Users (Name) VALUES(@Name) OUTPUT INSERTED.ID";
                 int? userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
                 user.ID = userId.Value;
             }

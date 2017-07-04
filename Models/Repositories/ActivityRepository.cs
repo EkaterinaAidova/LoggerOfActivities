@@ -18,7 +18,7 @@ namespace ActivityLogger.Models.Repositories
             List<Activity> activities = new List<Activity>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activities = db.Query<Activity>("SELECT * FROM Activity").ToList();
+                activities = db.Query<Activity>("SELECT ID, Position FROM Activity").ToList();
             }
             return activities;
         }
@@ -27,7 +27,7 @@ namespace ActivityLogger.Models.Repositories
             Activity activity = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activity = db.Query<Activity>("SELECT * FROM Activity WHERE ID = @ID", new { id }).FirstOrDefault();
+                activity = db.Query<Activity>("SELECT ID, Position FROM Activity WHERE ID = @ID", new { id }).FirstOrDefault();
             }
             return activity;
         }
@@ -35,7 +35,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Activity (Position) VALUES(@Position); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Activity (Position) VALUES(@Position) OUTPUT INSERTED.ID";
                 int? activityId = db.Query<int>(sqlQuery, activity).FirstOrDefault();
                 activity.ID = activityId.Value;
             }
