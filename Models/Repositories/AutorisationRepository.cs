@@ -11,7 +11,11 @@ namespace ActivityLogger.Models.Repositories
 {
     public class AutorisationRepository: IAutorisationRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;//= ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public AutorisationRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         private List<Autorisation> GetAutorisationList()
         {
             List<Autorisation> autorisationList = new List<Autorisation>();

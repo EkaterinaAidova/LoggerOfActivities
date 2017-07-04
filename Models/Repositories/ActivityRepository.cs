@@ -12,7 +12,11 @@ namespace ActivityLogger.Models.Repositories
 {
     public class ActivityRepository: IActivityRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;// = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public ActivityRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public List<Activity> GetActivities()
         {
             List<Activity> activities = new List<Activity>();

@@ -11,8 +11,12 @@ namespace ActivityLogger.Models.Repositories
 {
     public class TimeLogsRepository: ITimeLogsRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-         public List<TimeLog> GetTimeLogs()
+        string connectionString;//= ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public TimeLogsRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+        public List<TimeLog> GetTimeLogs()
         {
             List<TimeLog> timeLogs = new List<TimeLog>();
             using (IDbConnection db = new SqlConnection(connectionString))

@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi; 
+using Autofac.Integration.WebApi;
 using System.Web.Mvc;
 using ActivityLogger.Controllers;
 using System.Reflection;
@@ -11,7 +11,7 @@ using ActivityLogger.Models.Repositories;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.Services;
 using ActivityLogger.BusinessLogic.Services.Contracts;
-
+using System.Configuration;
 
 namespace ActivityLogger.Util
 {
@@ -41,11 +41,11 @@ namespace ActivityLogger.Util
             builder.RegisterType<DefineActivityService>().As<IDefineActivityService>().InstancePerRequest();
             builder.RegisterType<WorkWithLogsService>().As<IWorkWithLogsService>().InstancePerRequest();
             //repositories
-            builder.RegisterType<ActivityRepository>().As<IActivityRepository>().InstancePerRequest();
-            builder.RegisterType<AutorisationRepository>().As<IAutorisationRepository>().InstancePerRequest();
-            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
-            builder.RegisterType<ProjectRepository>().As<IProjectRepository>().InstancePerRequest();
-            builder.RegisterType<TimeLogsRepository>().As<ITimeLogsRepository>().InstancePerRequest();
+            builder.Register(activiyRep=>new ActivityRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IActivityRepository>().InstancePerRequest();
+            builder.Register(autorizationRep => new AutorisationRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IAutorisationRepository>().InstancePerRequest();
+            builder.Register(userRep => new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IUserRepository>().InstancePerRequest();
+            builder.Register(projectRep => new ProjectRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IProjectRepository>().InstancePerRequest();
+            builder.Register(timeLogRep => new TimeLogsRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<ITimeLogsRepository>().InstancePerRequest();
 
 
             //Set the dependency resolver to be Autofac.  

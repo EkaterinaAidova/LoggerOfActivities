@@ -11,7 +11,11 @@ namespace ActivityLogger.Models.Repositories
 {
     public class UserRepository: IUserRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;// = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public UserRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();

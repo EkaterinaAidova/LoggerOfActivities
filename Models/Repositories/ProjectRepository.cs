@@ -11,7 +11,11 @@ namespace ActivityLogger.Models.Repositories
 {
     public class ProjectRepository: IProjectRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;// = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public ProjectRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public List<Project> GetProjects()
         {
             List<Project> projects = new List<Project>();
