@@ -10,11 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 let AppComponent = class AppComponent {
+    constructor() {
+        this.logined = false;
+        this.showTable = true;
+    }
+    onChanged(logined) {
+        logined == true ? this.logined = true : this.logined = false;
+        this.showTable = !this.logined;
+    }
 };
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: `<login> <\login>`
+        template: `<login (logined)="onChanged($event)"  [ngClass]="{invisible: logined}"> <\login> 
+               <table-logs [UserID]="userId" [ngClass]="{invisible: showTable}" > <\table-logs>`
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);

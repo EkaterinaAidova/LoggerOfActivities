@@ -19,7 +19,12 @@ let LoginService = class LoginService {
         this._http = _http;
     }
     get(url, login, password) {
-        return this._http.get(url + "?login=" + login + "&password=" + password);
+        return this._http.get(url + "?login=" + login + "&password=" + password)
+            .map((resp) => {
+            let user = resp.json();
+            return user;
+        }).catch((error) => { return Observable_1.Observable.throw(error); });
+        ;
     }
     handleError(error) {
         console.error(error);
