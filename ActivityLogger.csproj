@@ -203,7 +203,7 @@
     <Compile Include="Models\Repositories\Contracts\ITimeLogsRepository.cs" />
     <Compile Include="Models\Repositories\Contracts\IUserRepository.cs" />
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
-    <Compile Include="Models\Repositories\TimeLogsRepository.cs" />
+    <Compile Include="Models\Repositories\TimeLogRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
     <Compile Include="BusinessLogic\Services\Contracts\ILoginingService.cs" />
     <Compile Include="BusinessLogic\Services\Contracts\IWorkWithLogsService.cs" />

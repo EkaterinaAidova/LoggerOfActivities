@@ -19,7 +19,7 @@ namespace ActivityLogger.Models.Repositories
             List<Activity> activities = new List<Activity>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activities = db.Query<Activity>("SELECT ID, Position FROM Activity").ToList();
+                activities = db.Query<Activity>("SELECT ID, Position FROM Activities").ToList();
             }
             return activities;
         }
@@ -28,7 +28,7 @@ namespace ActivityLogger.Models.Repositories
             Activity activity = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                activity = db.Query<Activity>("SELECT ID, Position FROM Activity WHERE ID = @ID", new { id }).FirstOrDefault();
+                activity = db.Query<Activity>("SELECT ID, Position FROM Activities WHERE ID = @ID", new { id }).FirstOrDefault();
             }
             return activity;
         }
@@ -36,7 +36,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Activity (Position) VALUES(@Position) OUTPUT INSERTED.ID";
+                var sqlQuery = "INSERT INTO Activities (Position) VALUES(@Position) OUTPUT INSERTED.ID";
                 int? activityId = db.Query<int>(sqlQuery, activity).FirstOrDefault();
                 activity.ID = activityId.Value;
             }
@@ -46,7 +46,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Activity SET Position = @Position WHERE ID = @ID";
+                var sqlQuery = "UPDATE Activities SET Position = @Position WHERE ID = @ID";
                 db.Execute(sqlQuery, activity);
             }
         }
@@ -54,7 +54,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Activity WHERE Id = @id";
+                var sqlQuery = "DELETE FROM Activities WHERE Id = @id";
                 db.Execute(sqlQuery, new { id });
             }
         }

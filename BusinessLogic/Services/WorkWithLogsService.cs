@@ -11,7 +11,7 @@ namespace ActivityLogger.BusinessLogic.Services
 {
     public class WorkWithLogsService : IWorkWithLogsService
     {
-        ITimeLogsRepository repositoryTimeLog;
+        ITimeLogRepository repositoryTimeLog;
         IDefineActivityService activityService;
         IDefineProjectService projectService;
         public IEnumerable<TimeLogInfo> GetUserLogWithStatus(int idUser, int status)
@@ -36,7 +36,7 @@ namespace ActivityLogger.BusinessLogic.Services
             return loglist;
 
         }
-        public WorkWithLogsService(ITimeLogsRepository repo, IDefineActivityService activityServ, IDefineProjectService projectServ)
+        public WorkWithLogsService(ITimeLogRepository repo, IDefineActivityService activityServ, IDefineProjectService projectServ)
         {
             repositoryTimeLog = repo;
             activityService = activityServ;

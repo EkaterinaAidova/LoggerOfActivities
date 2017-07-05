@@ -37,7 +37,7 @@ namespace ActivityLogger.Util
             builder.Register(autorizationRep => new AutorizationRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IAutorizationRepository>().InstancePerRequest();
             builder.Register(userRep => new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IUserRepository>().InstancePerRequest();
             builder.Register(projectRep => new ProjectRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IProjectRepository>().InstancePerRequest();
-            builder.Register(timeLogRep => new TimeLogsRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<ITimeLogsRepository>().InstancePerRequest();
+            builder.Register(timeLogRep => new TimeLogRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<ITimeLogRepository>().InstancePerRequest();
             //Set the dependency resolver to be Autofac.  
             Container = builder.Build();
             return Container;

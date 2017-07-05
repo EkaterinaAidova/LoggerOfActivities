@@ -2,7 +2,7 @@
 
 namespace ActivityLogger.Models.Repositories.Contracts
 {
-    public interface ITimeLogsRepository
+    public interface ITimeLogRepository
     {
         List<TimeLog> GetTimeLogs();
         List<TimeLog> GetUserTimeLogs(int userID);

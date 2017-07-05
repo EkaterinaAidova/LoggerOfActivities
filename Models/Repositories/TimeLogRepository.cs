@@ -7,10 +7,10 @@ using ActivityLogger.Models.Repositories.Contracts;
 
 namespace ActivityLogger.Models.Repositories
 {
-    public class TimeLogsRepository: ITimeLogsRepository
+    public class TimeLogRepository: ITimeLogRepository
     {
         string connectionString;
-        public TimeLogsRepository(string connectionString)
+        public TimeLogRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }

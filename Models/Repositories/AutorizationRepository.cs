@@ -19,7 +19,7 @@ namespace ActivityLogger.Models.Repositories
             List<Autorization> autorisationList = new List<Autorization>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisationList = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorisation").ToList();
+                autorisationList = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorization").ToList();
             }
             return autorisationList;
         }
@@ -28,7 +28,7 @@ namespace ActivityLogger.Models.Repositories
             Autorization autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorization>("SELECT ID, Login, Password FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
+                autorisation = db.Query<Autorization>("SELECT ID, Login, Password FROM Autorization WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
             }
             return autorisation;
         }
@@ -37,7 +37,7 @@ namespace ActivityLogger.Models.Repositories
             Autorization autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorisation WHERE Id = @id", new { id }).FirstOrDefault();
+                autorisation = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorization WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return autorisation;
         }
@@ -45,7 +45,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Autorisation (Position) VALUES(@Name) OUTPUT INSERTED.ID";
+                var sqlQuery = "INSERT INTO Autorization (Position) VALUES(@Name) OUTPUT INSERTED.ID";
                 int? autorisationId = db.Query<int>(sqlQuery, autorisation).FirstOrDefault();
                 autorisation.ID = autorisationId.Value;
             }
@@ -55,7 +55,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Autorisation SET Name = @Name WHERE Id = @Id";
+                var sqlQuery = "UPDATE Autorization SET Name = @Name WHERE Id = @Id";
                 db.Execute(sqlQuery, autorization);
             }
         }
@@ -63,7 +63,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Autorisation WHERE Id = @id";
+                var sqlQuery = "DELETE FROM Autorization WHERE Id = @id";
                 db.Execute(sqlQuery, new { id });
             }
         }
