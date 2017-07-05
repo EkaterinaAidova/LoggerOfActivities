@@ -1,50 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
+
 namespace ActivityLogger.Models.Repositories
 {
-    public class AutorisationRepository: IAutorisationRepository
+    public class AutorizationRepository: IAutorizationRepository
     {
-        string connectionString;//= ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        public AutorisationRepository(string connectionString)
+        string connectionString;
+        public AutorizationRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
-        private List<Autorisation> GetAutorisationList()
+        private List<Autorization> GetAutorisationList()
         {
-            List<Autorisation> autorisationList = new List<Autorisation>();
+            List<Autorization> autorisationList = new List<Autorization>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisationList = db.Query<Autorisation>("SELECT ID, Login, Password  FROM Autorisation").ToList();
+                autorisationList = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorisation").ToList();
             }
             return autorisationList;
         }
-        public Autorisation Get(string login, string password)
+        public Autorization Get(string login, string password)
         {
-            Autorisation autorisation = null;
+            Autorization autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorisation>("SELECT ID, Login, Password FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
+                autorisation = db.Query<Autorization>("SELECT ID, Login, Password FROM Autorisation WHERE Login = @login AND Password = @password", new { login, password}).FirstOrDefault();
             }
             return autorisation;
         }
-        public Autorisation Get(int id)
+        public Autorization Get(int id)
         {
-            Autorisation autorisation = null;
+            Autorization autorisation = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                autorisation = db.Query<Autorisation>("SELECT ID, Login, Password  FROM Autorisation WHERE Id = @id", new { id }).FirstOrDefault();
+                autorisation = db.Query<Autorization>("SELECT ID, Login, Password  FROM Autorisation WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return autorisation;
         }
-
-        private Autorisation Create(Autorisation autorisation)
+        private Autorization Create(Autorization autorisation)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -54,12 +51,12 @@ namespace ActivityLogger.Models.Repositories
             }
             return autorisation;
         }
-        public void Update(Autorisation autorisation)
+        public void Update(Autorization autorization)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var sqlQuery = "UPDATE Autorisation SET Name = @Name WHERE Id = @Id";
-                db.Execute(sqlQuery, autorisation);
+                db.Execute(sqlQuery, autorization);
             }
         }
         private void Delete(int id)

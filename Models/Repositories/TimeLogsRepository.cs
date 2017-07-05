@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
+
 namespace ActivityLogger.Models.Repositories
 {
     public class TimeLogsRepository: ITimeLogsRepository
     {
-        string connectionString;//= ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;
         public TimeLogsRepository(string connectionString)
         {
             this.connectionString = connectionString;
@@ -77,8 +75,6 @@ namespace ActivityLogger.Models.Repositories
                 var sqlQuery = "DELETE FROM TimeLogs WHERE Id = @id";
                 db.Execute(sqlQuery, new { id });
             }
-        }
-       
+        }      
     }
-
 }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+
 namespace ActivityLogger.Controllers
 {
     public class TimeLogsController : ApiController
@@ -39,18 +36,21 @@ namespace ActivityLogger.Controllers
         {
             switch (status)
             {
-                case 1: timeLogService.ResumeWork(logId, time);
+                case 1:
+                    timeLogService.ResumeWork(logId, time);
                     Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
                     return Ok();
-                case 2: var res =timeLogService.SetLogOnPauseWithTime(logId, time);
+                case 2:
+                    var res = timeLogService.SetLogOnPauseWithTime(logId, time);
                     if (res)
                     {
-                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString()," is updated"));
+                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
                         return Ok();
                     }
                     Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", logId.ToString(), "can't be updated"));
                     return BadRequest();
-                case 3:  res = timeLogService.FinishWorkWithTime(logId, time);
+                case 3:
+                    res = timeLogService.FinishWorkWithTime(logId, time);
                     if (res)
                     {
                         Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
@@ -63,47 +63,5 @@ namespace ActivityLogger.Controllers
                     return BadRequest();
             }
         }
-        
-       /* ITimeLogsRepository repository;
-        public TimeLogsController(ITimeLogsRepository rep)
-        {
-            repository = rep;
-        }
-        [HttpPost]
-        public void Post([FromBody]TimeLog ourLog)
-        {
-            repository.Create(ourLog);
-        }
-        [HttpGet]
-        public IEnumerable<TimeLog> Get()
-        {
-            return repository.GetTimeLogs();
-        }
-        [HttpGet]
-        public IEnumerable<TimeLog> Get(int idUser, int status)
-        {
-            return repository.GetUserLogsWithStatus(idUser, status);
-        }
-        [HttpGet]
-        public TimeLog Get(int id)
-        {
-            return repository.Get(id);
-        }
-        [HttpGet]
-        public IEnumerable<TimeLog> GetUsersLogs(int id)
-        {
-            return repository.GetUserTimeLogs(id);
-        }
-        [HttpPut]
-        public void Put([FromBody]TimeLog ourLog)
-        {
-            repository.Update(ourLog);
-        }
-        [HttpDelete]
-        public void Delete(int id)
-        {
-            repository.Delete(id);
-        }*/
-
     }
 }

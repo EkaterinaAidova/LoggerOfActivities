@@ -14,7 +14,7 @@ let AppComponent = class AppComponent {
         this.logined = false;
         this.showTable = true;
     }
-    onChanged(logined) {
+    OnChanged(logined) {
         logined == true ? this.logined = true : this.logined = false;
         this.showTable = !this.logined;
     }
@@ -22,7 +22,7 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: `<login (logined)="onChanged($event)"  [ngClass]="{invisible: logined}"> <\login> 
+        template: `<login (logined)="OnChanged($event)"  [ngClass]="{invisible: logined}"> <\login> 
                <table-logs [UserID]="userId" [ngClass]="{invisible: showTable}" > <\table-logs>`
     }), 
     __metadata('design:paramtypes', [])

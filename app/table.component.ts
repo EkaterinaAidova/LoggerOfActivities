@@ -1,9 +1,12 @@
 ﻿import { Component, Input} from '@angular/core';
-export class User {
+
+export class User
+{
     ID: number;
     Name: string; 
 }
-@Component({
+@Component(
+    {
     selector: 'table-logs',
     template: `<div class="userPanel"> Сотрудник: [user.Name] 
                     <button class="btn btn-default" (click)="Exit()">Выйти</button>
@@ -22,12 +25,10 @@ export class User {
                           <th></th>
                       </tr>
                     </thead>
-               </table>
-
-               
-`
-})
-export class TableComponent {
+               </table>`
+    })
+export class TableComponent
+{
     @Input() UserID: number;
     user: User = new User();
 }

@@ -34,7 +34,7 @@ let LoginComponent = class LoginComponent {
         this.isNotError = true;
     }
     LogIn() {
-        this._loginService.get('api/autorisation/', this.user.Login, this.user.Password).subscribe(user => { this.user = user; this.isNotError = true; console.log(user); this.logined.emit(true); }, error => {
+        this._loginService.get('api/autorization/', this.user.Login, this.user.Password).subscribe(user => { this.user = user; this.isNotError = true; console.log(user); this.logined.emit(true); }, error => {
             console.log(error);
             this.isNotError = false;
         });
@@ -70,8 +70,7 @@ LoginComponent = __decorate([
                         <button [disabled]=" Login.invalid || Password.invalid "
                                 class="btn btn-default" (click)="LogIn()">Войти</button>
                     </div> 
-              </div>
-`
+              </div>`
     }), 
     __metadata('design:paramtypes', [login_service_1.LoginService])
 ], LoginComponent);

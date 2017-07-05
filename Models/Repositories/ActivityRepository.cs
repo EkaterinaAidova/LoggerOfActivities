@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
-using ActivityLogger.Models.Repositories;
+
 namespace ActivityLogger.Models.Repositories
 {
-    public class ActivityRepository: IActivityRepository
+    public class ActivityRepository : IActivityRepository
     {
-        string connectionString;// = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;
         public ActivityRepository(string connectionString)
         {
             this.connectionString = connectionString;

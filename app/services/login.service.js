@@ -12,7 +12,6 @@ const core_1 = require('@angular/core');
 const http_1 = require('@angular/http');
 const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
-require('rxjs/add/operator/do');
 require('rxjs/add/operator/catch');
 let LoginService = class LoginService {
     constructor(_http) {
@@ -24,7 +23,6 @@ let LoginService = class LoginService {
             let user = resp.json();
             return user;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
-        ;
     }
     handleError(error) {
         console.error(error);

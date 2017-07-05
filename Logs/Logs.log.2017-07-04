@@ -1,0 +1,50 @@
+2017-07-03 13:42:21,794  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 13:42:22,096  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 13:42:22,272  INFO  Controller: users - User 7 is logged in
+2017-07-03 14:08:45,128  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 14:08:45,351  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 14:08:45,355  INFO  Controller: users - User 7 is logged in
+2017-07-03 14:37:33,301  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 14:37:33,502  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 14:37:33,502  INFO  Controller: users - User 7 is logged in
+2017-07-03 14:42:42,879  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 14:42:42,888  INFO  Controller: users - User 7 is logged in
+2017-07-03 14:42:42,891  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 15:16:54,354  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 15:16:54,563  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 15:16:54,567  INFO  Controller: users - User 7 is logged in
+2017-07-03 15:17:49,399  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 15:17:49,616  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-03 15:17:49,618  INFO  Controller: users - User 7 is logged in
+2017-07-03 17:59:43,501  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 17:59:54,257  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-03 18:00:19,992  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 18:01:27,852  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 18:02:12,018  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 18:04:25,863  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-03 18:04:38,156  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 14:58:27,278  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 14:58:29,281  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:00:16,198  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:07:03,734  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:07:33,446  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:07:35,035  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:08:14,070  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:09:21,225  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:21:56,265  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:22:20,118  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:24:09,847  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:24:13,644  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:28:59,094  ERROR Controller: autorisation  - Autorisation is failed. User is not found.
+2017-07-04 15:43:28,906  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:44:01,954  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 15:45:34,906  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 16:23:30,312  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 16:23:33,136  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 16:25:35,135  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 16:37:23,517  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 16:39:44,536  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 17:26:48,585  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 17:28:39,787  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 17:39:15,516  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-07-04 17:58:26,797  INFO  Controller: autorisation  - Auturisation is success. Data is got

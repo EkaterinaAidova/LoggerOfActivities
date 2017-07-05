@@ -1,13 +1,7 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
-using ActivityLogger.BusinessLogic.DataTransferObjects;
-using System.Net.Http.Headers;
 namespace ActivityLogger.Controllers
 {
     public class UsersController : ApiController
@@ -29,35 +23,5 @@ namespace ActivityLogger.Controllers
             Logger.Log.Error(String.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));
             return NotFound();
         }
-      /*  IUserRepository repository;
-        public UsersController(IUserRepository rep)
-        {
-            repository = rep;
-        }
-        [HttpPost]
-        public void Post([FromBody]User ourUser)
-        {
-            repository.Create(ourUser);
-        }
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return repository.GetUsers();
-        }
-        [HttpGet]
-        public User Get(int id)
-        {
-            return repository.Get(id);
-        }
-        [HttpPut]
-        public void Put([FromBody]User ourUser)
-        {
-            repository.Update(ourUser);
-        }
-        [HttpDelete]
-        public void Delete(int id)
-        {
-            repository.Delete(id);
-        }*/
     }
 }

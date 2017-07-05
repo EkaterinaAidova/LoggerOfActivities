@@ -41,10 +41,7 @@ TableComponent = __decorate([
                           <th></th>
                       </tr>
                     </thead>
-               </table>
-
-               
-`
+               </table>`
     }), 
     __metadata('design:paramtypes', [])
 ], TableComponent);

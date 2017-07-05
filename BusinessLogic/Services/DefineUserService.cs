@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ActivityLogger.Models;
+﻿using ActivityLogger.Models;
 using AutoMapper;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+
 namespace ActivityLogger.BusinessLogic.Services
 {
     public class DefineUserService: IDefineUserService

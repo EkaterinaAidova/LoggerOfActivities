@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ActivityLogger.Models.Repositories.Contracts
 {
-     public interface ITimeLogsRepository
+    public interface ITimeLogsRepository
     {
         List<TimeLog> GetTimeLogs();
         List<TimeLog> GetUserTimeLogs(int userID);

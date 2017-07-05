@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
@@ -11,8 +8,8 @@ namespace ActivityLogger.BusinessLogic.Services
 {
     public class LoginingServiice: ILoginingService
     {
-        IAutorisationRepository repository;
-        public LoginingServiice(IAutorisationRepository rep)
+        IAutorizationRepository repository;
+        public LoginingServiice(IAutorizationRepository rep)
         {
             repository = rep;
         }
@@ -20,21 +17,11 @@ namespace ActivityLogger.BusinessLogic.Services
         {
             return (insertLogin.IsNotNull() && insertPassword.IsNotNull());
         }
-
-       /* public int? GetUserID(LoginAndPassword insertData)
-        {
-            var autorisationData = repository.Get(insertData.Login, insertData.Password);
-            if (autorisationData == null) return null;
-            return autorisationData.ID;
-        }*/
         public LoginAndPassword LogIn(string insertLogin, string insertPassword)
         {
             var loginInfo = repository.Get(insertLogin, insertPassword);
-            LoginAndPassword obj = Mapper.Map<Autorisation, LoginAndPassword>(loginInfo);
+            LoginAndPassword obj = Mapper.Map<Autorization, LoginAndPassword>(loginInfo);
             return obj;
-              // throw new KeyNotFoundException("User not found");
-            //}
-           // throw new HttpRequestValidationException("Invalid input for log on");
         }
     }
 }

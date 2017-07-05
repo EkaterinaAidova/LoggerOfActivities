@@ -8,10 +8,13 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import {TableComponent} from './table.component'
 
-@NgModule({
+@NgModule(
+    {
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule],
     declarations: [AppComponent, LoginComponent, TableComponent],
     providers: [LoginService], // регистрация сервисов
     bootstrap: [AppComponent]
-})
-export class AppModule { }
+    })
+export class AppModule
+{
+}

@@ -1,13 +1,15 @@
 ﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LoginService} from './services/login.service';
 import { Response} from '@angular/http';
-export class LoginingForm {
+
+export class LoginingForm
+{
     @Input() ID: number;
     @Input() Login: string;
     @Input() Password: string;
-
 }
-@Component({
+@Component(
+    {
     selector: 'login',
     styles: [`
         input.ng-touched.ng-invalid {border:solid red 2px;}
@@ -27,19 +29,18 @@ export class LoginingForm {
                         <button [disabled]=" Login.invalid || Password.invalid "
                                 class="btn btn-default" (click)="LogIn()">Войти</button>
                     </div> 
-              </div>
-`
-
-
+              </div>`
 })
-export class LoginComponent {
+export class LoginComponent
+{
     constructor(private _loginService: LoginService) { }
     user: LoginingForm = new LoginingForm();
     @Output() logined = new EventEmitter<boolean>();
     @Output() changedID = new EventEmitter<number>();
     isNotError: boolean = true;
-    LogIn() {
-        this._loginService.get('api/autorisation/', this.user.Login, this.user.Password).subscribe(user => { this.user = user; this.isNotError = true; console.log(user);this.logined.emit(true);  }, error => {
+    public LogIn()
+    {
+        this._loginService.get('api/autorization/', this.user.Login, this.user.Password).subscribe(user => { this.user = user; this.isNotError = true; console.log(user);this.logined.emit(true);  }, error => {
             console.log(error);
             this.isNotError = false;
         });
