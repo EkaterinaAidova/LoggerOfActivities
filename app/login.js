@@ -29,22 +29,21 @@ let LoginComponent = class LoginComponent {
     constructor(_loginService) {
         this._loginService = _loginService;
         this.user = new LoginingForm();
-        this.logined = new core_1.EventEmitter();
+        //@Output() logined = new EventEmitter<boolean>();
         this.changedID = new core_1.EventEmitter();
         this.isNotError = true;
     }
     LogIn() {
-        this._loginService.get('api/autorization/', this.user.Login, this.user.Password).subscribe(user => { this.user = user; this.isNotError = true; console.log(user); this.logined.emit(true); }, error => {
+        this._loginService.get('api/autorization', this.user.Login, this.user.Password).subscribe(user => {
+            this.user = user;
+            this.isNotError = true;
+            this.changedID.emit(user.ID);
+        }, error => {
             console.log(error);
             this.isNotError = false;
         });
-        console.log(this.user);
     }
 };
-__decorate([
-    core_1.Output(), 
-    __metadata('design:type', Object)
-], LoginComponent.prototype, "logined", void 0);
 __decorate([
     core_1.Output(), 
     __metadata('design:type', Object)
@@ -56,20 +55,19 @@ LoginComponent = __decorate([
         input.ng-touched.ng-invalid {border:solid red 2px;}
         input.ng-touched.ng-valid {border:solid green 2px;}
     `],
-        template: ` <div [hidden]="isNotError==true"  class="alert alert-danger"> Неверные логин и пароль </div>
-                  <div> 
+        template: `<div> 
                     <div class="form-group">
                         <label>Логин</label>
                         <input class="form-control" name="Login" [(ngModel)]="user.Login" #Login="ngModel" required />
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="password" class="form-control" name="Password"  [(ngModel)]="user.Password" #Password="ngModel" required />
+                        <input class="form-control" name="Password" [(ngModel)]="user.Password" #Password="ngModel" required />
                     </div>
                     <div class="form-group">
                         <button [disabled]=" Login.invalid || Password.invalid "
                                 class="btn btn-default" (click)="LogIn()">Войти</button>
-                    </div> 
+                    </div>
               </div>`
     }), 
     __metadata('design:paramtypes', [login_service_1.LoginService])

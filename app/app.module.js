@@ -16,13 +16,16 @@ const login_1 = require('./login');
 const login_service_1 = require('./services/login.service');
 const http_1 = require('@angular/http');
 const table_component_1 = require('./table.component');
+const user_service_1 = require("./services/user.service");
+const time_log_service_1 = require('./services/time-log.service');
+const table_component_2 = require('./table.component');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, login_1.LoginComponent, table_component_1.TableComponent],
-        providers: [login_service_1.LoginService],
+        declarations: [app_component_1.AppComponent, login_1.LoginComponent, table_component_1.TableComponent, table_component_2.EmptyDatePipe],
+        providers: [login_service_1.LoginService, user_service_1.UserService, time_log_service_1.TimeLogService],
         bootstrap: [app_component_1.AppComponent]
     }), 
     __metadata('design:paramtypes', [])

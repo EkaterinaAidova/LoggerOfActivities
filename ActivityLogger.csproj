@@ -348,6 +348,8 @@
     <TypeScriptCompile Include="app\login.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\services\login.service.ts" />
+    <TypeScriptCompile Include="app\services\time-log.service.ts" />
+    <TypeScriptCompile Include="app\services\user.service.ts" />
     <TypeScriptCompile Include="app\table.component.ts" />
   </ItemGroup>
   <ItemGroup>

@@ -9,17 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
+const http_1 = require('@angular/http');
+const Observable_1 = require('rxjs/Observable');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/do');
+require('rxjs/add/operator/catch');
+let UserService = class UserService {
+    constructor(_http) {
+        this._http = _http;
+    }
+    get(url, id) {
+        // return this.http.get(url + "?id=" + id)
+        return this._http.get(url + id)
+            .map((resp) => {
+            let user = resp.json();
+            return user;
+        }).catch((error) => { return Observable_1.Observable.throw(error); });
+    }
 };
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: `
-               <table-logs> <\table-logs>
-			   
-			   `
-    }), 
-    __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+UserService = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [http_1.Http])
+], UserService);
+exports.UserService = UserService;
+//# sourceMappingURL=user.service.js.map
