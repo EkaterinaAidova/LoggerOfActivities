@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
 using ActivityLogger.Models;
+
 namespace ActivityLogger.BusinessLogic.Services.Contracts
 {
     public interface IWorkWithLogsService

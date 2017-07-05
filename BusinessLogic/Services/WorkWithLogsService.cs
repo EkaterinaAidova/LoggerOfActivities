@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
 using ActivityLogger.Models;
 using AutoMapper;
+
 namespace ActivityLogger.BusinessLogic.Services
 {
-    public class WorkWithLogsService: IWorkWithLogsService
+    public class WorkWithLogsService : IWorkWithLogsService
     {
-        ITimeLogsRepository repositoryTimeLog;
+        ITimeLogRepository repositoryTimeLog;
         IDefineActivityService activityService;
         IDefineProjectService projectService;
-      public IEnumerable<TimeLogInfo> GetUserLogWithStatus(int idUser, int status)
+        public IEnumerable<TimeLogInfo> GetUserLogWithStatus(int idUser, int status)
         {
             var tasks = repositoryTimeLog.GetUserLogsWithStatus(idUser, status); ;
             List<TimeLogInfo> loglist = new List<TimeLogInfo>();
@@ -35,9 +34,9 @@ namespace ActivityLogger.BusinessLogic.Services
                 loglist.Add(timeLog);
             }
             return loglist;
-           
+
         }
-        public WorkWithLogsService(ITimeLogsRepository repo, IDefineActivityService activityServ, IDefineProjectService projectServ)
+        public WorkWithLogsService(ITimeLogRepository repo, IDefineActivityService activityServ, IDefineProjectService projectServ)
         {
             repositoryTimeLog = repo;
             activityService = activityServ;
@@ -45,9 +44,8 @@ namespace ActivityLogger.BusinessLogic.Services
         }
         public void AddNewLog(TimeLogForCreationInfo newLog)
         {
-            //проверить на валидность
             var activLog = GetUserLogWithStatus(newLog.UserID, 1);
-            if (activLog.Count()!=0)
+            if (activLog.Count() != 0)
             {
                 SetLogOnPauseWithTime(activLog.First().TaskID, DateTime.Now);
             }
@@ -57,7 +55,8 @@ namespace ActivityLogger.BusinessLogic.Services
             log.LastResumeTime = DateTime.Now;
             repositoryTimeLog.Create(log);
         }
-        public IEnumerable<TimeLogInfo> ShowLogsList(int userID) {
+        public IEnumerable<TimeLogInfo> ShowLogsList(int userID)
+        {
             var tasks = repositoryTimeLog.GetUserTimeLogs(userID);
             List<TimeLogInfo> loglist = new List<TimeLogInfo>();
             foreach (TimeLog tl in tasks)
@@ -82,7 +81,8 @@ namespace ActivityLogger.BusinessLogic.Services
             var log = CreateTimeLog(timeLog);
             repositoryTimeLog.Update(log);
         }
-        public bool SetLogOnPauseWithTime(int id, DateTime time) {
+        public bool SetLogOnPauseWithTime(int id, DateTime time)
+        {
             var log = repositoryTimeLog.Get(id);
             if (log.IsNull()) return false;
             if (log.Status > 1) return false;
@@ -94,27 +94,29 @@ namespace ActivityLogger.BusinessLogic.Services
             repositoryTimeLog.Update(log);
             return true;
         }
-        public bool FinishWorkWithTime(int id, DateTime time) {
+        public bool FinishWorkWithTime(int id, DateTime time)
+        {
             var log = repositoryTimeLog.Get(id);
             if (log.IsNull()) return false;
             switch (log.Status)
             {
-                case 1: if (log.LastResumeTime > time) return false;
-                     TimeSpan lasting = time - log.LastResumeTime; 
-                     log.SpendingTime += lasting;
-                     log.Status = 3;
-                     log.EndWorkTime = time;
-                     break;
-                case 2: if (log.LastPauseTime > time) return false;
-                     log.Status = 3;
-                     log.EndWorkTime = time;
-                     break;
-                default: return false; 
+                case 1:
+                    if (log.LastResumeTime > time) return false;
+                    TimeSpan lasting = time - log.LastResumeTime;
+                    log.SpendingTime += lasting;
+                    log.Status = 3;
+                    log.EndWorkTime = time;
+                    break;
+                case 2:
+                    if (log.LastPauseTime > time) return false;
+                    log.Status = 3;
+                    log.EndWorkTime = time;
+                    break;
+                default: return false;
             }
             repositoryTimeLog.Update(log);
             return true;
-                    
-            }
+        }
         public TimeLog CreateTimeLog(TimeLogInfo timeLog)
         {
             TimeLog log = new TimeLog();

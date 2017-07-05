@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
+
 namespace ActivityLogger.Models.Repositories
 {
     public class ProjectRepository: IProjectRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;
+        public ProjectRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public List<Project> GetProjects()
         {
             List<Project> projects = new List<Project>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                projects = db.Query<Project>("SELECT * FROM Projects").ToList();
+                projects = db.Query<Project>("SELECT ID, Name FROM Projects").ToList();
             }
             return projects;
         }
@@ -26,7 +28,7 @@ namespace ActivityLogger.Models.Repositories
             Project project = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                project = db.Query<Project>("SELECT * FROM Projects WHERE Id = @id", new { id }).FirstOrDefault();
+                project = db.Query<Project>("SELECT ID, Name FROM Projects WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return project;
         }
@@ -34,7 +36,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Projects (Name) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Projects (Name) VALUES(@Name) OUTPUT INSERTED.ID";
                 int? projectId = db.Query<int>(sqlQuery, project).FirstOrDefault();
                 project.ID = projectId.Value;
             }

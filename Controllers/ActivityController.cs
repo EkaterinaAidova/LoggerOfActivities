@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
-using ActivityLogger.BusinessLogic.DataTransferObjects;
+
 namespace ActivityLogger.Controllers
 {
     public class ActivityController : ApiController
@@ -33,37 +29,5 @@ namespace ActivityLogger.Controllers
             Logger.Log.Error("Controller: activity  - Activity is not found.");
             return NotFound();
         }
-
-
-       /* IActivityRepository repository;
-        public ActivityController(IActivityRepository rep)
-        {
-            repository = rep;
-        }
-        [HttpPost]
-        public void Post([FromBody]Activity ourActivity)
-        {
-            repository.Create(ourActivity);
-        }
-        [HttpGet]
-        public IEnumerable<Activity> Get()
-        {
-            return repository.GetActivities();
-        }
-        [HttpGet]
-        public Activity Get(int id)
-        {
-            return repository.Get(id);
-        }
-        [HttpPut]
-        public void Put([FromBody]Activity ourActivity)
-        {
-            repository.Update(ourActivity);
-        }
-        [HttpDelete]
-        public void Delete(int id)
-        {
-            repository.Delete(id);
-        }*/
     }
 }

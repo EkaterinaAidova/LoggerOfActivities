@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
 using ActivityLogger.Models;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+
 namespace ActivityLogger.App_Start
 {
     public class AutoMapperConfig
@@ -13,7 +10,7 @@ namespace ActivityLogger.App_Start
         {
             Mapper.Initialize((config) =>
             {
-                config.CreateMap<Autorisation, LoginAndPassword>().ReverseMap();
+                config.CreateMap<Autorization, LoginAndPassword>().ReverseMap();
                 config.CreateMap<User, UserInfo>().ReverseMap();
                 config.CreateMap<Activity, ActivityInfo>().ReverseMap();
                 config.CreateMap<Project, ProjectInfo>().ReverseMap();

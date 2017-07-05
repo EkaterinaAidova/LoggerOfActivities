@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Dapper;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using ActivityLogger.Models.Repositories.Contracts;
+
 namespace ActivityLogger.Models.Repositories
 {
     public class UserRepository: IUserRepository
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string connectionString;
+        public UserRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
@@ -26,7 +28,7 @@ namespace ActivityLogger.Models.Repositories
             User user = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                user = db.Query<User>("SELECT * FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
+                user = db.Query<User>("SELECT ID, Name FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return user;
         }
@@ -34,7 +36,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Users (Name) VALUES(@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Users (Name) VALUES(@Name) OUTPUT INSERTED.ID";
                 int? userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
                 user.ID = userId.Value;
             }

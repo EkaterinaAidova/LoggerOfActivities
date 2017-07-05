@@ -1,0 +1,6 @@
+2017-06-30 15:46:09,080  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-30 15:46:09,251  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-06-30 15:46:09,258  INFO  Controller: users - User 7 is logged in
+2017-06-30 16:27:52,050  INFO  Controller: autorisation  - Auturisation is success. Data is got
+2017-06-30 16:27:52,213  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-06-30 16:27:52,213  INFO  Controller: users - User 7 is logged in

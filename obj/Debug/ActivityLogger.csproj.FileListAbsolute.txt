@@ -49,3 +49,4 @@ C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\System.Web.Http.Cors.xml
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.dll
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ActivityLogger.dll.config

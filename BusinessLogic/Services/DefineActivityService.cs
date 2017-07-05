@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using ActivityLogger.Models;
 using AutoMapper;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+
 namespace ActivityLogger.BusinessLogic.Services
 {
     public class DefineActivityService:IDefineActivityService
