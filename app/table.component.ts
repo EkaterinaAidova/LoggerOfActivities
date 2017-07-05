@@ -93,7 +93,7 @@ export class TableComponent
         this.user.ID = <number>id;
         console.log(id);
 		this.logined = true;
-        this._userService.get('api/users/', this.user.ID).subscribe(user => {
+        this._userService.get('api/user/', this.user.ID).subscribe(user => {
             this.user = user;
            this.GetTimeLogs();
           /*  this.timeLogs = this._timeLogService.getData(user.ID).subscribe(logs => {

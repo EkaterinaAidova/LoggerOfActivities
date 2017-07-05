@@ -18,7 +18,7 @@ let TimeLogService = class TimeLogService {
         this._http = _http;
     }
     getData(id) {
-        let url = "api/timeLogs/";
+        let url = "api/timeLog/";
         return this._http.get(url + id)
             .map((resp) => {
             let logList = resp.json();

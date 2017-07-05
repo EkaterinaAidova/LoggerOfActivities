@@ -13,7 +13,7 @@ export class TimeLogService
     }
     public getData(id: number): Observable<TimeLog[]>
     {
-        let url: string ="api/timeLogs/";
+        let url: string ="api/timeLog/";
         return this._http.get(url + id)
         .map((resp: Response) => {
              let logList = resp.json();

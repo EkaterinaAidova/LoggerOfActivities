@@ -4,10 +4,10 @@ using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 namespace ActivityLogger.Controllers
 {
-    public class UsersController : ApiController
+    public class UserController : ApiController
     {
         IDefineUserService definingService;
-        public UsersController(IDefineUserService service)
+        public UserController(IDefineUserService service)
         {
             definingService = service;
         }

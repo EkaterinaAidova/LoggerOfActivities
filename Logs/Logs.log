@@ -58,3 +58,8 @@
 2017-07-05 17:49:46,020  INFO  Controller: autorization  - Auturisation is success. Data is got
 2017-07-05 17:49:46,039  INFO  Controller: users - User 7 is logged in
 2017-07-05 17:49:46,059  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-05 18:00:39,202  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-05 18:00:39,446  INFO  Controller: users - User 7 is logged in
+2017-07-05 18:02:16,471  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-05 18:02:16,704  INFO  Controller: users - User 7 is logged in
+2017-07-05 18:02:16,743  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved

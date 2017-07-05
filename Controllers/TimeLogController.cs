@@ -5,10 +5,10 @@ using ActivityLogger.BusinessLogic.DataTransferObjects;
 
 namespace ActivityLogger.Controllers
 {
-    public class TimeLogsController : ApiController
+    public class TimeLogController : ApiController
     {
         IWorkWithLogsService timeLogService;
-        public TimeLogsController(IWorkWithLogsService service)
+        public TimeLogController(IWorkWithLogsService service)
         {
             timeLogService = service;
         }
