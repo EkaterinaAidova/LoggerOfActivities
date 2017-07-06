@@ -10,9 +10,9 @@ namespace ActivityLogger.Models
         public int ActivityID { get; set;}
         public int Status { get; set;}
         public DateTime StartWorkTime { get; set;}
-        public DateTime LastPauseTime { get; set;}
-        public DateTime LastResumeTime { get; set;}
-        public DateTime EndWorkTime { get; set;}
-        public DateTime SpendingTime { get; set; }
+        public DateTime? LastPauseTime { get; set;}
+        public DateTime? LastResumeTime { get; set;}
+        public DateTime? EndWorkTime { get; set;}
+        public DateTime? SpendingTime { get; set; }
     }
 }

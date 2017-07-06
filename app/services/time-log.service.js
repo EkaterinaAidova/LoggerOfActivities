@@ -42,10 +42,22 @@ let TimeLogService = class TimeLogService {
             return logs;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
+    SetStatus(id, status) {
+        let data = new PutTime();
+        data.logId = id;
+        data.status = status;
+        data.time = new Date();
+        let headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers }).catch((error) => { return Observable_1.Observable.throw(error); });
+    }
 };
 TimeLogService = __decorate([
     core_1.Injectable(), 
     __metadata('design:paramtypes', [http_1.Http])
 ], TimeLogService);
 exports.TimeLogService = TimeLogService;
+class PutTime {
+}
+exports.PutTime = PutTime;
 //# sourceMappingURL=time-log.service.js.map

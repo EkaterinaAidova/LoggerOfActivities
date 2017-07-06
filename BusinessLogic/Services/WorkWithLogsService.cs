@@ -87,7 +87,7 @@ namespace ActivityLogger.BusinessLogic.Services
             if (log.IsNull()) return false;
             if (log.Status > 1) return false;
             if (log.LastResumeTime > time) return false;
-            TimeSpan lasting = time - log.LastResumeTime;
+            TimeSpan lasting = time - log.LastResumeTime.Value;
             log.SpendingTime += lasting;
             log.Status = 2;
             log.LastPauseTime = time;
@@ -102,7 +102,7 @@ namespace ActivityLogger.BusinessLogic.Services
             {
                 case 1:
                     if (log.LastResumeTime > time) return false;
-                    TimeSpan lasting = time - log.LastResumeTime;
+                    TimeSpan lasting = time - log.LastResumeTime.Value;
                     log.SpendingTime += lasting;
                     log.Status = 3;
                     log.EndWorkTime = time;

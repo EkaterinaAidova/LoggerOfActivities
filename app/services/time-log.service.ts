@@ -38,5 +38,22 @@ export class TimeLogService
                             return logs;
             }).catch((error: any) => { return Observable.throw(error); });
     }
+    public SetStatus(id: number, status: number)
+    {
+        let data = new PutTime();
+        data.logId = id;
+        data.status = status;
+        data.time = new Date();
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json')
+        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers }).catch((error: any) => { return Observable.throw(error); });
+    }
     
+    
+}
+export class PutTime
+{
+    logId: number;
+    status: number;
+    time: Date;
 }

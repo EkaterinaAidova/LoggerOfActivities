@@ -19,12 +19,13 @@ const table_component_1 = require('./table.component');
 const user_service_1 = require("./services/user.service");
 const time_log_service_1 = require('./services/time-log.service');
 const empty_date_pipe_1 = require('./pipes/empty-date.pipe');
+const date_from_number_pipe_1 = require('./pipes/date-from-number.pipe');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, table_component_1.TableComponent, empty_date_pipe_1.EmptyDatePipe],
+        declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, table_component_1.TableComponent, empty_date_pipe_1.EmptyDatePipe, date_from_number_pipe_1.NumberDatePipe],
         providers: [login_service_1.LoginService, user_service_1.UserService, time_log_service_1.TimeLogService],
         bootstrap: [app_component_1.AppComponent]
     }), 

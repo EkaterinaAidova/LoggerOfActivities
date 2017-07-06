@@ -351,7 +351,9 @@
     <TypeScriptCompile Include="app\models\autorization.model.ts" />
     <TypeScriptCompile Include="app\models\project.model.ts" />
     <TypeScriptCompile Include="app\models\time-log.model.ts" />
+    <TypeScriptCompile Include="app\models\timer.ts" />
     <TypeScriptCompile Include="app\models\user.model.ts" />
+    <TypeScriptCompile Include="app\pipes\date-from-number.pipe.ts" />
     <TypeScriptCompile Include="app\pipes\empty-date.pipe.ts" />
     <TypeScriptCompile Include="app\services\login.service.ts" />
     <TypeScriptCompile Include="app\services\time-log.service.ts" />

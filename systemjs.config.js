@@ -30,7 +30,8 @@
             },
             rxjs: {
                 defaultExtension: 'js'
-            }
+            },
+          
         }
     });
 })(this);

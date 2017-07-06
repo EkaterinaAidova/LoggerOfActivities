@@ -3,6 +3,7 @@ import { TimeLogService } from './services/time-log.service'
 import { UserService } from './services/user.service';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
+import { Timer } from './models/timer'
 @Component(
     {
     selector: 'table-logs',
@@ -25,11 +26,12 @@ import { TimeLog } from './models/time-log.model';
 					  <td> {{timeLog.Project.Name}} </td>
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td>	{{timeLog.SpendingTime | emptyDate }} </td>
+					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | emptyDate }} </td>
+                      <td *ngIf="timeLog.Status==1">   {{timer.time | numberDate }} </td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 2 || timeLog.Status == 3" (click)="Pause(timeLog)">Pause</button></td>
-					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Start(timeLog)">Stop</button></td>
+					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
 					  </tr>
                </table> 
 			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>`
@@ -41,13 +43,20 @@ export class TableComponent
 	logined: boolean = false;
 	timeLogs: TimeLog[]=[];
     emptpyBlock: any;
+    timer: Timer = new Timer();
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
+            if (this.timeLogs[0].Status == 1) {
+                this.timeLogs[0].SpendingTime = new Date(50 * 60);
+                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
+                this.timer.Start();
+            }
         },
             error => {
                 console.log(error);
             });
+       
     }
     OnChanged(id)
     {
@@ -66,6 +75,20 @@ export class TableComponent
    
 	Exit(){
 		this.user.Name = "";
-		this.logined = false;
-	}
+        this.logined = false;
+    }
+    Start(timeLog)
+    {
+        this.timeLogService.SetStatus(timeLog.TaskID, 1);
+        this.GetTimeLogs();
+    }
+    Stop(timeLog) {
+        this.timeLogService.SetStatus(timeLog.TaskID, 2);
+        this.GetTimeLogs();
+    }
+    Pause(timeLog) {
+        this.timeLogService.SetStatus(timeLog.TaskID, 3);
+        this.GetTimeLogs();
+    }
+
 }
