@@ -3,18 +3,19 @@ import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { TimeLog } from '../table.component';
+import { TimeLog } from '../models/time-log.model';
 
 @Injectable()
 export class TimeLogService
 {
-    constructor(private _http: Http)
+    private url: string = "api/timeLog";
+    constructor(private http: Http)
     {
     }
-    public getData(id: number): Observable<TimeLog[]>
+    public GetData(id: number): Observable<TimeLog[]>
     {
-        let url: string ="api/timeLog/";
-        return this._http.get(url + id)
+        
+        return this.http.get(this.url +"/"+id)
         .map((resp: Response) => {
              let logList = resp.json();
 			 console.log(logList);

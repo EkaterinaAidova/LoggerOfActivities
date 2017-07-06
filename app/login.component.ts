@@ -1,11 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LoginService} from './services/login.service';
-export class LoginingForm {
-    @Input() ID: number;
-    @Input() Login: string;
-    @Input() Password: string;
-    
-}
+import { LoginingForm } from './models/autorization.model';
 @Component({
     selector: 'login',
       styles: [`
@@ -28,14 +23,13 @@ export class LoginingForm {
               </div>`
 })
 export class LoginComponent {
-    constructor(private _loginService: LoginService) { }
+    constructor(private loginService: LoginService) { }
     user: LoginingForm = new LoginingForm();
-    //@Output() logined = new EventEmitter<boolean>();
     @Output() changedID = new EventEmitter<number>();
     isNotError: boolean = true;
     public LogIn()
     {
-        this._loginService.get('api/autorization', this.user.Login, this.user.Password).subscribe(user => 
+        this.loginService.Get(this.user.Login, this.user.Password).subscribe(user => 
 		{
 			this.user = user; 
 			this.isNotError = true;  

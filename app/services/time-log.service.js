@@ -14,12 +14,12 @@ const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 let TimeLogService = class TimeLogService {
-    constructor(_http) {
-        this._http = _http;
+    constructor(http) {
+        this.http = http;
+        this.url = "api/timeLog";
     }
-    getData(id) {
-        let url = "api/timeLog/";
-        return this._http.get(url + id)
+    GetData(id) {
+        return this.http.get(this.url + "/" + id)
             .map((resp) => {
             let logList = resp.json();
             console.log(logList);

@@ -17,10 +17,11 @@ require('rxjs/add/operator/catch');
 let UserService = class UserService {
     constructor(_http) {
         this._http = _http;
+        this.url = "api/user";
     }
-    get(url, id) {
+    Get(id) {
         // return this.http.get(url + "?id=" + id)
-        return this._http.get(url + id)
+        return this._http.get(this.url + "/" + id)
             .map((resp) => {
             let user = resp.json();
             return user;

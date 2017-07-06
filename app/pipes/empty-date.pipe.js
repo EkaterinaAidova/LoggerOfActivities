@@ -9,26 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const http_1 = require('@angular/http');
-const Observable_1 = require('rxjs/Observable');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
-let LoginService = class LoginService {
-    constructor(http) {
-        this.http = http;
-        this.url = "api/autorization";
-    }
-    Get(login, password) {
-        return this.http.get(this.url + "?login=" + login + "&password=" + password)
-            .map((resp) => {
-            let user = resp.json();
-            return user;
-        }).catch((error) => { return Observable_1.Observable.throw(error); });
+let EmptyDatePipe = class EmptyDatePipe {
+    transform(date, args) {
+        if (date == null)
+            return "";
+        let result;
+        result = date.getDate + "/" + date.getMonth + "/" + date.getFullYear + " " + date.getHours + ":" + date.getMinutes;
+        return result;
     }
 };
-LoginService = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [http_1.Http])
-], LoginService);
-exports.LoginService = LoginService;
-//# sourceMappingURL=login.service.js.map
+EmptyDatePipe = __decorate([
+    core_1.Pipe({
+        name: 'emptyDate'
+    }), 
+    __metadata('design:paramtypes', [])
+], EmptyDatePipe);
+exports.EmptyDatePipe = EmptyDatePipe;
+//# sourceMappingURL=empty-date.pipe.js.map

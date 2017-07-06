@@ -9,47 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const core_2 = require('@angular/core');
 const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
-let EmptyDatePipe = class EmptyDatePipe {
-    transform(date, args) {
-        if (date == null)
-            return "";
-        let result;
-        result = date.getDate + "/" + date.getMonth + "/" + date.getFullYear + " " + date.getHours + ":" + date.getMinutes;
-        return result;
-    }
-};
-EmptyDatePipe = __decorate([
-    core_2.Pipe({
-        name: 'emptyDate'
-    }), 
-    __metadata('design:paramtypes', [])
-], EmptyDatePipe);
-exports.EmptyDatePipe = EmptyDatePipe;
-class User {
-}
-exports.User = User;
-class Project {
-}
-exports.Project = Project;
-class Activity {
-}
-exports.Activity = Activity;
-class TimeLog {
-}
-exports.TimeLog = TimeLog;
+const user_model_1 = require('./models/user.model');
 let TableComponent = class TableComponent {
-    constructor(_userService, _timeLogService) {
-        this._userService = _userService;
-        this._timeLogService = _timeLogService;
-        this.user = new User();
+    constructor(userService, timeLogService) {
+        this.userService = userService;
+        this.timeLogService = timeLogService;
+        this.user = new user_model_1.User();
         this.logined = false;
         this.timeLogs = [];
     }
     GetTimeLogs() {
-        this._timeLogService.getData(this.user.ID).subscribe(logs => {
+        this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
         }, error => {
             console.log(error);
@@ -59,16 +31,9 @@ let TableComponent = class TableComponent {
         this.user.ID = id;
         console.log(id);
         this.logined = true;
-        this._userService.get('api/user/', this.user.ID).subscribe(user => {
+        this.userService.Get(this.user.ID).subscribe(user => {
             this.user = user;
             this.GetTimeLogs();
-            /*  this.timeLogs = this._timeLogService.getData(user.ID).subscribe(logs => {
-                  this.timeLogs = logs;
-              },
-          error =>
-          {
-              console.log(error);
-          });*/
         }, error => {
             console.log(error);
         });
