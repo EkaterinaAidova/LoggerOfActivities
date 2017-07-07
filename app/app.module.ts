@@ -10,13 +10,14 @@ import {TableComponent} from './table.component';
 import { UserService } from "./services/user.service";
 import { TimeLogService } from './services/time-log.service';
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
-import { NumberDatePipe } from './pipes/date-from-number.pipe'
+import { DurationPipe } from './pipes/date-from-number.pipe';
+
 
 
 @NgModule(
     {
         imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule],
-        declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, NumberDatePipe],
+        declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe],
     providers: [LoginService, UserService, TimeLogService ], // регистрация сервисов
     bootstrap: [AppComponent]
     })

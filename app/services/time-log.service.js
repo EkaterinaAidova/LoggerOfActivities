@@ -49,7 +49,7 @@ let TimeLogService = class TimeLogService {
         data.time = new Date();
         let headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers }).catch((error) => { return Observable_1.Observable.throw(error); });
+        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers }); //.catch((error: any) => { return Observable.throw(error); });
     }
 };
 TimeLogService = __decorate([

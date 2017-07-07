@@ -20,7 +20,9 @@
             '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
             // остальные пакеты
             'rxjs': 'npm:rxjs',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+            'moment': 'npm:moment',
+            'angular2-moment': 'npm:angular2-moment'
         },
         // пакеты, которые указывают загрузчику System, как загружать файлы без имени и расширения
         packages: {
@@ -31,6 +33,14 @@
             rxjs: {
                 defaultExtension: 'js'
             },
+            'moment': {
+                main: './moment.js',
+                defaultExtension: 'js'
+            },
+            'angular2-moment': {
+                main: './index.js',
+                defaultExtension: 'js'
+            }
           
         }
     });

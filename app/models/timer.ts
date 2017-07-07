@@ -1,6 +1,5 @@
 ﻿import { Input } from "@angular/core";
 import { TimerObservable } from "rxjs/Observable/TimerObservable";
-import * as moment from 'moment/moment';
 export class Timer{
 
     public time: number;
@@ -8,13 +7,15 @@ export class Timer{
     startTime: number = 1000;
     SetStartTime(date: Date)
     {
-
-         this.startTime=date.getTime() - new Date(0).getTime();
-
+        if (date != null)
+            this.startTime = date.getTime() - new Date(0).getTime();
+        else this.startTime = 0;
     }
     Start() {
         
         TimerObservable.create(this.startTime, 1000)
-            .subscribe(t => this.time = this.startTime+t);//.format(this.format));
+            .subscribe(t => {
+                this.time = this.startTime+t*1000; //console.log(this.time);
+            });//.format(this.format));
     }
     }

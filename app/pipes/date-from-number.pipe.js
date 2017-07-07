@@ -9,26 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let NumberDatePipe = class NumberDatePipe {
-    transform(num, args) {
-        let seconds = Math.round(num % 60);
-        let minutes = 0;
-        if (num >= 60)
-            minutes = Math.round(num / 60);
-        let hours = 0;
-        if (num >= 3600)
-            hours = Math.round(num / 3600);
-        //let hours = num / 1000 / 60 / 60;
-        //  minutes -= hours * 60; 
-        let res = hours + "ч " + minutes + "м " + seconds + "сек";
-        return res;
+const moment = require('moment');
+let DurationPipe = class DurationPipe {
+    transform(value, ...args) {
+        if (typeof args === 'undefined' || args.length !== 1) {
+            throw new Error('DurationPipe: missing required time unit argument');
+        }
+        return moment.duration(value, args[0]).humanize();
     }
 };
-NumberDatePipe = __decorate([
-    core_1.Pipe({
-        name: 'numberDate'
-    }), 
+DurationPipe = __decorate([
+    core_1.Pipe({ name: 'amDuration' }), 
     __metadata('design:paramtypes', [])
-], NumberDatePipe);
-exports.NumberDatePipe = NumberDatePipe;
+], DurationPipe);
+exports.DurationPipe = DurationPipe;
 //# sourceMappingURL=date-from-number.pipe.js.map

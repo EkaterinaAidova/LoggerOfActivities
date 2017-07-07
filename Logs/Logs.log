@@ -1,229 +1,41 @@
-2017-07-06 10:40:33,459  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 10:40:33,706  INFO  Controller: users - User 7 is logged in
-2017-07-06 10:40:33,749  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 10:46:21,242  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 10:46:21,463  INFO  Controller: users - User 7 is logged in
-2017-07-06 10:46:21,485  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 13:36:38,533  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 13:36:38,730  INFO  Controller: users - User 7 is logged in
-2017-07-06 13:36:38,755  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 13:39:20,896  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 13:39:21,090  INFO  Controller: users - User 7 is logged in
-2017-07-06 13:39:21,113  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 14:29:59,032  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 14:29:59,225  INFO  Controller: users - User 7 is logged in
-2017-07-06 14:29:59,247  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:29:30,891  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:29:30,906  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:29:30,927  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:30:20,965  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:30:20,979  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:30:21,000  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:31:44,355  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:31:44,370  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:31:44,389  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:32:26,759  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:32:26,776  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:32:26,796  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:34:13,935  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:34:13,949  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:34:13,972  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:34:43,003  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:34:43,018  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:34:43,037  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:35:24,488  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:35:24,505  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:35:24,528  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:36:07,047  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:36:07,064  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:36:07,081  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:37:29,664  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:37:29,686  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:37:29,703  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:38:03,935  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:38:03,950  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:38:03,970  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:38:39,996  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:38:40,010  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:38:40,033  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:39:26,713  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:39:26,729  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:39:26,747  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:40:56,392  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:40:56,407  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:40:56,428  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:50:14,637  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:50:14,654  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:50:14,672  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:50:46,715  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:50:46,730  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:50:46,749  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:53:14,691  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:53:14,706  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:53:14,725  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:53:40,347  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:53:40,362  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:53:40,380  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:54:02,192  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:54:02,205  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:54:02,228  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 15:54:50,112  ERROR Controller: autorization  - Autorisation is failed. User is not found.
-2017-07-06 15:54:56,004  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 15:54:56,021  INFO  Controller: users - User 7 is logged in
-2017-07-06 15:54:56,042  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:07:00,918  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:07:00,933  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:07:00,954  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:15:22,743  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:15:22,759  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:15:22,776  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:15:50,874  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:15:50,892  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:15:50,913  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:17:02,576  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:17:02,596  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:17:02,614  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:17:27,363  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:17:27,378  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:17:27,398  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:18:07,041  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:18:07,057  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:18:07,078  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:19:14,654  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:19:14,670  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:19:14,693  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:19:50,493  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:19:50,509  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:19:50,530  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:33:19,404  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:33:19,598  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:33:19,619  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:42:08,638  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:42:08,650  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:42:08,671  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:44:49,440  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:44:49,455  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:44:49,475  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:45:05,767  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:45:05,782  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:45:05,802  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:48:15,576  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:48:15,592  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:48:15,610  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:49:28,002  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:49:28,017  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:49:28,037  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:56:32,146  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:56:32,160  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:56:32,178  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 16:58:13,930  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 16:58:13,949  INFO  Controller: users - User 7 is logged in
-2017-07-06 16:58:13,974  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:03:22,544  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:03:22,561  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:03:22,576  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:06:28,422  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:06:28,449  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:06:28,463  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:07:16,925  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:07:16,942  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:07:16,963  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:08:02,884  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:08:02,900  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:08:02,918  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:09:33,471  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:09:33,488  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:09:33,508  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:11:00,021  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:11:00,036  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:11:00,056  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:11:36,744  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:11:36,759  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:11:36,775  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:17:23,119  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:17:23,134  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:17:23,153  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:18:45,637  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:18:45,652  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:18:45,672  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:19:11,964  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:19:11,980  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:19:11,995  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:19:33,991  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:19:34,006  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:19:34,025  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:19:56,567  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:19:56,582  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:19:56,601  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:21:03,740  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:21:03,755  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:21:03,774  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:21:26,043  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:21:26,059  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:21:26,080  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:22:22,222  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:22:22,237  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:22:22,253  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:24:08,552  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:24:08,571  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:24:08,598  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:24:43,307  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:24:43,323  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:24:43,343  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:24:56,330  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:24:56,348  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:24:56,374  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:25:39,382  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:25:39,400  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:25:39,422  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:26:08,577  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:26:08,592  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:26:08,608  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:39:48,424  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:39:48,441  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:39:48,468  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:39:54,270  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:39:58,927  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:40:03,271  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:41:27,632  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:41:27,649  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:41:27,668  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:41:30,491  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:41:32,435  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:41:33,378  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:42:21,427  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:42:21,447  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:42:21,469  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:42:27,111  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:42:44,935  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:44:00,739  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:45:08,489  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:45:08,504  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:45:08,522  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:45:15,292  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:45:18,828  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:57:57,535  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:57:57,550  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:57:57,568  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:00,327  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:02,525  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:03,949  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:04,980  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:05,500  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:06,485  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:07,149  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:08,013  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:08,549  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:09,141  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:09,605  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:58:10,173  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:04,781  INFO  Controller: autorization  - Auturisation is success. Data is got
-2017-07-06 17:59:04,796  INFO  Controller: users - User 7 is logged in
-2017-07-06 17:59:04,815  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:06,458  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:07,688  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:08,160  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:08,311  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:08,455  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:08,600  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
-2017-07-06 17:59:08,791  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 10:40:05,932  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 10:40:06,185  INFO  Controller: users - User 7 is logged in
+2017-07-07 10:40:06,204  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 10:40:08,470  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 10:40:09,078  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 10:53:02,641  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 10:53:02,661  INFO  Controller: users - User 7 is logged in
+2017-07-07 10:53:02,683  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:00:23,901  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:00:23,916  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:00:23,935  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:01:53,827  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:01:53,843  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:01:53,863  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:02:42,083  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:02:42,103  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:02:42,117  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:04:37,079  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:04:37,096  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:04:37,116  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:05:08,462  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:05:08,476  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:05:08,494  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:05:43,785  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:05:43,801  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:05:43,823  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:07:10,292  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:07:10,307  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:07:10,322  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:11:02,799  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:11:02,818  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:11:02,837  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:12:16,778  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:12:16,796  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:12:16,813  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:13:24,800  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:13:24,814  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:13:24,832  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 11:13:59,978  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 11:13:59,994  INFO  Controller: users - User 7 is logged in
+2017-07-07 11:14:00,011  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved

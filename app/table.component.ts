@@ -27,7 +27,7 @@ import { Timer } from './models/timer'
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
 					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | emptyDate }} </td>
-                      <td *ngIf="timeLog.Status==1">   {{timer.time | numberDate }} </td>
+                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} </td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 2 || timeLog.Status == 3" (click)="Pause(timeLog)">Pause</button></td>
@@ -48,7 +48,7 @@ export class TableComponent
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.timeLogs[0].SpendingTime = new Date(50 * 60);
+                this.timeLogs[0].SpendingTime = new Date(1000);
                 this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
                 this.timer.Start();
             }

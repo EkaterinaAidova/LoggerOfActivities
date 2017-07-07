@@ -15,11 +15,16 @@ class Timer {
         this.startTime = 1000;
     }
     SetStartTime(date) {
-        this.startTime = date.getTime() - new Date(0).getTime();
+        if (date != null)
+            this.startTime = date.getTime() - new Date(0).getTime();
+        else
+            this.startTime = 0;
     }
     Start() {
         TimerObservable_1.TimerObservable.create(this.startTime, 1000)
-            .subscribe(t => this.time = this.startTime + t); //.format(this.format));
+            .subscribe(t => {
+            this.time = this.startTime + t * 1000; //console.log(this.time);
+        }); //.format(this.format));
     }
 }
 __decorate([

@@ -1,22 +1,12 @@
-﻿import { Pipe, PipeTransform } from '@angular/core';
-@Pipe({
-    name: 'numberDate'
-})
-export class NumberDatePipe implements PipeTransform {
-    transform(num: number, args?: any): string {
-        let seconds = Math.round(num % 60);
-        let minutes = 0;
-        if (num >= 60)
-            minutes = Math.round(num / 60);
-        let hours = 0; 
-        if (num >= 3600)
-            hours = Math.round(num / 3600);
+﻿import {Pipe, PipeTransform} from '@angular/core';
+import * as moment from 'moment';
 
-        //let hours = num / 1000 / 60 / 60;
-      //  minutes -= hours * 60; 
-       
-
-        let res: string = hours+ "ч "+minutes + "м " + seconds + "сек";
-        return res;  
+@Pipe({ name: 'amDuration' })
+export class DurationPipe implements PipeTransform {
+    transform(value: any, ...args: string[]): string {
+        if (typeof args === 'undefined' || args.length !== 1) {
+            throw new Error('DurationPipe: missing required time unit argument');
+        }
+        return moment.duration(value, args[0] as moment.unitOfTime.DurationConstructor).humanize();
     }
 }
