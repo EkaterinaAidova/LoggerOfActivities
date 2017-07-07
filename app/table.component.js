@@ -26,8 +26,7 @@ let TableComponent = class TableComponent {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.timeLogs[0].SpendingTime = new Date(1000);
-                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
+                this.timer.startTime = this.timeLogs[0].SpendingTime;
                 this.timer.Start();
             }
         }, error => {
@@ -50,15 +49,15 @@ let TableComponent = class TableComponent {
         this.logined = false;
     }
     Start(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 1);
+        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
     Stop(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 2);
+        this.timeLogService.SetStatus(timeLog.TaskID, 3).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
     Pause(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 3);
+        this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
 };
@@ -84,7 +83,7 @@ TableComponent = __decorate([
 					  <td> {{timeLog.Project.Name}} </td>
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | emptyDate }} </td>
+					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }} </td>
                       <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} </td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>

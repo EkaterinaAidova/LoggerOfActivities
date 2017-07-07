@@ -37,7 +37,7 @@ namespace ActivityLogger.Models.Repositories
              List<TimeLog> timeLogs = new List<TimeLog>();
              using (IDbConnection db = new SqlConnection(connectionString))
              {
-                 timeLogs = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE UserID= @userID AND Status= @status ").ToList();
+                 timeLogs = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE UserID= @idUser AND Status= @status ", new { idUser, status }).ToList();
              }
              return timeLogs;
          }
@@ -46,7 +46,7 @@ namespace ActivityLogger.Models.Repositories
             TimeLog timeLog = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                timeLog = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE Id = @id", new { id }).FirstOrDefault();
+                timeLog = db.Query<TimeLog>("SELECT TaskID, UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime FROM TimeLogs WHERE TaskID = @id", new { id }).FirstOrDefault();
             }
             return  timeLog;
         }
@@ -64,7 +64,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE TimeLogs SET UserID = @UserID, ProjectID = @ProjectID, ActivityID = @ActivityID, Status = @Status, StartWorkTime = @StartWorkTime, LastPauseTime = @LastPauseTime, LastResumeTime = @LastResumeTime, EndWorkTime = @EndWorkTime, SpendingTime = @SpendingTime  WHERE Id = @Id";
+                var sqlQuery = "UPDATE TimeLogs SET UserID = @UserID, ProjectID = @ProjectID, ActivityID = @ActivityID, Status = @Status, StartWorkTime = @StartWorkTime, LastPauseTime = @LastPauseTime, LastResumeTime = @LastResumeTime, EndWorkTime = @EndWorkTime, SpendingTime = @SpendingTime  WHERE TaskID = @TaskID";
                 db.Execute(sqlQuery, timeLog);
             }
         }

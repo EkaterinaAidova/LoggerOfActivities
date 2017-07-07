@@ -4,6 +4,7 @@ import { UserService } from './services/user.service';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
 import { Timer } from './models/timer'
+import * as moment from 'moment';
 @Component(
     {
     selector: 'table-logs',
@@ -26,7 +27,7 @@ import { Timer } from './models/timer'
 					  <td> {{timeLog.Project.Name}} </td>
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | emptyDate }} </td>
+					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }} </td>
                       <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} </td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
@@ -48,8 +49,7 @@ export class TableComponent
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.timeLogs[0].SpendingTime = new Date(1000);
-                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
+                this.timer.startTime =this.timeLogs[0].SpendingTime;
                 this.timer.Start();
             }
         },
@@ -77,17 +77,17 @@ export class TableComponent
 		this.user.Name = "";
         this.logined = false;
     }
-    Start(timeLog)
+    Start(timeLog: TimeLog)
     {
-        this.timeLogService.SetStatus(timeLog.TaskID, 1);
+        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); }); 
         this.GetTimeLogs();
     }
-    Stop(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 2);
+    Stop(timeLog: TimeLog) {
+        this.timeLogService.SetStatus(timeLog.TaskID, 3).subscribe((response) => { console.log(response); }); 
         this.GetTimeLogs();
     }
-    Pause(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 3);
+    Pause(timeLog: TimeLog) {
+        this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
 

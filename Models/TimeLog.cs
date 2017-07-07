@@ -13,6 +13,6 @@ namespace ActivityLogger.Models
         public DateTime? LastPauseTime { get; set;}
         public DateTime? LastResumeTime { get; set;}
         public DateTime? EndWorkTime { get; set;}
-        public DateTime? SpendingTime { get; set; }
+        public long? SpendingTime { get; set; }
     }
 }

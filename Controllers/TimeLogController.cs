@@ -2,9 +2,11 @@
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+using System.Web.Http.Cors;
 
 namespace ActivityLogger.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TimeLogController : ApiController
     {
         IWorkWithLogsService timeLogService;
@@ -32,34 +34,34 @@ namespace ActivityLogger.Controllers
 
         }
         [HttpPut]
-        public IHttpActionResult Put(int logId, int status, DateTime time)
+        public IHttpActionResult Put([FromBody]TimeLogInfoForUpdate ourLog)
         {
-            switch (status)
+            switch (ourLog.Status)
             {
                 case 1:
-                    timeLogService.ResumeWork(logId, time);
-                    Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
+                    timeLogService.ResumeWork(ourLog.LogId, DateTime.Now);
+                    Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
                     return Ok();
                 case 2:
-                    var res = timeLogService.SetLogOnPauseWithTime(logId, time);
+                    var res = timeLogService.SetLogOnPauseWithTime(ourLog.LogId, DateTime.Now);
                     if (res)
                     {
-                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
+                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
                         return Ok();
                     }
-                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", logId.ToString(), "can't be updated"));
+                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", ourLog.LogId.ToString(), "can't be updated"));
                     return BadRequest();
                 case 3:
-                    res = timeLogService.FinishWorkWithTime(logId, time);
+                    res = timeLogService.FinishWorkWithTime(ourLog.LogId, DateTime.Now);
                     if (res)
                     {
-                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", logId.ToString(), " is updated"));
+                        Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
                         return Ok();
                     }
-                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", logId.ToString(), "can't be updated"));
+                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", ourLog.LogId.ToString(), "can't be updated"));
                     return BadRequest();
                 default:
-                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", logId.ToString(), "can't be updated"));
+                    Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", ourLog.LogId.ToString(), "can't be updated"));
                     return BadRequest();
             }
         }

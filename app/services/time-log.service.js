@@ -43,13 +43,13 @@ let TimeLogService = class TimeLogService {
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
     SetStatus(id, status) {
-        let data = new PutTime();
-        data.logId = id;
-        data.status = status;
-        data.time = new Date();
+        let data = new TimeLogInfoForUpdate();
+        data.LogId = id;
+        data.Status = status;
         let headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers }); //.catch((error: any) => { return Observable.throw(error); });
+        let answer;
+        return this.http.put(this.url + "/", data, { headers: headers });
     }
 };
 TimeLogService = __decorate([
@@ -57,7 +57,12 @@ TimeLogService = __decorate([
     __metadata('design:paramtypes', [http_1.Http])
 ], TimeLogService);
 exports.TimeLogService = TimeLogService;
-class PutTime {
+class TimeLogInfoForUpdate {
+    ToJSON() {
+        let str;
+        str = "{ LogID : " + this.LogId + ", Status : " + this.Status + "}";
+        return str;
+    }
 }
-exports.PutTime = PutTime;
+exports.TimeLogInfoForUpdate = TimeLogInfoForUpdate;
 //# sourceMappingURL=time-log.service.js.map

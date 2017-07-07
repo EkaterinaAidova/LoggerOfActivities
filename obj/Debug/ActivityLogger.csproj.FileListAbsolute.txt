@@ -50,3 +50,5 @@ C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.dll
 C:\Users\eaidova\documents\visual studio 2012\Projects\ActivityLogger\ActivityLogger\bin\AutoMapper.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\ActivityLogger.dll.config
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebApiContrib.Formatting.Jsonp.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebApiContrib.Formatting.Jsonp.pdb

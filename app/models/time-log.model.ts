@@ -10,5 +10,5 @@ export class TimeLog {
     LastPauseTime: Date;
     LastResumeTime: Date;
     EndWorkTime: Date;
-    SpendingTime: Date;
+    SpendingTime: number;
 }

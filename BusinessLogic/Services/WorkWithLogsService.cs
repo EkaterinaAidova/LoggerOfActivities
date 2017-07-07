@@ -87,8 +87,10 @@ namespace ActivityLogger.BusinessLogic.Services
             if (log.IsNull()) return false;
             if (log.Status > 1) return false;
             if (log.LastResumeTime > time) return false;
-            TimeSpan lasting = time - log.LastResumeTime.Value;
-            log.SpendingTime += lasting;
+            if (log.LastResumeTime.IsNull()) log.LastResumeTime = log.StartWorkTime;
+            TimeSpan lasting = time - log.LastResumeTime.Value; 
+            if (log.SpendingTime.IsNull()) log.SpendingTime = 0;
+            log.SpendingTime += lasting.Ticks;
             log.Status = 2;
             log.LastPauseTime = time;
             repositoryTimeLog.Update(log);
@@ -103,7 +105,8 @@ namespace ActivityLogger.BusinessLogic.Services
                 case 1:
                     if (log.LastResumeTime > time) return false;
                     TimeSpan lasting = time - log.LastResumeTime.Value;
-                    log.SpendingTime += lasting;
+                    if (log.SpendingTime.IsNull()) log.SpendingTime = 0;
+                    log.SpendingTime += lasting.Ticks;
                     log.Status = 3;
                     log.EndWorkTime = time;
                     break;
@@ -135,6 +138,11 @@ namespace ActivityLogger.BusinessLogic.Services
         {
             var log = repositoryTimeLog.Get(id);
             if (log.IsNull()) return;
+            var activLog = GetUserLogWithStatus(log.UserID, 1);
+            if (activLog.Count() != 0)
+            {
+                SetLogOnPauseWithTime(activLog.First().TaskID, DateTime.Now);
+            }
             log.Status = 1;
             log.LastResumeTime = time;
             repositoryTimeLog.Update(log);

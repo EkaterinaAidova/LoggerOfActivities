@@ -40,20 +40,25 @@ export class TimeLogService
     }
     public SetStatus(id: number, status: number)
     {
-        let data = new PutTime();
-        data.logId = id;
-        data.status = status;
-        data.time = new Date();
+        let data = new TimeLogInfoForUpdate();
+        data.LogId = id;
+        data.Status = status;
         let headers = new Headers();
-        headers.append('Content-Type', 'application/json')
-        return this.http.put(this.url + "/", JSON.stringify(data), { headers: headers });//.catch((error: any) => { return Observable.throw(error); });
+        headers.append('Content-Type', 'application/json');
+        let answer: string;
+        return this.http.put(this.url + "/", data, { headers: headers });
     }
     
     
 }
-export class PutTime
+export class TimeLogInfoForUpdate
 {
-    logId: number;
-    status: number;
-    time: Date;
+    LogId: number;
+    Status: number;
+   public ToJSON()
+    {
+       let str: string;
+       str = "{ LogID : " + this.LogId + ", Status : " + this.Status +  "}";
+        return str;  
+    }
 }
