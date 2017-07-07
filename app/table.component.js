@@ -13,13 +13,19 @@ const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
 const user_model_1 = require('./models/user.model');
 const timer_1 = require('./models/timer');
+const activity_service_1 = require('./services/activity.service');
+const project_service_1 = require('./services/project.service');
 let TableComponent = class TableComponent {
-    constructor(userService, timeLogService) {
+    constructor(userService, timeLogService, projectService, activityService) {
         this.userService = userService;
         this.timeLogService = timeLogService;
+        this.projectService = projectService;
+        this.activityService = activityService;
         this.user = new user_model_1.User();
         this.logined = false;
         this.timeLogs = [];
+        this.projects = [];
+        this.activities = [];
         this.timer = new timer_1.Timer();
     }
     GetTimeLogs() {
@@ -60,11 +66,20 @@ let TableComponent = class TableComponent {
         this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
+    ngOnInit() {
+        this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));
+        this.projectService.Get().subscribe(data => this.projects = data, error => console.log(error));
+    }
 };
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',
-        template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}}        
+        template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}} 
+                <button class="btn btn-default"(click) = "modal.show()" > Новое задание</button >
+                <app-modal #modal > <div class="app-modal-body">
+      Whatever content you like, form fields, anything
+      <input type="text">
+    </div> </app-modal>  
                     <button class="btn btn-default" (click)="Exit()">Выйти</button>
                <table class="table table-striped">
                    <thead>
@@ -91,9 +106,11 @@ TableComponent = __decorate([
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
 					  </tr>
                </table> 
-			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>`
+                   
+
+			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login> `
     }), 
-    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService])
+    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService])
 ], TableComponent);
 exports.TableComponent = TableComponent;
 //# sourceMappingURL=table.component.js.map

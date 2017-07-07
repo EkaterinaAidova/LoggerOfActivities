@@ -13,23 +13,32 @@ const http_1 = require('@angular/http');
 const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-let UserService = class UserService {
+let ProjectService = class ProjectService {
     constructor(_http) {
         this._http = _http;
-        this.url = "api/user";
+        this.url = "api/project";
     }
-    Get(id) {
+    Get() {
         // return this.http.get(url + "?id=" + id)
-        return this._http.get(this.url + "/" + id)
+        return this._http.get(this.url + "/")
             .map((resp) => {
-            let user = resp.json();
-            return user;
+            let projectList = resp.json();
+            let projects;
+            for (let index in projectList) {
+                let prj = projectList[index];
+                // console.log(logList[index]);
+                projects.push({
+                    ID: prj.ID,
+                    Name: prj.Name
+                });
+            }
+            return projects;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
 };
-UserService = __decorate([
+ProjectService = __decorate([
     core_1.Injectable(), 
     __metadata('design:paramtypes', [http_1.Http])
-], UserService);
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+], ProjectService);
+exports.ProjectService = ProjectService;
+//# sourceMappingURL=project.service.js.map

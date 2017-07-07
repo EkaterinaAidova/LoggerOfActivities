@@ -8,6 +8,6 @@ export class DurationPipe implements PipeTransform {
             throw new Error('DurationPipe: missing required time unit argument');
         }
 
-        return moment.duration(value / 10000, args[0] as moment.unitOfTime.DurationConstructor).humanize();
+        return moment.duration(value / 10000, args[0] as moment.unitOfTime.DurationConstructor).toISOString();
     }
 }

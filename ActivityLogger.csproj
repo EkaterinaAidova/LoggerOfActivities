@@ -359,6 +359,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\modal.component.ts" />
     <TypeScriptCompile Include="app\models\activity.model.ts" />
     <TypeScriptCompile Include="app\models\autorization.model.ts" />
     <TypeScriptCompile Include="app\models\project.model.ts" />
@@ -367,7 +368,9 @@
     <TypeScriptCompile Include="app\models\user.model.ts" />
     <TypeScriptCompile Include="app\pipes\date-from-number.pipe.ts" />
     <TypeScriptCompile Include="app\pipes\empty-date.pipe.ts" />
+    <TypeScriptCompile Include="app\services\activity.service.ts" />
     <TypeScriptCompile Include="app\services\login.service.ts" />
+    <TypeScriptCompile Include="app\services\project.service.ts" />
     <TypeScriptCompile Include="app\services\time-log.service.ts" />
     <TypeScriptCompile Include="app\services\user.service.ts" />
     <TypeScriptCompile Include="app\table.component.ts" />

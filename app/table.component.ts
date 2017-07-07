@@ -1,14 +1,22 @@
-﻿import { Component, Input} from '@angular/core';
+﻿import { Component, Input, OnInit} from '@angular/core';
 import { TimeLogService } from './services/time-log.service'
 import { UserService } from './services/user.service';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
+import { Activity } from './models/activity.model';
+import { Project } from './models/project.model';
 import { Timer } from './models/timer'
-import * as moment from 'moment';
+import {ActivityService } from './services/activity.service';
+import { ProjectService } from './services/project.service';
 @Component(
     {
     selector: 'table-logs',
-    template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}}        
+    template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}} 
+                <button class="btn btn-default"(click) = "modal.show()" > Новое задание</button >
+                <app-modal #modal > <div class="app-modal-body">
+      Whatever content you like, form fields, anything
+      <input type="text">
+    </div> </app-modal>  
                     <button class="btn btn-default" (click)="Exit()">Выйти</button>
                <table class="table table-striped">
                    <thead>
@@ -35,14 +43,20 @@ import * as moment from 'moment';
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
 					  </tr>
                </table> 
-			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>`
+                   
+
+			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login> `
+    
+
     })
-export class TableComponent 
+export class TableComponent implements OnInit
 {
-	constructor(private userService: UserService, private timeLogService: TimeLogService) { }
+	constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService) { }
     user: User = new User();
 	logined: boolean = false;
-	timeLogs: TimeLog[]=[];
+    timeLogs: TimeLog[] = [];
+    projects: Project[] = [];
+    activities: Activity[] = [];
     emptpyBlock: any;
     timer: Timer = new Timer();
     GetTimeLogs() {
@@ -89,6 +103,11 @@ export class TableComponent
     Pause(timeLog: TimeLog) {
         this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
+    }
+    ngOnInit()
+    {
+        this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));
+        this.projectService.Get().subscribe(data => this.projects = data, error => console.log(error));
     }
 
 }

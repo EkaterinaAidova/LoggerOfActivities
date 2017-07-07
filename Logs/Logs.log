@@ -418,3 +418,22 @@
 2017-07-07 17:17:38,041  INFO  Controller: timeLogs - TimeLog 1 is updated
 2017-07-07 17:17:52,530  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
 2017-07-07 17:17:52,531  ERROR Controller: timeLogs -  TimeLog1can't be updated
+2017-07-07 17:37:01,490  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 17:37:01,506  INFO  Controller: users - User 7 is logged in
+2017-07-07 17:37:01,529  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 18:11:51,480  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 18:11:51,673  INFO  Controller: users - User 7 is logged in
+2017-07-07 18:11:51,695  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 18:14:29,439  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 18:14:29,455  INFO  Controller: users - User 7 is logged in
+2017-07-07 18:14:29,484  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 18:22:58,646  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 18:22:58,662  INFO  Controller: users - User 7 is logged in
+2017-07-07 18:22:58,692  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 18:24:52,462  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 18:24:52,484  INFO  Controller: users - User 7 is logged in
+2017-07-07 18:24:52,513  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-07 18:55:27,635  INFO  Controller: activity - Activities' list is received
+2017-07-07 18:55:30,861  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-07 18:55:30,890  INFO  Controller: users - User 7 is logged in
+2017-07-07 18:55:30,914  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
