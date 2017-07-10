@@ -14,7 +14,7 @@ export class ActivityService {
         return this._http.get(this.url + "/")
             .map((resp: Response) => {
                 let activityList = resp.json();
-                let activities: Activity[];
+                let activities: Activity[]=[];
                 for (let index in activityList) {
                     let act = activityList[index];
                     // console.log(logList[index]);

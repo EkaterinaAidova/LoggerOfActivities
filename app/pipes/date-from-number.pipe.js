@@ -15,7 +15,7 @@ let DurationPipe = class DurationPipe {
         if (typeof args === 'undefined' || args.length !== 1) {
             throw new Error('DurationPipe: missing required time unit argument');
         }
-        return moment.duration(value / 10000, args[0]).toISOString();
+        return moment.duration(value / 10000, args[0]).asHours().toFixed(2);
     }
 };
 DurationPipe = __decorate([

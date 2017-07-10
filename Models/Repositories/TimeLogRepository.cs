@@ -54,8 +54,8 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO TimeLogs (UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime) VALUES(@UserID, @ProjectID, @ActivityID, @Status, @StartWorkTime, @LastPauseTime, @LastResumeTime, @EndWorkTime, @SpendingTime) OUTPUT INSERTED.ID";
-                int? timeLogId = db.Query<int>(sqlQuery, timeLog).FirstOrDefault();
+                var sqlQuery = "INSERT INTO TimeLogs (UserID, ProjectID, ActivityID, Status, StartWorkTime, LastPauseTime, LastResumeTime, EndWorkTime, SpendingTime) OUTPUT INSERTED.TaskID VALUES(@UserID, @ProjectID, @ActivityID, @Status, @StartWorkTime, @LastPauseTime, @LastResumeTime, @EndWorkTime, @SpendingTime) ";
+                int? timeLogId = db.Query<int>(sqlQuery, timeLog).SingleOrDefault();
                 timeLog.TaskID = timeLogId.Value;
             }
             return timeLog;

@@ -1,4 +1,4 @@
-﻿import {Component} from '@angular/core';
+﻿import {Component, Output, EventEmitter} from '@angular/core';
 
 
 @Component({
@@ -16,6 +16,8 @@
         </div>
         <div class="modal-footer">
           <ng-content select=".app-modal-footer"></ng-content>
+          <button class="btn btn-default"(click)="hide(true)" >Добавить</button >
+          <button class="btn btn-default"(click)="hide(false)" >Отменить</button >
         </div>
       </div>
     </div>
@@ -31,7 +33,7 @@ export class ModalComponent {
 
     public visible = false;
     private visibleAnimate = false;
-
+    @Output() ok = new EventEmitter<boolean>();
     constructor() { }
 
     public show(): void {
@@ -39,14 +41,15 @@ export class ModalComponent {
         setTimeout(() => this.visibleAnimate = true, 100);
     }
 
-    public hide(): void {
+    public hide(param: boolean): void {
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
+        this.ok.emit(param);
     }
 
     public onContainerClicked(event: MouseEvent): void {
         if ((<HTMLElement>event.target).classList.contains('modal')) {
-            this.hide();
+            this.hide(false);
         }
     }
 

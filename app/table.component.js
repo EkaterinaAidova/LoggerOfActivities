@@ -15,6 +15,7 @@ const user_model_1 = require('./models/user.model');
 const timer_1 = require('./models/timer');
 const activity_service_1 = require('./services/activity.service');
 const project_service_1 = require('./services/project.service');
+const time_log_create_model_1 = require('./models/time-log-create.model');
 let TableComponent = class TableComponent {
     constructor(userService, timeLogService, projectService, activityService) {
         this.userService = userService;
@@ -27,6 +28,7 @@ let TableComponent = class TableComponent {
         this.projects = [];
         this.activities = [];
         this.timer = new timer_1.Timer();
+        this.newLog = new time_log_create_model_1.TimeLogInfoForCreating();
     }
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
@@ -70,16 +72,37 @@ let TableComponent = class TableComponent {
         this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));
         this.projectService.Get().subscribe(data => this.projects = data, error => console.log(error));
     }
+    onSelectProject(project) {
+        this.newLog.ProjectID = project.ID;
+    }
+    onSelectActivity(activity) {
+        this.newLog.ActivityID = activity.ID;
+    }
+    OnCloseModal(ok) {
+        if (ok == true) {
+            this.newLog.UserID = this.user.ID;
+            this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
+            this.GetTimeLogs();
+        }
+    }
 };
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',
         template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}} 
                 <button class="btn btn-default"(click) = "modal.show()" > Новое задание</button >
-                <app-modal #modal > <div class="app-modal-body">
-      Whatever content you like, form fields, anything
-      <input type="text">
-    </div> </app-modal>  
+                <app-modal #modal (ok)=OnCloseModal($event) > 
+                     <div class="app-modal-body">
+				     Проект:
+				         <select class="projectSelector" [(ngModel)]="newLog.ProjectID"> 
+				             <option *ngFor="let project of projects" [value]="project.ID" > {{project.Name}} </option> 
+				         </select>
+				     Должность:
+				        <select class="activitySelector"  [(ngModel)]="newLog.ActivityID"> 
+				             <option *ngFor="let activity of activities" [value]="activity.ID"> {{activity.Position}} </option> 
+				        </select>
+                     </div> 
+                </app-modal>  
                     <button class="btn btn-default" (click)="Exit()">Выйти</button>
                <table class="table table-striped">
                    <thead>
@@ -98,16 +121,14 @@ TableComponent = __decorate([
 					  <td> {{timeLog.Project.Name}} </td>
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }} </td>
-                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} </td>
+					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
+                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 2 || timeLog.Status == 3" (click)="Pause(timeLog)">Pause</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
 					  </tr>
-               </table> 
-                   
-
+               </table>                    
 			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login> `
     }), 
     __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService])

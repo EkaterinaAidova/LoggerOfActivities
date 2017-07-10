@@ -149,9 +149,9 @@ namespace ActivityLogger.BusinessLogic.Services
         }
         public bool IsLogValid(TimeLogForCreationInfo info)
         {
-            var activity = activityService.GetActivity(info.Activity);
+            var activity = activityService.GetActivity(info.ActivityID);
             if (activity.IsNull()) return false;
-            var project = projectService.GetProject(info.Project);
+            var project = projectService.GetProject(info.ProjectID);
             if (project.IsNull()) return false;
             return true;
         }

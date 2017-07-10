@@ -13,6 +13,7 @@ const http_1 = require('@angular/http');
 const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
+const time_log_update_model_1 = require('../models/time-log-update.model');
 let TimeLogService = class TimeLogService {
     constructor(http) {
         this.http = http;
@@ -43,13 +44,20 @@ let TimeLogService = class TimeLogService {
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
     SetStatus(id, status) {
-        let data = new TimeLogInfoForUpdate();
+        let data = new time_log_update_model_1.TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
         let headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        let answer;
         return this.http.put(this.url + "/", data, { headers: headers });
+    }
+    CreateTimeLog(newLog) {
+        console.log(newLog);
+        let headers = new http_1.Headers();
+        let body = JSON.stringify(newLog);
+        console.log("post=" + body);
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.url + "/", body, { headers: headers });
     }
 };
 TimeLogService = __decorate([
@@ -57,12 +65,4 @@ TimeLogService = __decorate([
     __metadata('design:paramtypes', [http_1.Http])
 ], TimeLogService);
 exports.TimeLogService = TimeLogService;
-class TimeLogInfoForUpdate {
-    ToJSON() {
-        let str;
-        str = "{ LogID : " + this.LogId + ", Status : " + this.Status + "}";
-        return str;
-    }
-}
-exports.TimeLogInfoForUpdate = TimeLogInfoForUpdate;
 //# sourceMappingURL=time-log.service.js.map

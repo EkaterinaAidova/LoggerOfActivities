@@ -8,15 +8,24 @@ import { Project } from './models/project.model';
 import { Timer } from './models/timer'
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
+import { TimeLogInfoForCreating } from './models/time-log-create.model';
 @Component(
     {
     selector: 'table-logs',
     template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}} 
                 <button class="btn btn-default"(click) = "modal.show()" > Новое задание</button >
-                <app-modal #modal > <div class="app-modal-body">
-      Whatever content you like, form fields, anything
-      <input type="text">
-    </div> </app-modal>  
+                <app-modal #modal (ok)=OnCloseModal($event) > 
+                     <div class="app-modal-body">
+				     Проект:
+				         <select class="projectSelector" [(ngModel)]="newLog.ProjectID"> 
+				             <option *ngFor="let project of projects" [value]="project.ID" > {{project.Name}} </option> 
+				         </select>
+				     Должность:
+				        <select class="activitySelector"  [(ngModel)]="newLog.ActivityID"> 
+				             <option *ngFor="let activity of activities" [value]="activity.ID"> {{activity.Position}} </option> 
+				        </select>
+                     </div> 
+                </app-modal>  
                     <button class="btn btn-default" (click)="Exit()">Выйти</button>
                <table class="table table-striped">
                    <thead>
@@ -35,16 +44,14 @@ import { ProjectService } from './services/project.service';
 					  <td> {{timeLog.Project.Name}} </td>
 					  <td> {{timeLog.Activity.Position}} </td>
 					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }} </td>
-                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} </td>
+					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
+                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
 					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 2 || timeLog.Status == 3" (click)="Pause(timeLog)">Pause</button></td>
 					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
 					  </tr>
-               </table> 
-                   
-
+               </table>                    
 			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login> `
     
 
@@ -59,6 +66,7 @@ export class TableComponent implements OnInit
     activities: Activity[] = [];
     emptpyBlock: any;
     timer: Timer = new Timer();
+    newLog: TimeLogInfoForCreating = new TimeLogInfoForCreating();
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
@@ -109,5 +117,21 @@ export class TableComponent implements OnInit
         this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));
         this.projectService.Get().subscribe(data => this.projects = data, error => console.log(error));
     }
-
+    onSelectProject(project: Project)
+    {
+        this.newLog.ProjectID = project.ID;
+    }
+    onSelectActivity(activity: Activity)
+    {
+        this.newLog.ActivityID = activity.ID;
+    }
+    OnCloseModal(ok: boolean)
+    {
+        if (ok == true)
+        {
+            this.newLog.UserID = this.user.ID;
+            this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
+            this.GetTimeLogs();
+        }
+    }
 }

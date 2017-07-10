@@ -4,7 +4,7 @@
     {
         public int TaskID { get; set; }
         public int UserID { get; set; }
-        public int Project { get; set; }
-        public int Activity { get; set; }
+        public int ProjectID { get; set; }
+        public int ActivityID { get; set; }
     }
 }

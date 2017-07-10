@@ -363,6 +363,8 @@
     <TypeScriptCompile Include="app\models\activity.model.ts" />
     <TypeScriptCompile Include="app\models\autorization.model.ts" />
     <TypeScriptCompile Include="app\models\project.model.ts" />
+    <TypeScriptCompile Include="app\models\time-log-create.model.ts" />
+    <TypeScriptCompile Include="app\models\time-log-update.model.ts" />
     <TypeScriptCompile Include="app\models\time-log.model.ts" />
     <TypeScriptCompile Include="app\models\timer.ts" />
     <TypeScriptCompile Include="app\models\user.model.ts" />

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { TimeLog } from '../models/time-log.model';
+import { TimeLogInfoForUpdating } from '../models/time-log-update.model';
+import { TimeLogInfoForCreating } from '../models/time-log-create.model'
+
 
 @Injectable()
 export class TimeLogService
@@ -40,25 +43,23 @@ export class TimeLogService
     }
     public SetStatus(id: number, status: number)
     {
-        let data = new TimeLogInfoForUpdate();
+        let data = new TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        let answer: string;
         return this.http.put(this.url + "/", data, { headers: headers });
     }
-    
-    
-}
-export class TimeLogInfoForUpdate
-{
-    LogId: number;
-    Status: number;
-   public ToJSON()
+    public CreateTimeLog(newLog: TimeLogInfoForCreating)
     {
-       let str: string;
-       str = "{ LogID : " + this.LogId + ", Status : " + this.Status +  "}";
-        return str;  
+        console.log(newLog)
+        let headers = new Headers();
+        let body = JSON.stringify(newLog);
+        console.log("post="+body);
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.url + "/", body, { headers: headers })
     }
+    
+    
 }
+

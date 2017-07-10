@@ -13,21 +13,27 @@ let ModalComponent = class ModalComponent {
     constructor() {
         this.visible = false;
         this.visibleAnimate = false;
+        this.ok = new core_1.EventEmitter();
     }
     show() {
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
     }
-    hide() {
+    hide(param) {
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
+        this.ok.emit(param);
     }
     onContainerClicked(event) {
         if (event.target.classList.contains('modal')) {
-            this.hide();
+            this.hide(false);
         }
     }
 };
+__decorate([
+    core_1.Output(), 
+    __metadata('design:type', Object)
+], ModalComponent.prototype, "ok", void 0);
 ModalComponent = __decorate([
     core_1.Component({
         selector: 'app-modal',
@@ -44,6 +50,8 @@ ModalComponent = __decorate([
         </div>
         <div class="modal-footer">
           <ng-content select=".app-modal-footer"></ng-content>
+          <button class="btn btn-default"(click)="hide(true)" >Добавить</button >
+          <button class="btn btn-default"(click)="hide(false)" >Отменить</button >
         </div>
       </div>
     </div>

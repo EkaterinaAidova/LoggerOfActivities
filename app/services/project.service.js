@@ -23,7 +23,7 @@ let ProjectService = class ProjectService {
         return this._http.get(this.url + "/")
             .map((resp) => {
             let projectList = resp.json();
-            let projects;
+            let projects = [];
             for (let index in projectList) {
                 let prj = projectList[index];
                 // console.log(logList[index]);
