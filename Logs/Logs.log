@@ -148,3 +148,7 @@
 2017-07-10 16:08:47,467  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
 2017-07-10 16:08:53,646  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
 2017-07-10 16:08:53,654  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 18:27:20,341  INFO  Controller: activity - Activities' list is received
+2017-07-10 18:27:30,960  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 18:27:30,994  INFO  Controller: users - User 7 is logged in
+2017-07-10 18:27:31,046  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
