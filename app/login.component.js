@@ -40,20 +40,7 @@ LoginComponent = __decorate([
         input.ng-touched.ng-invalid {border:solid red 2px;}
         input.ng-touched.ng-valid {border:solid green 2px;}
     `],
-        template: `<div> 
-                    <div class="form-group">
-                        <label>Логин</label>
-                        <input class="form-control" name="Login" [(ngModel)]="user.Login" #Login="ngModel" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input class="form-control" name="Password" [(ngModel)]="user.Password" #Password="ngModel" required />
-                    </div>
-                    <div class="form-group">
-                        <button [disabled]=" Login.invalid || Password.invalid "
-                                class="btn btn-default" (click)="LogIn()">Войти</button>
-                    </div>
-              </div>`
+        templateUrl: './app/html/login.component.html'
     }), 
     __metadata('design:paramtypes', [login_service_1.LoginService])
 ], LoginComponent);

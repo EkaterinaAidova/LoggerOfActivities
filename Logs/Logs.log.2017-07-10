@@ -1,0 +1,154 @@
+2017-07-10 09:51:08,179  INFO  Controller: activity - Activities' list is received
+2017-07-10 09:51:12,622  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 09:51:12,761  INFO  Controller: users - User 7 is logged in
+2017-07-10 09:51:12,798  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:09:25,943  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:09:30,085  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:09:30,131  INFO  Controller: users - User 7 is logged in
+2017-07-10 10:09:30,165  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:32:19,461  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:32:23,651  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:32:23,669  INFO  Controller: users - User 7 is logged in
+2017-07-10 10:32:23,708  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:32:29,988  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:32:30,087  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 10:34:00,514  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 10:34:00,514  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:34:31,222  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:34:34,818  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:34:34,832  INFO  Controller: users - User 7 is logged in
+2017-07-10 10:34:34,867  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:34:38,634  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 10:34:38,635  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:39:03,843  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:40:23,705  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:41:12,215  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:41:12,289  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:41:12,293  INFO  Controller: users - User 7 is logged in
+2017-07-10 10:41:12,363  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:41:20,431  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:41:25,847  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 10:41:25,859  INFO  Controller: users - User 7 is logged in
+2017-07-10 10:41:25,893  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:43:05,370  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 10:43:07,270  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 10:43:21,418  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:43:21,832  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:43:23,585  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:43:24,248  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:43:24,341  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:43:25,280  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:18,794  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:19,063  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:23,056  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:23,392  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:24,454  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:25,224  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:44:29,146  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:54:44,565  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:57:23,372  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:58:34,945  INFO  Controller: activity - Activities' list is received
+2017-07-10 10:59:12,969  INFO  Controller: activity - Activities' list is received
+2017-07-10 11:05:55,408  INFO  Controller: activity - Activities' list is received
+2017-07-10 11:13:57,812  INFO  Controller: activity - Activities' list is received
+2017-07-10 11:17:28,233  INFO  Controller: activity - Activities' list is received
+2017-07-10 11:59:21,698  INFO  Controller: activity - Activities' list is received
+2017-07-10 12:31:58,966  INFO  Controller: activity - Activities' list is received
+2017-07-10 12:32:04,816  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 12:32:05,296  INFO  Controller: users - User 7 is logged in
+2017-07-10 12:32:05,346  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 12:46:40,495  INFO  Controller: activity - Activities' list is received
+2017-07-10 14:58:50,710  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 14:58:59,221  INFO  Controller: activity - Activities' list is received
+2017-07-10 14:59:12,511  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 14:59:47,682  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 14:59:47,765  INFO  Controller: users - User 7 is logged in
+2017-07-10 14:59:47,848  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:00:45,775  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:01:22,706  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 15:01:35,237  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:02:07,354  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 15:11:02,506  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 15:11:35,389  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:22:20,700  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:24:22,273  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:26:38,642  INFO  Controller: activity  - info about activity 12 is recieved
+2017-07-10 15:27:31,864  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:27:53,129  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:27:53,145  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:27:53,181  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:27:58,602  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:27:58,602  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:42:12,736  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 15:42:16,318  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:42:26,950  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:42:38,818  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:42:38,843  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:42:38,882  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:43:45,226  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:43:45,227  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:45:03,610  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:45:07,800  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:45:07,818  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:45:07,865  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:45:15,469  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:45:15,470  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:46:07,778  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 15:46:20,493  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:46:24,023  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:46:24,038  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:46:24,075  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:46:41,103  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:46:41,106  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:48:32,629  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:48:37,222  INFO  Controller: timeLogs - TimeLog 18 is updated
+2017-07-10 15:48:46,987  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:48:50,524  INFO  Controller: timeLogs - TimeLog 13 is updated
+2017-07-10 15:50:06,520  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:50:28,620  INFO  Controller: timeLogs - TimeLog 13 is updated
+2017-07-10 15:50:54,889  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:50:57,547  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:50:57,565  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:50:57,610  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:50:59,701  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:51:02,514  INFO  Controller: timeLogs - TimeLog 18 is updated
+2017-07-10 15:51:33,424  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:51:42,661  INFO  Controller: timeLogs - TimeLog 19 is updated
+2017-07-10 15:52:05,342  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:52:08,596  INFO  Controller: timeLogs - TimeLog 19 is updated
+2017-07-10 15:52:15,194  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:52:15,196  INFO  Controller: timeLogs - TimeLog 19 is updated
+2017-07-10 15:52:21,231  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:52:21,232  INFO  Controller: timeLogs - TimeLog 13 is updated
+2017-07-10 15:52:49,293  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:52:49,294  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:54:17,671  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:54:21,043  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:54:21,055  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:54:21,092  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:54:24,726  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:54:24,726  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:55:51,363  INFO  Controller: activity - Activities' list is received
+2017-07-10 15:55:54,320  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 15:55:54,336  INFO  Controller: users - User 7 is logged in
+2017-07-10 15:55:54,392  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 15:56:04,214  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 15:56:04,216  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:07:05,566  INFO  Controller: activity - Activities' list is received
+2017-07-10 16:07:08,615  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 16:07:08,633  INFO  Controller: users - User 7 is logged in
+2017-07-10 16:07:08,695  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:07:14,898  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:07:14,901  INFO  Controller: timeLogs - TimeLog 13 is updated
+2017-07-10 16:07:26,397  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:07:26,421  ERROR Controller: timeLogs - new TimeLog can't be created
+2017-07-10 16:08:41,684  INFO  Controller: activity - Activities' list is received
+2017-07-10 16:08:47,406  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 16:08:47,429  INFO  Controller: users - User 7 is logged in
+2017-07-10 16:08:47,467  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:08:53,646  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved
+2017-07-10 16:08:53,654  INFO  Controller: timeLogs - new TimeLog is created
+2017-07-10 18:27:20,341  INFO  Controller: activity - Activities' list is received
+2017-07-10 18:27:30,960  INFO  Controller: autorization  - Auturisation is success. Data is got
+2017-07-10 18:27:30,994  INFO  Controller: users - User 7 is logged in
+2017-07-10 18:27:31,046  INFO  Controller: timeLogs  - list of tasks of user 7 is recieved

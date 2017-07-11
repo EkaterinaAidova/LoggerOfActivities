@@ -89,47 +89,7 @@ let TableComponent = class TableComponent {
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',
-        template: `<div class="userPanel" *ngIf="logined"> Сотрудник: {{user.Name}} 
-                <button class="btn btn-default"(click) = "modal.show()" > Новое задание</button >
-                <app-modal #modal (ok)=OnCloseModal($event) > 
-                     <div class="app-modal-body">
-				     Проект:
-				         <select class="projectSelector" [(ngModel)]="newLog.ProjectID"> 
-				             <option *ngFor="let project of projects" [value]="project.ID" > {{project.Name}} </option> 
-				         </select>
-				     Должность:
-				        <select class="activitySelector"  [(ngModel)]="newLog.ActivityID"> 
-				             <option *ngFor="let activity of activities" [value]="activity.ID"> {{activity.Position}} </option> 
-				        </select>
-                     </div> 
-                </app-modal>  
-                    <button class="btn btn-default" (click)="Exit()">Выйти</button>
-               <table class="table table-striped">
-                   <thead>
-                       <tr>
-                          <th>Проект</th>
-                          <th>Позиция</th>
-                          <th>Время начала</th>
-                          <th>Потраченное время</th>
-                          <th>Время завершения</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                      </tr>
-					  </thead>
-					  <tr *ngFor="let timeLog of timeLogs">
-					  <td> {{timeLog.Project.Name}} </td>
-					  <td> {{timeLog.Activity.Position}} </td>
-					  <td >{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-					  <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
-                      <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
-					  <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
-					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 1 || timeLog.Status == 3" (click)="Start(timeLog)">Start</button></td>
-					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 2 || timeLog.Status == 3" (click)="Pause(timeLog)">Pause</button></td>
-					  <td> <button class="btn btn-default" [disabled]=" timeLog.Status == 3" (click)="Stop(timeLog)">Stop</button></td>
-					  </tr>
-               </table>                    
-			   </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login> `
+        templateUrl: './app/html/table.component.html'
     }), 
     __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService])
 ], TableComponent);

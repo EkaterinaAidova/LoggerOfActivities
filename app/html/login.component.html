@@ -1,0 +1,16 @@
+﻿<div>
+    <div class="form-group">
+        <label>Логин</label>
+        <input class="form-control" name="Login" [(ngModel)]="user.Login" #Login="ngModel" required />
+    </div>
+    <div class="form-group">
+        <label>Пароль</label>
+        <input class="form-control" name="Password" [(ngModel)]="user.Password" #Password="ngModel" required />
+    </div>
+    <div class="form-group">
+        <button [disabled]=" Login.invalid || Password.invalid "
+                class="btn btn-default" (click)="LogIn()">
+            Войти
+        </button>
+    </div>
+</div>
