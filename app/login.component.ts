@@ -10,6 +10,7 @@ import { LoginingForm } from './models/autorization.model';
     templateUrl: './app/html/login.component.html' 
 })
 export class LoginComponent {
+    myDate: Date = new Date();
     constructor(private loginService: LoginService) { }
     user: LoginingForm = new LoginingForm();
     @Output() changedID = new EventEmitter<number>();

@@ -14,6 +14,7 @@ const autorization_model_1 = require('./models/autorization.model');
 let LoginComponent = class LoginComponent {
     constructor(loginService) {
         this.loginService = loginService;
+        this.myDate = new Date();
         this.user = new autorization_model_1.LoginingForm();
         this.changedID = new core_1.EventEmitter();
         this.isNotError = true;

@@ -13,48 +13,53 @@
             </select>
         </div>
     </app-modal>
-    <button class="btn btn-default" (click)="Exit()">Выйти</button>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Проект</th>
-                <th>Позиция</th>
-                <th>Время начала</th>
-                <th>Потраченное время</th>
-                <th>Время завершения</th>
-                <th></th>
-                <th></th>
-                <th></th>
+    <app-modal-time #modalStop (ok)=Stop($event)>
+        </app-modal-time>
+    <app-modal-time #modalPause (ok)=Pause($event)>
+    </app-modal-time>
+        <button class="btn btn-default" (click)="Exit()">Выйти</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Проект</th>
+                    <th>Позиция</th>
+                    <th>Время начала</th>
+                    <th>Потраченное время</th>
+                    <th>Время завершения</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr *ngFor="let timeLog of pagedItems">
+                <td> {{timeLog.Project.Name}} </td>
+                <td> {{timeLog.Activity.Position}} </td>
+                <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
+                <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
+                <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
+                <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
+                <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="Start(timeLog)">Start</button></td>
+                <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)">Pause</button></td>
+                <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)">Stop</button></td>
             </tr>
-        </thead>
-        <tr *ngFor="let timeLog of pagedItems">
-            <td> {{timeLog.Project.Name}} </td>
-            <td> {{timeLog.Activity.Position}} </td>
-            <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-            <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
-            <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
-            <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="Start(timeLog)">Start</button></td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="Pause(timeLog)">Pause</button></td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="Stop(timeLog)">Stop</button></td>
-        </tr>
-    </table>
-    <!-- pager -->
-    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-        <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(1)">First</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-        </li>
-        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-            <a (click)="setPage(page)">{{page}}</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)">Next</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.totalPages)">Last</a>
-        </li>
-    </ul>
+        </table>
+        <!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
 </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>
+

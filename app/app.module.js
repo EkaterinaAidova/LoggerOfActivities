@@ -24,11 +24,12 @@ const project_service_1 = require('./services/project.service');
 const pager_service_1 = require('./services/pager.service');
 const empty_date_pipe_1 = require('./pipes/empty-date.pipe');
 const date_from_number_pipe_1 = require('./pipes/date-from-number.pipe');
+const ng2_datetime_picker_1 = require('ng2-datetime-picker');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule, ng2_datetime_picker_1.Ng2DatetimePickerModule],
         declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, table_component_1.TableComponent, empty_date_pipe_1.EmptyDatePipe, date_from_number_pipe_1.DurationPipe, modal_component_1.ModalComponent],
         providers: [login_service_1.LoginService, user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService],
         bootstrap: [app_component_1.AppComponent],

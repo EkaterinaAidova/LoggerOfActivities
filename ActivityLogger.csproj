@@ -221,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\html\login.component.html" />
+    <Content Include="app\html\modal-time.component.html" />
     <Content Include="app\html\modal.component.html" />
     <Content Include="app\html\table.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -362,6 +363,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\modal-time.component.ts" />
     <TypeScriptCompile Include="app\modal.component.ts" />
     <TypeScriptCompile Include="app\models\activity.model.ts" />
     <TypeScriptCompile Include="app\models\autorization.model.ts" />
