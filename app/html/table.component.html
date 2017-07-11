@@ -27,7 +27,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tr *ngFor="let timeLog of  pagedItems">
+        <tr *ngFor="let timeLog of pagedItems">
             <td> {{timeLog.Project.Name}} </td>
             <td> {{timeLog.Activity.Position}} </td>
             <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>

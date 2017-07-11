@@ -10,13 +10,10 @@ import { Timer } from './models/timer'
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
 import { TimeLogInfoForCreating } from './models/time-log-create.model';
-import { Ng2TableModule } from 'ng2-table/ng2-table';
 @Component(
     {
     selector: 'table-logs',
     templateUrl: './app/html/table.component.html'
-    
-
     })
 export class TableComponent implements OnInit
 {
@@ -107,11 +104,7 @@ export class TableComponent implements OnInit
         if (page < 1 || page > this.pager.totalPages) {
             return;
         }
-
-        // get pager object from service
         this.pager = this.pagerService.getPager(this.timeLogs.length, page);
-
-        // get current page of items
         this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 }

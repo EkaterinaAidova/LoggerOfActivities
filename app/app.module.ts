@@ -18,12 +18,6 @@ import { PagerService } from './services/pager.service';
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
 import { DurationPipe } from './pipes/date-from-number.pipe';
 
-
-
-
-
-
-
 @NgModule(
     {
         imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule],

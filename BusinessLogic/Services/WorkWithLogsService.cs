@@ -74,6 +74,15 @@ namespace ActivityLogger.BusinessLogic.Services
                 timeLog.Activity = activityService.GetActivity(tl.ActivityID);
                 loglist.Add(timeLog);
             }
+            loglist.Sort((a, b) =>
+            {
+                var res = a.Status.CompareTo(b.Status);
+                if (res == 0)
+                {
+                    res = a.StartWorkTime.CompareTo(b.StartWorkTime);
+                }
+                return res;
+            });
             return loglist;
         }
         public void UpdateTimeLog(TimeLogInfo timeLog)
