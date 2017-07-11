@@ -27,7 +27,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tr *ngFor="let timeLog of timeLogs">
+        <tr *ngFor="let timeLog of  pagedItems">
             <td> {{timeLog.Project.Name}} </td>
             <td> {{timeLog.Activity.Position}} </td>
             <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
@@ -39,4 +39,22 @@
             <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="Stop(timeLog)">Stop</button></td>
         </tr>
     </table>
+    <!-- pager -->
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
 </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>

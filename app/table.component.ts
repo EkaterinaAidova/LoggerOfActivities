@@ -1,6 +1,7 @@
 ﻿import { Component, Input, OnInit} from '@angular/core';
 import { TimeLogService } from './services/time-log.service'
 import { UserService } from './services/user.service';
+import { PagerService } from './services/pager.service';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
 import { Activity } from './models/activity.model';
@@ -9,6 +10,7 @@ import { Timer } from './models/timer'
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
 import { TimeLogInfoForCreating } from './models/time-log-create.model';
+import { Ng2TableModule } from 'ng2-table/ng2-table';
 @Component(
     {
     selector: 'table-logs',
@@ -18,7 +20,7 @@ import { TimeLogInfoForCreating } from './models/time-log-create.model';
     })
 export class TableComponent implements OnInit
 {
-	constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService) { }
+    constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService) { }
     user: User = new User();
 	logined: boolean = false;
     timeLogs: TimeLog[] = [];
@@ -27,6 +29,8 @@ export class TableComponent implements OnInit
     emptpyBlock: any;
     timer: Timer = new Timer();
     newLog: TimeLogInfoForCreating = new TimeLogInfoForCreating();
+    pager: any = {};
+    pagedItems: TimeLog[];
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
@@ -34,6 +38,11 @@ export class TableComponent implements OnInit
                 this.timer.startTime =this.timeLogs[0].SpendingTime;
                 this.timer.Start();
             }
+            // get pager object from service
+            this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
+
+            // get current page of items
+            this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
         },
             error => {
                 console.log(error);
@@ -93,5 +102,16 @@ export class TableComponent implements OnInit
             this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
             this.GetTimeLogs();
         }
+    }
+    setPage(page: number) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.timeLogs.length, page);
+
+        // get current page of items
+        this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 }

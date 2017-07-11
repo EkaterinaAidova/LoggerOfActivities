@@ -13,9 +13,12 @@ import { UserService } from "./services/user.service";
 import { TimeLogService } from './services/time-log.service';
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
+import { PagerService } from './services/pager.service';
 
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
 import { DurationPipe } from './pipes/date-from-number.pipe';
+
+
 
 
 
@@ -25,7 +28,7 @@ import { DurationPipe } from './pipes/date-from-number.pipe';
     {
         imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule],
         declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe, ModalComponent],
-        providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService ], // регистрация сервисов
+        providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService, PagerService ], // регистрация сервисов
         bootstrap: [AppComponent],
         entryComponents: [ModalComponent]
     })

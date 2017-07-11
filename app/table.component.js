@@ -11,17 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
+const pager_service_1 = require('./services/pager.service');
 const user_model_1 = require('./models/user.model');
 const timer_1 = require('./models/timer');
 const activity_service_1 = require('./services/activity.service');
 const project_service_1 = require('./services/project.service');
 const time_log_create_model_1 = require('./models/time-log-create.model');
 let TableComponent = class TableComponent {
-    constructor(userService, timeLogService, projectService, activityService) {
+    constructor(userService, timeLogService, projectService, activityService, pagerService) {
         this.userService = userService;
         this.timeLogService = timeLogService;
         this.projectService = projectService;
         this.activityService = activityService;
+        this.pagerService = pagerService;
         this.user = new user_model_1.User();
         this.logined = false;
         this.timeLogs = [];
@@ -29,6 +31,7 @@ let TableComponent = class TableComponent {
         this.activities = [];
         this.timer = new timer_1.Timer();
         this.newLog = new time_log_create_model_1.TimeLogInfoForCreating();
+        this.pager = {};
     }
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
@@ -37,6 +40,10 @@ let TableComponent = class TableComponent {
                 this.timer.startTime = this.timeLogs[0].SpendingTime;
                 this.timer.Start();
             }
+            // get pager object from service
+            this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
+            // get current page of items
+            this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }, error => {
             console.log(error);
         });
@@ -85,13 +92,22 @@ let TableComponent = class TableComponent {
             this.GetTimeLogs();
         }
     }
+    setPage(page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.timeLogs.length, page);
+        // get current page of items
+        this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
 };
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',
         templateUrl: './app/html/table.component.html'
     }), 
-    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService])
+    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService])
 ], TableComponent);
 exports.TableComponent = TableComponent;
 //# sourceMappingURL=table.component.js.map
