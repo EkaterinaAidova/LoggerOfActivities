@@ -13,10 +13,6 @@
             </select>
         </div>
     </app-modal>
-    <app-modal-time #modalStop (ok)=Stop($event)>
-        </app-modal-time>
-    <app-modal-time #modalPause (ok)=Pause($event)>
-    </app-modal-time>
         <button class="btn btn-default" (click)="Exit()">Выйти</button>
         <table class="table table-striped">
             <thead>
@@ -37,12 +33,16 @@
                 <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
                 <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
                 <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
-                <td>  {{timeLog.EndWorkTime | emptyDate }} </td>
+                <td>  {{timeLog.EndWorkTime |  emptyDate }} </td>
                 <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="Start(timeLog)">Start</button></td>
                 <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)">Pause</button></td>
                 <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)">Stop</button></td>
             </tr>
         </table>
+    <app-modal-time #modalPause (ok)=Pause($event)>
+    </app-modal-time>
+    <app-modal-time #modalStop (ok)=Stop($event)>
+    </app-modal-time>
         <!-- pager -->
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">

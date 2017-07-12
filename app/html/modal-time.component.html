@@ -7,10 +7,9 @@
             </div>
             <div class="modal-body">
                 <ng-content select=".app-modal-body"></ng-content>
-                <input [(ngModel)]="dl.date" ngu2-datetime-picker
-                       hour="23"
-                       minute='59'
-                       min-date="date"
+                <input [(ngModel)]="dl.date" ng2-datetime-picker
+                       min-date="minDate"
+                       max-date="maxDate"
                        close-on-select="false" />
             </div>
             <div class="modal-footer">

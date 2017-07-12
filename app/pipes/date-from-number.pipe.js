@@ -12,10 +12,11 @@ const core_1 = require('@angular/core');
 const moment = require('moment');
 let DurationPipe = class DurationPipe {
     transform(value, ...args) {
-        if (typeof args === 'undefined' || args.length !== 1) {
+        if (typeof args === 'undefined' || args.length != 1) {
             throw new Error('DurationPipe: missing required time unit argument');
         }
-        return moment.duration(value / 10000, args[0]).asHours().toFixed(2);
+        let v = value / 10000;
+        return moment.duration(v, args[0]).asHours().toFixed(2);
     }
 };
 DurationPipe = __decorate([

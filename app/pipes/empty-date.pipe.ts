@@ -1,13 +1,11 @@
 ﻿import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 @Pipe({
     name: 'emptyDate'
 })
 export class EmptyDatePipe implements PipeTransform {
-    transform(date: Date, args?: any): string {
-
-        if (date == null) return "";
-        let result: string;
-        result = date.getDate + "/" + date.getMonth + "/" + date.getFullYear + " " + date.getHours + ":" + date.getMinutes;
-        return result;
+    transform(date: any, ...args: string[]) {
+        if (date == null) return ""
+        return moment(date).format('DD/MM/YYYY hh:mm');
     }
 }

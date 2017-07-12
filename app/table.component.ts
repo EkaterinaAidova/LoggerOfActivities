@@ -10,6 +10,7 @@ import { Timer } from './models/timer'
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
 import { TimeLogInfoForCreating } from './models/time-log-create.model';
+import { DateLog } from './models/info-from-time-modal.model';
 @Component(
     {
     selector: 'table-logs',
@@ -28,12 +29,11 @@ export class TableComponent implements OnInit
     newLog: TimeLogInfoForCreating = new TimeLogInfoForCreating();
     pager: any = {};
     pagedItems: TimeLog[];
-   @Input() date2: Date = new Date(123);
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.timer.startTime =this.timeLogs[0].SpendingTime;
+                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
                 this.timer.Start();
             }
             // get pager object from service
@@ -71,14 +71,14 @@ export class TableComponent implements OnInit
         this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); }); 
         this.GetTimeLogs();
     }
-  /*  Stop(dl: TimeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 3).subscribe((response) => { console.log(response); }); 
+    Stop(dl: DateLog) {
+        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); }); 
         this.GetTimeLogs();
     }
-    Pause(timeLog: TimeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
+    Pause(dl: DateLog) {
+        this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
-    }*/
+    }
     ngOnInit()
     {
         this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));

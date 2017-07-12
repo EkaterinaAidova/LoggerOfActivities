@@ -16,6 +16,7 @@ const app_component_1 = require('./app.component');
 const login_component_1 = require('./login.component');
 const table_component_1 = require('./table.component');
 const modal_component_1 = require('./modal.component');
+const modal_time_component_1 = require('./modal-time.component');
 const login_service_1 = require('./services/login.service');
 const user_service_1 = require("./services/user.service");
 const time_log_service_1 = require('./services/time-log.service');
@@ -30,7 +31,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule, ng2_datetime_picker_1.Ng2DatetimePickerModule],
-        declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, table_component_1.TableComponent, empty_date_pipe_1.EmptyDatePipe, date_from_number_pipe_1.DurationPipe, modal_component_1.ModalComponent],
+        declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, table_component_1.TableComponent, empty_date_pipe_1.EmptyDatePipe, date_from_number_pipe_1.DurationPipe, modal_component_1.ModalComponent, modal_time_component_1.ModalTimeComponent],
         providers: [login_service_1.LoginService, user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService],
         bootstrap: [app_component_1.AppComponent],
         entryComponents: [modal_component_1.ModalComponent]

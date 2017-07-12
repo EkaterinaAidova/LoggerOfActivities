@@ -9,18 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let ModalComponent = class ModalComponent {
+const info_from_time_modal_model_1 = require('./models/info-from-time-modal.model');
+const moment = require('moment');
+let ModalTimeComponent = class ModalTimeComponent {
     constructor() {
         this.visible = false;
         this.visibleAnimate = false;
         this.ok = new core_1.EventEmitter();
-        this.dl = new DateLog();
+        this.dl = new info_from_time_modal_model_1.DateLog();
+        this.minDate = new Date();
+        this.maxDate = new Date();
     }
     show(timeLog) {
-        if (timeLog.Status == 1)
-            this.dl.date = timeLog.LastResumeTime;
-        else
-            this.dl.date = timeLog.LastPauseTime;
+        this.dl.date = new Date(moment.now());
+        console.log(this.dl.date);
+        if (timeLog.Status == 1 && timeLog.LastResumeTime != null)
+            this.minDate = timeLog.LastResumeTime;
+        if (timeLog.Status == 2 && timeLog.LastPauseTime != null)
+            this.minDate = timeLog.LastPauseTime;
         this.dl.id = timeLog.TaskID;
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
@@ -40,10 +46,10 @@ let ModalComponent = class ModalComponent {
 __decorate([
     core_1.Output(), 
     __metadata('design:type', Object)
-], ModalComponent.prototype, "ok", void 0);
-ModalComponent = __decorate([
+], ModalTimeComponent.prototype, "ok", void 0);
+ModalTimeComponent = __decorate([
     core_1.Component({
-        selector: 'app-modal',
+        selector: 'app-modal-time',
         templateUrl: './app/html/modal-time.component.html',
         styles: [`
     .modal {
@@ -52,9 +58,6 @@ ModalComponent = __decorate([
   `]
     }), 
     __metadata('design:paramtypes', [])
-], ModalComponent);
-exports.ModalComponent = ModalComponent;
-class DateLog {
-}
-exports.DateLog = DateLog;
+], ModalTimeComponent);
+exports.ModalTimeComponent = ModalTimeComponent;
 //# sourceMappingURL=modal-time.component.js.map

@@ -1,8 +1,9 @@
 ﻿import {Component, Output, EventEmitter} from '@angular/core';
 import { TimeLog } from './models/time-log.model';
-
+import { DateLog } from './models/info-from-time-modal.model';
+import * as moment from 'moment';
 @Component({
-    selector: 'app-modal',
+    selector: 'app-modal-time',
     templateUrl: './app/html/modal-time.component.html',
     styles: [`
     .modal {
@@ -10,17 +11,21 @@ import { TimeLog } from './models/time-log.model';
     }
   `]
 })
-export class ModalComponent {
+export class ModalTimeComponent {
 
     public visible = false;
     private visibleAnimate = false;
     @Output() ok = new EventEmitter<DateLog>();
     dl: DateLog = new DateLog();
+    minDate: Date = new Date();
+    maxDate: Date = new Date();
     constructor() { }
 
     public show(timeLog: TimeLog): void {
-        if (timeLog.Status == 1) this.dl.date = timeLog.LastResumeTime;
-        else this.dl.date = timeLog.LastPauseTime;
+        this.dl.date = new Date(moment.now());
+        console.log(this.dl.date);
+        if (timeLog.Status == 1 && timeLog.LastResumeTime != null) this.minDate = timeLog.LastResumeTime;
+        if (timeLog.Status == 2 && timeLog.LastPauseTime != null) this.minDate = timeLog.LastPauseTime;
         this.dl.id = timeLog.TaskID;
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
@@ -39,9 +44,4 @@ export class ModalComponent {
         }
     }
 
-}
-export class DateLog
-{
-    date: Date;
-    id: number
 }

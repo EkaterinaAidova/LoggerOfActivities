@@ -9,5 +9,6 @@ namespace ActivityLogger.BusinessLogic.DataTransferObjects
     {
        public  int LogId { get; set; }
        public  int Status { get; set; }
+       public DateTime Date { get; set; }
     }
 }

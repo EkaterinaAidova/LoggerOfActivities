@@ -32,13 +32,12 @@ let TableComponent = class TableComponent {
         this.timer = new timer_1.Timer();
         this.newLog = new time_log_create_model_1.TimeLogInfoForCreating();
         this.pager = {};
-        this.date2 = new Date(123);
     }
     GetTimeLogs() {
         this.timeLogService.GetData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.timer.startTime = this.timeLogs[0].SpendingTime;
+                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
                 this.timer.Start();
             }
             // get pager object from service
@@ -68,14 +67,14 @@ let TableComponent = class TableComponent {
         this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); });
         this.GetTimeLogs();
     }
-    /*  Stop(dl: TimeLog) {
-          this.timeLogService.SetStatus(timeLog.TaskID, 3).subscribe((response) => { console.log(response); });
-          this.GetTimeLogs();
-      }
-      Pause(timeLog: TimeLog) {
-          this.timeLogService.SetStatus(timeLog.TaskID, 2).subscribe((response) => { console.log(response); });
-          this.GetTimeLogs();
-      }*/
+    Stop(dl) {
+        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); });
+        this.GetTimeLogs();
+    }
+    Pause(dl) {
+        this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { console.log(response); });
+        this.GetTimeLogs();
+    }
     ngOnInit() {
         this.activityService.Get().subscribe(data => this.activities = data, error => console.log(error));
         this.projectService.Get().subscribe(data => this.projects = data, error => console.log(error));
@@ -101,10 +100,6 @@ let TableComponent = class TableComponent {
         this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 };
-__decorate([
-    core_1.Input(), 
-    __metadata('design:type', Date)
-], TableComponent.prototype, "date2", void 0);
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',

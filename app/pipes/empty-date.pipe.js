@@ -9,13 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const moment = require('moment');
 let EmptyDatePipe = class EmptyDatePipe {
-    transform(date, args) {
+    transform(date, ...args) {
         if (date == null)
             return "";
-        let result;
-        result = date.getDate + "/" + date.getMonth + "/" + date.getFullYear + " " + date.getHours + ":" + date.getMinutes;
-        return result;
+        return moment(date).format('DD/MM/YYYY hh:mm');
     }
 };
 EmptyDatePipe = __decorate([

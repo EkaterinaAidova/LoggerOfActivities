@@ -43,7 +43,7 @@ namespace ActivityLogger.Controllers
                     Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
                     return Ok();
                 case 2:
-                    var res = timeLogService.SetLogOnPauseWithTime(ourLog.LogId, DateTime.Now);
+                    var res = timeLogService.SetLogOnPauseWithTime(ourLog.LogId, ourLog.Date.ToLocalTime());
                     if (res)
                     {
                         Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
@@ -52,7 +52,7 @@ namespace ActivityLogger.Controllers
                     Logger.Log.Error(String.Concat("Controller: timeLogs -  TimeLog", ourLog.LogId.ToString(), "can't be updated"));
                     return BadRequest();
                 case 3:
-                    res = timeLogService.FinishWorkWithTime(ourLog.LogId, DateTime.Now);
+                    res = timeLogService.FinishWorkWithTime(ourLog.LogId, ourLog.Date.ToLocalTime());
                     if (res)
                     {
                         Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));

@@ -21,15 +21,18 @@ class Timer {
             this.startTime = 0;
     }
     Start() {
-        TimerObservable_1.TimerObservable.create(this.startTime, 1000)
+        TimerObservable_1.TimerObservable.create(0, 1000)
             .subscribe(t => {
-            this.time = this.startTime + t * 1000 * 100000; //console.log(this.time);
+            this.time = this.startTime + t * 1000 * 10000;
+            //  console.log(this.time);
         }); //.format(this.format));
     }
 }
 __decorate([
     core_1.Input(), 
-    __metadata('design:type', Number)
-], Timer.prototype, "startTime", void 0);
+    __metadata('design:type', Function), 
+    __metadata('design:paramtypes', [Number]), 
+    __metadata('design:returntype', void 0)
+], Timer.prototype, "SetStartTime", null);
 exports.Timer = Timer;
 //# sourceMappingURL=timer.js.map

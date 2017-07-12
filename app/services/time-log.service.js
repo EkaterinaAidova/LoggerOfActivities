@@ -43,10 +43,13 @@ let TimeLogService = class TimeLogService {
             return logs;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
-    SetStatus(id, status) {
+    SetStatus(id, status, date) {
         let data = new time_log_update_model_1.TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
+        data.Date = new Date();
+        if (date != undefined)
+            data.Date = date;
         let headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.put(this.url + "/", data, { headers: headers });

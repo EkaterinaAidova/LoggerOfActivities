@@ -35,17 +35,21 @@ export class TimeLogService
 								StartWorkTime: log.StartWorkTime,
 								LastPauseTime: log.LastPauseTime,
 								LastResumeTime: log.LastResumeTime,
-								EndWorkTime: log.EndWorkTime,
+                                EndWorkTime: log.EndWorkTime,
 								SpendingTime: log.SpendingTime});
                             }
                             return logs;
             }).catch((error: any) => { return Observable.throw(error); });
     }
-    public SetStatus(id: number, status: number)
+    public SetStatus(id: number, status: number, date?: Date)
     {
         let data = new TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
+        data.Date = new Date();
+        if (date != undefined)
+            data.Date = date;
+
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.put(this.url + "/", data, { headers: headers });
