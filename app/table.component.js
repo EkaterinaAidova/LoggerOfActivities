@@ -40,9 +40,7 @@ let TableComponent = class TableComponent {
                 this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
                 this.timer.Start();
             }
-            // get pager object from service
             this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
-            // get current page of items
             this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }, error => {
             console.log(error);
