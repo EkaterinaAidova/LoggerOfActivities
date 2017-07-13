@@ -44,7 +44,7 @@ export class TableComponent implements OnInit
             });
        
     }
-    OnChanged(id)
+    OnChanged(id: number)
     {
         this.user.ID = <number>id;
         console.log(id);

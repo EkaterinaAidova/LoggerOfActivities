@@ -17,7 +17,7 @@ export class ModalTimeComponent {
     public visible = false;
     private visibleAnimate = false;
     @Output() ok = new EventEmitter<DateLog>();
-    date2:Date = new Date();
+   @Input() date2:Date = new Date();
     dl: DateLog = new DateLog();
     minDate: Date = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
     maxDate: Date = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
@@ -41,9 +41,10 @@ export class ModalTimeComponent {
         this.checkMinMaxHours();
         setTimeout(() => this.visibleAnimate = true, 100);
     }
-       
-    public onTimeChange(val) {
+
+    public onChange(val: Date) {
         console.log(val);
+        console.log(this.date2);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
 
@@ -76,6 +77,7 @@ export class ModalTimeComponent {
         let month = this.date2.getMonth();
         let day = this.date2.getDate();
         let hour = this.date2.getHours();
+        let minute = this.date2.getMinutes();
         let minyear = this.minFullDate.getFullYear();
         let minmonth = this.minFullDate.getMonth();
         let minday = this.minFullDate.getDate();
@@ -89,6 +91,10 @@ export class ModalTimeComponent {
             this.minHour = minhour;
             if (hour == minhour) {
                 this.minMinutes = this.minFullDate.getMinutes();
+                if (minute < this.minMinutes)
+                {
+                    this.date2.setMinutes(this.minMinutes);
+                }
             }
         }
         else {
@@ -98,7 +104,11 @@ export class ModalTimeComponent {
         if (year == maxyear && month == maxmonth && day == maxday) {
             this.maxHour = maxhour;
             if (hour == maxhour) {
-                this.maxMinutes = this.maxDate.getMinutes();
+                this.maxMinutes = this.maxFullDate.getMinutes();
+                if (minute > this.maxMinutes)
+                {
+                    this.date2.setMinutes(this.maxMinutes);
+                }
             }
         }
         else {

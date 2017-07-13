@@ -39,8 +39,9 @@ let ModalTimeComponent = class ModalTimeComponent {
         this.checkMinMaxHours();
         setTimeout(() => this.visibleAnimate = true, 100);
     }
-    onTimeChange(val) {
+    onChange(val) {
         console.log(val);
+        console.log(this.date2);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
     }
@@ -67,6 +68,7 @@ let ModalTimeComponent = class ModalTimeComponent {
         let month = this.date2.getMonth();
         let day = this.date2.getDate();
         let hour = this.date2.getHours();
+        let minute = this.date2.getMinutes();
         let minyear = this.minFullDate.getFullYear();
         let minmonth = this.minFullDate.getMonth();
         let minday = this.minFullDate.getDate();
@@ -79,6 +81,9 @@ let ModalTimeComponent = class ModalTimeComponent {
             this.minHour = minhour;
             if (hour == minhour) {
                 this.minMinutes = this.minFullDate.getMinutes();
+                if (minute < this.minMinutes) {
+                    this.date2.setMinutes(this.minMinutes);
+                }
             }
         }
         else {
@@ -88,7 +93,10 @@ let ModalTimeComponent = class ModalTimeComponent {
         if (year == maxyear && month == maxmonth && day == maxday) {
             this.maxHour = maxhour;
             if (hour == maxhour) {
-                this.maxMinutes = this.maxDate.getMinutes();
+                this.maxMinutes = this.maxFullDate.getMinutes();
+                if (minute > this.maxMinutes) {
+                    this.date2.setMinutes(this.maxMinutes);
+                }
             }
         }
         else {
@@ -103,6 +111,10 @@ __decorate([
     core_1.Output(), 
     __metadata('design:type', Object)
 ], ModalTimeComponent.prototype, "ok", void 0);
+__decorate([
+    core_1.Input(), 
+    __metadata('design:type', Date)
+], ModalTimeComponent.prototype, "date2", void 0);
 ModalTimeComponent = __decorate([
     core_1.Component({
         selector: 'app-modal-time',

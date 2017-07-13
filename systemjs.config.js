@@ -23,7 +23,8 @@
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'moment': 'npm:moment',
             'angular2-moment': 'npm:angular2-moment',
-            'ng2-datetime-picker': 'node_modules/ng2-datetime-picker/dist'
+       //     'ng2-datetime-picker': 'node_modules/ng2-datetime-picker/dist',
+            '@ngui/datetime-picker' :'node_modules/@ngui/datetime-picker/dist'
         },
         // пакеты, которые указывают загрузчику System, как загружать файлы без имени и расширения
         packages: {
@@ -38,12 +39,8 @@
                 main: './moment.js',
                 defaultExtension: 'js'
             },
-            'angular2-moment': {
-                main: './index.js',
-                defaultExtension: 'js'
-            },
-            'ng2-datetime-picker':{ main: 'ng2-datetime-picker.umd.js', defaultExtension: 'js' }
-          
+         //   'ng2-datetime-picker': { main: 'ng2-datetime-picker.umd.js', defaultExtension: 'js' },
+            '@ngui/datetime-picker': { main: 'datetime-picker.umd.js', defaultExtension: 'js' }
         }
     });
 })(this);

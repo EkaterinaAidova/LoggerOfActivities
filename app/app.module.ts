@@ -18,11 +18,12 @@ import { PagerService } from './services/pager.service';
 
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
 import { DurationPipe } from './pipes/date-from-number.pipe';
-import { Ng2DatetimePickerModule, Ng2Datetime} from 'ng2-datetime-picker';
+//import { Ng2DatetimePickerModule} from 'ng2-datetime-picker';
+import { NguiDatetimePickerModule } from '@ngui/datetime-picker'
 
 @NgModule(
     {
-        imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, Ng2DatetimePickerModule],
+        imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, NguiDatetimePickerModule],
         declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe, ModalComponent, ModalTimeComponent],
         providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService, PagerService ], // регистрация сервисов
         bootstrap: [AppComponent],
