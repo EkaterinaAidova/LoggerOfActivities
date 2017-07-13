@@ -4,23 +4,30 @@
         <div class="modal-content">
             <div class="modal-header">
                 <ng-content select=".app-modal-header"></ng-content>
-            </div>
+                <div *ngIf="isEarly" class="alert alert-danger">
+                    Вы не можете выбрать время раньше, чем {{minFullDate}}
+                </div>
+                <div *ngIf="isLater" class="alert alert-danger">
+                    Вы не можете выбрать время позже, чем {{maxFullDate}}
+                </div>
+
+         </div>
             <div class="modal-body">
                 <ng-content select=".app-modal-body"></ng-content>
-                <input [(ngModel)]="date2" 
+                <input [(ngModel)]="date" 
                         ngui-datetime-picker (ngModelChange)="onChange($event)"
                        [min-date]="minDate"
                        [max-date]="maxDate"
                        [max-hour]="maxHour"
                        [min-hour]="minHour"
-
                         />
             </div>
             <div class="modal-footer">
                 <ng-content select=".app-modal-footer"></ng-content>
-                <button class="btn btn-default" (click)="hide(true)">Ок</button>
+                <button class="btn btn-default" [disabled]="isEarly||isLater" (click)="hide(true)">Ок</button>
                 <button class="btn btn-default" (click)="hide(false)">Отмена</button>
             </div>
         </div>
+
     </div>
 </div>

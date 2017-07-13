@@ -17,16 +17,16 @@ let LoginComponent = class LoginComponent {
         this.myDate = new Date();
         this.user = new autorization_model_1.LoginingForm();
         this.changedID = new core_1.EventEmitter();
-        this.isNotError = true;
+        this.isError = false;
     }
     LogIn() {
-        this.loginService.Get(this.user.Login, this.user.Password).subscribe(user => {
+        this.loginService.get(this.user.Login, this.user.Password).subscribe(user => {
             this.user = user;
-            this.isNotError = true;
+            this.isError = false;
             this.changedID.emit(user.ID);
         }, error => {
             console.log(error);
-            this.isNotError = false;
+            this.isError = true;
         });
     }
 };

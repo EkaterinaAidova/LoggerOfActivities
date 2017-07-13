@@ -19,7 +19,7 @@ let TimeLogService = class TimeLogService {
         this.http = http;
         this.url = "api/timeLog";
     }
-    GetData(id) {
+    getData(id) {
         return this.http.get(this.url + "/" + id)
             .map((resp) => {
             let logList = resp.json();
@@ -38,7 +38,8 @@ let TimeLogService = class TimeLogService {
                     LastPauseTime: log.LastPauseTime,
                     LastResumeTime: log.LastResumeTime,
                     EndWorkTime: log.EndWorkTime,
-                    SpendingTime: log.SpendingTime });
+                    SpendingTime: log.SpendingTime
+                });
             }
             return logs;
         }).catch((error) => { return Observable_1.Observable.throw(error); });

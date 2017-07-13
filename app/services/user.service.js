@@ -14,17 +14,16 @@ const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 let UserService = class UserService {
-    constructor(_http) {
-        this._http = _http;
+    constructor(http) {
+        this.http = http;
         this.url = "api/user";
     }
-    Get(id) {
-        // return this.http.get(url + "?id=" + id)
-        return this._http.get(this.url + "/" + id)
+    get(id) {
+        return this.http.get(this.url + "/" + id)
             .map((resp) => {
             let user = resp.json();
             return user;
-        }).catch((error) => { return Observable_1.Observable.throw(error); });
+        }).catch((error) => Observable_1.Observable.throw(error));
     }
 };
 UserService = __decorate([

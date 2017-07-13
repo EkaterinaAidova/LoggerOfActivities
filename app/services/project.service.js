@@ -14,26 +14,24 @@ const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 let ProjectService = class ProjectService {
-    constructor(_http) {
-        this._http = _http;
+    constructor(http) {
+        this.http = http;
         this.url = "api/project";
     }
-    Get() {
-        // return this.http.get(url + "?id=" + id)
-        return this._http.get(this.url + "/")
+    get() {
+        return this.http.get(this.url + "/")
             .map((resp) => {
             let projectList = resp.json();
             let projects = [];
             for (let index in projectList) {
                 let prj = projectList[index];
-                // console.log(logList[index]);
                 projects.push({
                     ID: prj.ID,
                     Name: prj.Name
                 });
             }
             return projects;
-        }).catch((error) => { return Observable_1.Observable.throw(error); });
+        }).catch((error) => Observable_1.Observable.throw(error));
     }
 };
 ProjectService = __decorate([

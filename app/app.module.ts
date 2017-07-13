@@ -18,7 +18,7 @@ import { PagerService } from './services/pager.service';
 
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
 import { DurationPipe } from './pipes/date-from-number.pipe';
-//import { Ng2DatetimePickerModule} from 'ng2-datetime-picker';
+
 import { NguiDatetimePickerModule } from '@ngui/datetime-picker'
 
 @NgModule(
@@ -29,6 +29,4 @@ import { NguiDatetimePickerModule } from '@ngui/datetime-picker'
         bootstrap: [AppComponent],
         entryComponents: [ModalComponent]
     })
-export class AppModule
-{
-}
+export class AppModule{}

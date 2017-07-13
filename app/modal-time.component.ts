@@ -13,14 +13,13 @@ import { Ng2Datetime } from "ng2-datetime-picker";
   `]
 })
 export class ModalTimeComponent {
-
     public visible = false;
     private visibleAnimate = false;
     @Output() ok = new EventEmitter<DateLog>();
-   @Input() date2:Date = new Date();
+    date: Date = new Date();
     dl: DateLog = new DateLog();
-    minDate: Date = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
-    maxDate: Date = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
+    minDate: Date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
+    maxDate: Date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
     minFullDate: Date = new Date();
     maxFullDate: Date = new Date();
     minHour: number = 0;
@@ -28,11 +27,11 @@ export class ModalTimeComponent {
     maxHour: number = 23;
     maxMinutes: number = 59;
     timeFlag: boolean = false;
-  
+    isEarly = false;
+    isLater = true;
     constructor() { }
-
     public show(timeLog: TimeLog): void {
-        this.dl.date = new Date();
+        this.date = new Date();
         console.log(this.dl.date);
         if (timeLog.Status == 1 && timeLog.LastResumeTime != null) this.setMinTime(timeLog.LastResumeTime);
         if (timeLog.Status == 2 && timeLog.LastPauseTime != null) this.setMinTime(timeLog.LastPauseTime);
@@ -41,10 +40,9 @@ export class ModalTimeComponent {
         this.checkMinMaxHours();
         setTimeout(() => this.visibleAnimate = true, 100);
     }
-
     public onChange(val: Date) {
         console.log(val);
-        console.log(this.date2);
+        console.log(this.date);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
 
@@ -53,31 +51,28 @@ export class ModalTimeComponent {
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
         if (param == true) {
-            this.dl.date = this.date2;
+            this.dl.date = this.date;
             this.ok.emit(this.dl);
-
         }
-
     }
-
     public onContainerClicked(event: MouseEvent): void {
         if ((<HTMLElement>event.target).classList.contains('modal')) {
             this.hide(false);
         }
     }
-    setMinTime(date: Date)
-    {
+    setMinTime(date: Date) {
         let num = date.valueOf();
         this.minFullDate = new Date(num);
         this.minDate = new Date(this.minFullDate.getFullYear(), this.minFullDate.getMonth(), this.minFullDate.getDate());
     }
-    checkMinMaxHours()
-    {
-        let year = this.date2.getFullYear();
-        let month = this.date2.getMonth();
-        let day = this.date2.getDate();
-        let hour = this.date2.getHours();
-        let minute = this.date2.getMinutes();
+    checkMinMaxHours() {
+        this.isEarly = false;
+        this.isLater = false;
+        let year = this.date.getFullYear();
+        let month = this.date.getMonth();
+        let day = this.date.getDate();
+        let hour = this.date.getHours();
+        let minute = this.date.getMinutes();
         let minyear = this.minFullDate.getFullYear();
         let minmonth = this.minFullDate.getMonth();
         let minday = this.minFullDate.getDate();
@@ -86,14 +81,13 @@ export class ModalTimeComponent {
         let maxmonth = this.maxFullDate.getMonth();
         let maxday = this.maxFullDate.getDate();
         let maxhour = this.maxFullDate.getHours();
-
         if (year == minyear && month == minmonth && day == minday) {
             this.minHour = minhour;
             if (hour == minhour) {
                 this.minMinutes = this.minFullDate.getMinutes();
-                if (minute < this.minMinutes)
-                {
-                    this.date2.setMinutes(this.minMinutes);
+                if (minute < this.minMinutes) {
+                    this.date.setMinutes(this.minMinutes);
+                    this.isEarly = true;
                 }
             }
         }
@@ -105,9 +99,9 @@ export class ModalTimeComponent {
             this.maxHour = maxhour;
             if (hour == maxhour) {
                 this.maxMinutes = this.maxFullDate.getMinutes();
-                if (minute > this.maxMinutes)
-                {
-                    this.date2.setMinutes(this.maxMinutes);
+                if (minute > this.maxMinutes) {
+                    this.date.setMinutes(this.maxMinutes);
+                    this.isLater = true;
                 }
             }
         }
@@ -115,8 +109,5 @@ export class ModalTimeComponent {
             this.maxMinutes = 59;
             this.maxHour = 23;
         }
-        if (this.minDate.getDate == this.maxDate.getDate && this.minDate.getMonth == this.maxDate.getMonth && this.minDate.getFullYear == this.maxDate.getFullYear)
-            this.timeFlag = true;
-       
     }
 }

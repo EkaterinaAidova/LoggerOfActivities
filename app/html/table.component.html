@@ -2,6 +2,7 @@
     Сотрудник: {{user.Name}}
     <button class="btn btn-default" (click)="modal.show()"> Новое задание</button>
     <app-modal #modal (ok)=OnCloseModal($event)>
+        <div class="app-modal-header"> Выберите нужный проект и должность</div>
         <div class="app-modal-body">
             Проект:
             <select class="projectSelector" [(ngModel)]="newLog.ProjectID">
@@ -9,58 +10,68 @@
             </select>
             Должность:
             <select class="activitySelector" [(ngModel)]="newLog.ActivityID">
-                <option *ngFor="let activity of activities" [value]="activity.ID"> {{activity.Position}} </option>
+                <option *ngFor="let activity of activities" [value]="activity.ID" required> {{activity.Position}} </option>
             </select>
         </div>
     </app-modal>
-        <button class="btn btn-default" (click)="Exit()">Выйти</button>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Проект</th>
-                    <th>Позиция</th>
-                    <th>Время начала</th>
-                    <th>Потраченное время</th>
-                    <th>Время завершения</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tr *ngFor="let timeLog of pagedItems">
-                <td> {{timeLog.Project.Name}} </td>
-                <td> {{timeLog.Activity.Position}} </td>
-                <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
-                <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
-                <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
-                <td>  {{timeLog.EndWorkTime |  emptyDate }} </td>
-                <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="Start(timeLog)">Start</button></td>
-                <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)">Pause</button></td>
-                <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)">Stop</button></td>
+    <app-modal #modalExit (ok)=Exit($event)>
+        <div class="app-modal-header"> Выход </div>
+        <div class="app-modal-body">
+            <div *ngIf="active"> У Вас есть запущенная активность. Хотите приостановить работу перед выходом?  </div>
+            <div *ngIf="!active"> Вы уверены, что хотите выйти? </div>
+        </div>
+        <div class="app-modal-footer" >
+            <button *ngIf="active" class="btn btn-default" (click)="activeOnPause()"> Остановить </button>
+        </div>
+    </app-modal>
+    <button class="btn btn-default" (click)="modalExit.show()">Выйти</button>
+    <table class="table table-hover">
+        <thead class="thead">
+            <tr>
+                <th>Проект</th>
+                <th>Позиция</th>
+                <th>Время начала</th>
+                <th>Потраченное время</th>
+                <th>Время завершения</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        </table>
+        </thead>
+        <tr *ngFor="let timeLog of pagedItems" [ngClass]="{'paused':timeLog.Status==2, 'finished':timeLog.Status==3 }">
+            <td> {{timeLog.Project.Name}} </td>
+            <td> {{timeLog.Activity.Position}} </td>
+            <td>{{timeLog.StartWorkTime | date:"dd/MM/yyyy hh:mm"}} </td>
+            <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
+            <td *ngIf="timeLog.Status==1">   {{timer.time | amDuration:'ms' }} ч.</td>
+            <td>  {{timeLog.EndWorkTime |  emptyDate }} </td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="Start(timeLog)">start</button></td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)">Pause</button></td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)">Stop</button></td>
+        </tr>
+    </table>
     <app-modal-time #modalPause (ok)=Pause($event)>
     </app-modal-time>
     <app-modal-time #modalStop (ok)=Stop($event)>
     </app-modal-time>
-        <!-- pager -->
-        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-            <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(1)">First</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-            </li>
-            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                <a (click)="setPage(page)">{{page}}</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.currentPage + 1)">Next</a>
-            </li>
-            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.totalPages)">Last</a>
-            </li>
-        </ul>
+    <!-- pager -->
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
 </div> <login *ngIf="!logined" (changedID)="OnChanged($event)"> </login>
 
 

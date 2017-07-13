@@ -1,4 +1,8 @@
 ﻿<div>
+    <div *ngIf="isError" class="alert alert-danger" >
+        <button class="close" aria-label="Close" (click)="isError=false"></button>  
+            Неверный логин и пароль
+   </div>
     <div class="form-group">
         <label>Логин</label>
         <input class="form-control" name="Login" [(ngModel)]="user.Login" #Login="ngModel" required />
@@ -12,6 +16,5 @@
                 class="btn btn-default" (click)="LogIn()">
             Войти
         </button>
-    </div>
-    
+    </div> 
 </div>

@@ -14,9 +14,7 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: `
-               <table-logs> <\table-logs>			   
-			   `
+        template: `<table-logs> <\table-logs>`
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);

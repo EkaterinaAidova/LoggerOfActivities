@@ -18,7 +18,7 @@ let LoginService = class LoginService {
         this.http = http;
         this.url = "api/autorization";
     }
-    Get(login, password) {
+    get(login, password) {
         return this.http.get(this.url + "?login=" + login + "&password=" + password)
             .map((resp) => {
             let user = resp.json();

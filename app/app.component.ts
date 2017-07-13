@@ -2,10 +2,7 @@
 
 @Component(
     {
-    selector: 'my-app',
-    
-    template: `
-               <table-logs> <\table-logs>			   
-			   `
+        selector: 'my-app',
+        template: `<table-logs> <\table-logs>`
     })
-export class AppComponent{}
+export class AppComponent { }

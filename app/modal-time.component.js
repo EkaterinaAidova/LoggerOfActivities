@@ -15,10 +15,10 @@ let ModalTimeComponent = class ModalTimeComponent {
         this.visible = false;
         this.visibleAnimate = false;
         this.ok = new core_1.EventEmitter();
-        this.date2 = new Date();
+        this.date = new Date();
         this.dl = new info_from_time_modal_model_1.DateLog();
-        this.minDate = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
-        this.maxDate = new Date(this.date2.getFullYear(), this.date2.getMonth(), this.date2.getDate());
+        this.minDate = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
+        this.maxDate = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
         this.minFullDate = new Date();
         this.maxFullDate = new Date();
         this.minHour = 0;
@@ -26,9 +26,11 @@ let ModalTimeComponent = class ModalTimeComponent {
         this.maxHour = 23;
         this.maxMinutes = 59;
         this.timeFlag = false;
+        this.isEarly = false;
+        this.isLater = true;
     }
     show(timeLog) {
-        this.dl.date = new Date();
+        this.date = new Date();
         console.log(this.dl.date);
         if (timeLog.Status == 1 && timeLog.LastResumeTime != null)
             this.setMinTime(timeLog.LastResumeTime);
@@ -41,7 +43,7 @@ let ModalTimeComponent = class ModalTimeComponent {
     }
     onChange(val) {
         console.log(val);
-        console.log(this.date2);
+        console.log(this.date);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
     }
@@ -49,7 +51,7 @@ let ModalTimeComponent = class ModalTimeComponent {
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
         if (param == true) {
-            this.dl.date = this.date2;
+            this.dl.date = this.date;
             this.ok.emit(this.dl);
         }
     }
@@ -64,11 +66,13 @@ let ModalTimeComponent = class ModalTimeComponent {
         this.minDate = new Date(this.minFullDate.getFullYear(), this.minFullDate.getMonth(), this.minFullDate.getDate());
     }
     checkMinMaxHours() {
-        let year = this.date2.getFullYear();
-        let month = this.date2.getMonth();
-        let day = this.date2.getDate();
-        let hour = this.date2.getHours();
-        let minute = this.date2.getMinutes();
+        this.isEarly = false;
+        this.isLater = false;
+        let year = this.date.getFullYear();
+        let month = this.date.getMonth();
+        let day = this.date.getDate();
+        let hour = this.date.getHours();
+        let minute = this.date.getMinutes();
         let minyear = this.minFullDate.getFullYear();
         let minmonth = this.minFullDate.getMonth();
         let minday = this.minFullDate.getDate();
@@ -82,7 +86,8 @@ let ModalTimeComponent = class ModalTimeComponent {
             if (hour == minhour) {
                 this.minMinutes = this.minFullDate.getMinutes();
                 if (minute < this.minMinutes) {
-                    this.date2.setMinutes(this.minMinutes);
+                    this.date.setMinutes(this.minMinutes);
+                    this.isEarly = true;
                 }
             }
         }
@@ -95,7 +100,8 @@ let ModalTimeComponent = class ModalTimeComponent {
             if (hour == maxhour) {
                 this.maxMinutes = this.maxFullDate.getMinutes();
                 if (minute > this.maxMinutes) {
-                    this.date2.setMinutes(this.maxMinutes);
+                    this.date.setMinutes(this.maxMinutes);
+                    this.isLater = true;
                 }
             }
         }
@@ -103,18 +109,12 @@ let ModalTimeComponent = class ModalTimeComponent {
             this.maxMinutes = 59;
             this.maxHour = 23;
         }
-        if (this.minDate.getDate == this.maxDate.getDate && this.minDate.getMonth == this.maxDate.getMonth && this.minDate.getFullYear == this.maxDate.getFullYear)
-            this.timeFlag = true;
     }
 };
 __decorate([
     core_1.Output(), 
     __metadata('design:type', Object)
 ], ModalTimeComponent.prototype, "ok", void 0);
-__decorate([
-    core_1.Input(), 
-    __metadata('design:type', Date)
-], ModalTimeComponent.prototype, "date2", void 0);
 ModalTimeComponent = __decorate([
     core_1.Component({
         selector: 'app-modal-time',

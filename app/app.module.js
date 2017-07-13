@@ -25,7 +25,6 @@ const project_service_1 = require('./services/project.service');
 const pager_service_1 = require('./services/pager.service');
 const empty_date_pipe_1 = require('./pipes/empty-date.pipe');
 const date_from_number_pipe_1 = require('./pipes/date-from-number.pipe');
-//import { Ng2DatetimePickerModule} from 'ng2-datetime-picker';
 const datetime_picker_1 = require('@ngui/datetime-picker');
 let AppModule = class AppModule {
 };
