@@ -130,7 +130,16 @@ TableComponent = __decorate([
             '.table{background-color: lightcyan}',
             '.paused{background-color: lightyellow}',
             '.finished{background-color: mistyrose}',
-            '.thead{background-color:whitesmoke}'
+            '.thead{background-color:whitesmoke}',
+            ` .userPanel{
+             margin: 10px;
+             position: relative;
+font-siz: 16px;
+font-weight: bold;
+
+             }
+             .fa-user:before{ color: #00e0ff;}
+}    `
         ],
     }), 
     __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService])

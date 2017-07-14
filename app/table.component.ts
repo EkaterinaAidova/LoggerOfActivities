@@ -19,7 +19,16 @@ import { PagerService } from './services/pager.service';
             '.table{background-color: lightcyan}',
             '.paused{background-color: lightyellow}',
             '.finished{background-color: mistyrose}',
-            '.thead{background-color:whitesmoke}'
+            '.thead{background-color:whitesmoke}',
+            ` .userPanel{
+             margin: 10px;
+             position: relative;
+font-siz: 16px;
+font-weight: bold;
+
+             }
+             .fa-user:before{ color: #00e0ff;}
+}    `
         ],
     })
 export class TableComponent implements OnInit {

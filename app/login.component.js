@@ -19,7 +19,7 @@ let LoginComponent = class LoginComponent {
         this.changedID = new core_1.EventEmitter();
         this.isError = false;
     }
-    LogIn() {
+    logIn() {
         this.loginService.get(this.user.Login, this.user.Password).subscribe(user => {
             this.user = user;
             this.isError = false;
@@ -41,11 +41,10 @@ LoginComponent = __decorate([
         input.ng-touched.ng-invalid {border:solid red 2px;}
         input.ng-touched.ng-valid {border:solid green 2px;}
         #login {
-        width: 300px;
+     width: 300px;
     margin: 80px auto 40px;
     padding: 10px;
-    position: relative; /* For the submit button positioning */
- 
+    position: relative; 
     /* Styles */
     box-shadow: 
         0 0 1px rgba(0, 0, 0, 0.3), 
@@ -53,8 +52,16 @@ LoginComponent = __decorate([
         inset 0 1px rgba(255,255,255,1),
         inset 0 -3px 2px rgba(0,0,0,0.25);
     border-radius: 5px;
-    background: linear-gradient(#eeefef, #ffffff 10%);
+    background: linear-gradient(#eeefef, #00e0ff 10%);
+    font-size: 18px;
+    color: white;
     }
+.button
+{
+ padding-top: 10px;
+ position: relative;
+}
+
     `],
         templateUrl: './app/html/login.component.html'
     }), 

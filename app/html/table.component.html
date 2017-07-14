@@ -1,6 +1,10 @@
-﻿<div class="userPanel" *ngIf="logined">
-    Сотрудник: {{user.Name}}
-    <button class="btn btn-default" (click)="modal.show()"> Новое задание</button>
+﻿<div class="userInfo" *ngIf="logined">
+   <div class="userPanel">
+      
+        <span class="userIcon"><i class="fa fa-user fa-2x fa-wh"></i>  Сотрудник: {{user.Name}} </span>
+     <br />
+    
+    <button class="btn btn-default" (click)="modal.show()"> <i class="fa fa-plus-square-o fa-wh"> </i> Новое задание</button>
     <app-modal #modal (ok)=onCloseModal($event)>
         <div class="app-modal-header"> Выберите нужный проект и должность</div>
         <div class="app-modal-body">
@@ -15,7 +19,7 @@
         </div>
     </app-modal>
     <app-modal #modalExit (ok)=exit($event)>
-        <div class="app-modal-header"> Выход </div>
+        <div class="app-modal-header">  Выход </div>
         <div class="app-modal-body">
             <div *ngIf="activeLog.isEnable"> У Вас есть запущенная активность. Хотите приостановить работу перед выходом?  </div>
             <div *ngIf="!activeLog.isEnable"> Вы уверены, что хотите выйти? </div>
@@ -24,7 +28,8 @@
             <button *ngIf="active" class="btn btn-default" (click)="activeOnPause()"> Остановить </button>
         </div>
     </app-modal>
-    <button class="btn btn-default" (click)="modalExit.show()">Выйти</button>
+    <button class="btn btn-default" (click)="modalExit.show()"> <i class="fa fa-times-circle-o fa-wh"></i> Выйти</button>
+    </div>
     <table class="table table-hover">
         <thead class="thead">
             <tr>
@@ -45,9 +50,9 @@
             <td *ngIf="timeLog.Status!=1">	{{timeLog.SpendingTime | amDuration:'ms' }}ч. </td>
             <td *ngIf="timeLog.Status==1">   {{activeLog.timer.time | amDuration:'ms' }} ч.</td>
             <td>  {{timeLog.EndWorkTime |  emptyDate }} </td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="start(timeLog)">start</button></td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)">Pause</button></td>
-            <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)">Stop</button></td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=2" (click)="start(timeLog)"><i class="fa fa-play-circle"></i></button></td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status!=1" (click)="modalPause.show(timeLog)"><i class="fa fa-pause-circle"></i></button></td>
+            <td> <button class="btn btn-default" [disabled]="timeLog.Status==3" (click)="modalStop.show(timeLog)"><i class="fa fa-stop-circle"></i></button></td>
         </tr>
     </table>
     <app-modal-time #modalPause (ok)=pause($event)>
