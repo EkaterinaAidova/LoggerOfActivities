@@ -1,48 +1,43 @@
 ﻿import { Component, Input, OnInit} from '@angular/core';
-import { TimeLogService } from './services/time-log.service'
-import { UserService } from './services/user.service';
-import { PagerService } from './services/pager.service';
+import { TimeLogInfoForCreating } from './models/time-log-create.model';
+import { DateLog } from './models/info-from-time-modal.model';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
 import { Activity } from './models/activity.model';
 import { Project } from './models/project.model';
-import { Timer } from './models/timer'
+import { ActiveLog } from './models/active-log.model'
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
-import { TimeLogInfoForCreating } from './models/time-log-create.model';
-import { DateLog } from './models/info-from-time-modal.model';
+import { TimeLogService } from './services/time-log.service'
+import { UserService } from './services/user.service';
+import { PagerService } from './services/pager.service';
 @Component(
     {
-    selector: 'table-logs',
-    templateUrl: './app/html/table.component.html',
-    styles: ['.datetimepicker{min-width: 200px; font-size: 15px;}',
-        '.table{background-color: lightcyan}',
-        '.paused{background-color: lightyellow}',
-        '.finished{background-color: mistyrose}',
-        '.thead{background-color:whitesmoke}'
-    ],
+        selector: 'table-logs',
+        templateUrl: './app/html/table.component.html',
+        styles: ['.datetimepicker{min-width: 200px; font-size: 15px;}',
+            '.table{background-color: lightcyan}',
+            '.paused{background-color: lightyellow}',
+            '.finished{background-color: mistyrose}',
+            '.thead{background-color:whitesmoke}'
+        ],
     })
-export class TableComponent implements OnInit
-{
+export class TableComponent implements OnInit {
     constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService) { }
-    user: User = new User();
-	logined: boolean = false;
-    timeLogs: TimeLog[] = [];
-    projects: Project[] = [];
-    activities: Activity[] = [];
-    emptpyBlock: any;
-    timer: Timer = new Timer();
-    active: boolean = false;
+    private user: User = new User();
+    public logined: boolean = false;
+    public timeLogs: TimeLog[] = [];
+    public projects: Project[] = [];
+    public activities: Activity[] = [];
+    public activeLog: ActiveLog = new ActiveLog();
     newLog: TimeLogInfoForCreating = new TimeLogInfoForCreating();
     pager: any = {};
     pagedItems: TimeLog[];
-    GetTimeLogs() {
+    getTimeLogs() {
         this.timeLogService.getData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.active = true;
-                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
-                this.timer.Start();
+                this.activeLog.setLog(this.timeLogs[0])
             }
             this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
             this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
@@ -52,70 +47,66 @@ export class TableComponent implements OnInit
             error => {
                 console.log(error);
             });
-       
+
     }
-    OnChanged(id: number)
-    {
+    onChanged(id: number) {
         this.user.ID = <number>id;
         console.log(id);
-		this.logined = true;
-        this.userService.get( this.user.ID).subscribe(user => {
+        this.logined = true;
+        this.userService.get(this.user.ID).subscribe(user => {
             this.user = user;
-           this.GetTimeLogs();
-		},
-		error => 
-		{
-            console.log(error);
-        });
-    } 
+            this.getTimeLogs();
+        },
+            error => {
+                console.log(error);
+            });
+    }
 
-    Exit(ans: boolean) {
+    exit(ans: boolean) {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
         }
     }
+    start(timeLog: TimeLog) {
+        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); });
+        this.getTimeLogs();
+    }
+    stop(dl: DateLog) {
+        if (this.activeLog.checkLogOnActive(dl.id)) {
+            this.activeLog.isEnable = false;
+        }
+        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); });
+        this.getTimeLogs();
+    }
     activeOnPause()
     {
-        this.timeLogService.SetStatus(this.timeLogs[0].TaskID, 2, new Date()).subscribe((response) => { console.log(response); });
-        this.active = false;
+        this.timeLogService.SetStatus(this.activeLog.onPause(), 2, new Date());
+        this.getTimeLogs();
     }
-    Start(timeLog: TimeLog)
-    {
-        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); }); 
-        this.GetTimeLogs();
-    }
-    Stop(dl: DateLog) {
-        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); }); 
-        this.active = false;
-        this.GetTimeLogs();
-    }
-    Pause(dl: DateLog) {
+    pause(dl: DateLog) {
+        if (this.activeLog.checkLogOnActive(dl.id)) {
+            this.activeLog.isEnable = false;
+        }
         this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { console.log(response); });
-        this.active = false;
-        this.GetTimeLogs();
+        this.getTimeLogs();
     }
-    ngOnInit()
-    {
+    ngOnInit() {
         this.activityService.get().subscribe(data => this.activities = data, error => console.log(error));
         this.projectService.get().subscribe(data => this.projects = data, error => console.log(error));
-       
+
     }
-    onSelectProject(project: Project)
-    {
+    onSelectProject(project: Project) {
         this.newLog.ProjectID = project.ID;
     }
-    onSelectActivity(activity: Activity)
-    {
+    onSelectActivity(activity: Activity) {
         this.newLog.ActivityID = activity.ID;
     }
-    OnCloseModal(ok: boolean)
-    {
-        if (ok == true)
-        {
+    onCloseModal(ok: boolean) {
+        if (ok == true) {
             this.newLog.UserID = this.user.ID;
             this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
-            this.GetTimeLogs();
+            this.getTimeLogs();
         }
     }
     setPage(page: number) {

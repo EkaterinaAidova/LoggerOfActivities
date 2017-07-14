@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const time_log_create_model_1 = require('./models/time-log-create.model');
+const user_model_1 = require('./models/user.model');
+const active_log_model_1 = require('./models/active-log.model');
+const activity_service_1 = require('./services/activity.service');
+const project_service_1 = require('./services/project.service');
 const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
 const pager_service_1 = require('./services/pager.service');
-const user_model_1 = require('./models/user.model');
-const timer_1 = require('./models/timer');
-const activity_service_1 = require('./services/activity.service');
-const project_service_1 = require('./services/project.service');
-const time_log_create_model_1 = require('./models/time-log-create.model');
 let TableComponent = class TableComponent {
     constructor(userService, timeLogService, projectService, activityService, pagerService) {
         this.userService = userService;
@@ -29,18 +29,15 @@ let TableComponent = class TableComponent {
         this.timeLogs = [];
         this.projects = [];
         this.activities = [];
-        this.timer = new timer_1.Timer();
-        this.active = false;
+        this.activeLog = new active_log_model_1.ActiveLog();
         this.newLog = new time_log_create_model_1.TimeLogInfoForCreating();
         this.pager = {};
     }
-    GetTimeLogs() {
+    getTimeLogs() {
         this.timeLogService.getData(this.user.ID).subscribe(logs => {
             this.timeLogs = logs;
             if (this.timeLogs[0].Status == 1) {
-                this.active = true;
-                this.timer.SetStartTime(this.timeLogs[0].SpendingTime);
-                this.timer.Start();
+                this.activeLog.setLog(this.timeLogs[0]);
             }
             this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
             this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
@@ -50,40 +47,44 @@ let TableComponent = class TableComponent {
             console.log(error);
         });
     }
-    OnChanged(id) {
+    onChanged(id) {
         this.user.ID = id;
         console.log(id);
         this.logined = true;
         this.userService.get(this.user.ID).subscribe(user => {
             this.user = user;
-            this.GetTimeLogs();
+            this.getTimeLogs();
         }, error => {
             console.log(error);
         });
     }
-    Exit(ans) {
+    exit(ans) {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
         }
     }
-    activeOnPause() {
-        this.timeLogService.SetStatus(this.timeLogs[0].TaskID, 2, new Date()).subscribe((response) => { console.log(response); });
-        this.active = false;
-    }
-    Start(timeLog) {
+    start(timeLog) {
         this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); });
-        this.GetTimeLogs();
+        this.getTimeLogs();
     }
-    Stop(dl) {
+    stop(dl) {
+        if (this.activeLog.checkLogOnActive(dl.id)) {
+            this.activeLog.isEnable = false;
+        }
         this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); });
-        this.active = false;
-        this.GetTimeLogs();
+        this.getTimeLogs();
     }
-    Pause(dl) {
+    activeOnPause() {
+        this.timeLogService.SetStatus(this.activeLog.onPause(), 2, new Date());
+        this.getTimeLogs();
+    }
+    pause(dl) {
+        if (this.activeLog.checkLogOnActive(dl.id)) {
+            this.activeLog.isEnable = false;
+        }
         this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { console.log(response); });
-        this.active = false;
-        this.GetTimeLogs();
+        this.getTimeLogs();
     }
     ngOnInit() {
         this.activityService.get().subscribe(data => this.activities = data, error => console.log(error));
@@ -95,11 +96,11 @@ let TableComponent = class TableComponent {
     onSelectActivity(activity) {
         this.newLog.ActivityID = activity.ID;
     }
-    OnCloseModal(ok) {
+    onCloseModal(ok) {
         if (ok == true) {
             this.newLog.UserID = this.user.ID;
             this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
-            this.GetTimeLogs();
+            this.getTimeLogs();
         }
     }
     setPage(page) {

@@ -1,20 +1,10 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-const core_1 = require("@angular/core");
 const TimerObservable_1 = require("rxjs/Observable/TimerObservable");
 class Timer {
     constructor() {
         this.startTime = 1000;
     }
-    SetStartTime(date) {
+    setStartTime(date) {
         if (date != null) {
             this.startTime = date;
         }
@@ -22,18 +12,13 @@ class Timer {
             this.startTime = 0;
         }
     }
-    Start() {
-        TimerObservable_1.TimerObservable.create(0, 1000)
+    start() {
+        TimerObservable_1.TimerObservable.create(0, 60000)
             .subscribe(t => {
-            this.time = this.startTime + t * 1000 * 10000;
+            this.time = this.startTime + t * 60000 * 10000;
+            console.log(t);
         });
     }
 }
-__decorate([
-    core_1.Input(), 
-    __metadata('design:type', Function), 
-    __metadata('design:paramtypes', [Number]), 
-    __metadata('design:returntype', void 0)
-], Timer.prototype, "SetStartTime", null);
 exports.Timer = Timer;
 //# sourceMappingURL=timer.js.map

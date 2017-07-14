@@ -6,6 +6,21 @@ import { LoginingForm } from './models/autorization.model';
     styles: [`
         input.ng-touched.ng-invalid {border:solid red 2px;}
         input.ng-touched.ng-valid {border:solid green 2px;}
+        #login {
+        width: 300px;
+    margin: 80px auto 40px;
+    padding: 10px;
+    position: relative; /* For the submit button positioning */
+ 
+    /* Styles */
+    box-shadow: 
+        0 0 1px rgba(0, 0, 0, 0.3), 
+        0 3px 7px rgba(0, 0, 0, 0.3), 
+        inset 0 1px rgba(255,255,255,1),
+        inset 0 -3px 2px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    background: linear-gradient(#eeefef, #ffffff 10%);
+    }
     `],
     templateUrl: './app/html/login.component.html'
 })
