@@ -8,8 +8,8 @@
                     Вы не можете выбрать время раньше, чем {{minFullDate | date:"yyyy-MM-dd hh:mm"}}
                 </div>
                 <div *ngIf="isLater" class="alert alert-danger">
+                    Вы не можете выбрать время позже, чем {{maxFullDate | date:"yyyy-MM-dd hh:mm"}}
                 </div>
-
          </div>
             <div class="modal-body">
                 <ng-content select=".app-modal-body"></ng-content>
