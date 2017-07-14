@@ -90,6 +90,11 @@ export class ModalTimeComponent {
                     this.isEarly = true;
                 }
             }
+            if (hour < minhour) {
+                this.date.setHours(minhour);
+                this.date.setMinutes(this.minMinutes);
+                this.isEarly = true;
+            }
         }
         else {
             this.minMinutes = 0;
@@ -103,6 +108,11 @@ export class ModalTimeComponent {
                     this.date.setMinutes(this.maxMinutes);
                     this.isLater = true;
                 }
+            }
+            if (hour > maxhour) {
+                this.date.setHours(maxhour);
+                this.date.setMinutes(this.maxMinutes);
+                this.isLater = true;
             }
         }
         else {
