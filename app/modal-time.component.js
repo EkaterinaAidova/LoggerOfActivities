@@ -31,7 +31,6 @@ let ModalTimeComponent = class ModalTimeComponent {
     }
     show(timeLog) {
         this.date = new Date();
-        console.log(this.dl.date);
         if (timeLog.Status == 1 && timeLog.LastResumeTime != null)
             this.setMinTime(timeLog.LastResumeTime);
         if (timeLog.Status == 2 && timeLog.LastPauseTime != null)
@@ -42,8 +41,6 @@ let ModalTimeComponent = class ModalTimeComponent {
         setTimeout(() => this.visibleAnimate = true, 100);
     }
     onChange(val) {
-        console.log(val);
-        console.log(this.date);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
     }

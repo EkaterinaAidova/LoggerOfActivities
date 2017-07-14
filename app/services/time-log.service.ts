@@ -18,11 +18,9 @@ export class TimeLogService {
         return this.http.get(this.url + "/" + id)
             .map((resp: Response) => {
                 let logList = resp.json();
-                console.log(logList);
                 let logs: TimeLog[] = [];
                 for (let index in logList) {
                     let log = logList[index];
-                    console.log(logList[index]);
                     logs.push({
                         TaskID: log.TaskID,
                         UserID: log.UserID,
@@ -51,10 +49,8 @@ export class TimeLogService {
         return this.http.put(this.url + "/", data, { headers: headers });
     }
     public CreateTimeLog(newLog: TimeLogInfoForCreating) {
-        console.log(newLog)
         let headers = new Headers();
         let body = JSON.stringify(newLog);
-        console.log("post=" + body);
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.url + "/", body, { headers: headers })
     }

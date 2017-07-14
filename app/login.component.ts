@@ -37,7 +37,7 @@ export class LoginComponent {
             this.changedID.emit(user.ID);
         },
             error => {
-                console.log(error);
+                alert(error);
                 this.isError = true;
             });
     }

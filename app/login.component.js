@@ -25,7 +25,7 @@ let LoginComponent = class LoginComponent {
             this.isError = false;
             this.changedID.emit(user.ID);
         }, error => {
-            console.log(error);
+            alert(error);
             this.isError = true;
         });
     }

@@ -51,8 +51,10 @@
         </tr>
     </table>
     <app-modal-time #modalPause (ok)=pause($event)>
+        <div class="app-modal-header"> Выберите время паузы: </div>
     </app-modal-time>
     <app-modal-time #modalStop (ok)=stop($event)>
+        <div class="app-modal-header"> Выберите время завершения: </div>
     </app-modal-time>
     <!-- pager -->
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">

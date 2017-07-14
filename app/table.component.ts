@@ -45,20 +45,19 @@ export class TableComponent implements OnInit {
             this.newLog.ActivityID = this.activities[0].ID;
         },
             error => {
-                console.log(error);
+                alert(error);
             });
 
     }
     onChanged(id: number) {
         this.user.ID = <number>id;
-        console.log(id);
         this.logined = true;
         this.userService.get(this.user.ID).subscribe(user => {
             this.user = user;
             this.getTimeLogs();
         },
             error => {
-                console.log(error);
+                alert(error);
             });
     }
 
@@ -69,18 +68,27 @@ export class TableComponent implements OnInit {
         }
     }
     start(timeLog: TimeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => { console.log(response); });
+        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => {
+            if (!response.ok) {
+                alert(response.status + ": " + response.statusText);
+            }
+            return;
+        });
         this.getTimeLogs();
     }
     stop(dl: DateLog) {
         if (this.activeLog.checkLogOnActive(dl.id)) {
             this.activeLog.isEnable = false;
         }
-        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => { console.log(response); });
+        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => {
+            if (!response.ok) {
+                alert(response.status + ": " + response.statusText);
+            }
+            return;
+        });
         this.getTimeLogs();
     }
-    activeOnPause()
-    {
+    activeOnPause() {
         this.timeLogService.SetStatus(this.activeLog.onPause(), 2, new Date());
         this.getTimeLogs();
     }
@@ -88,12 +96,12 @@ export class TableComponent implements OnInit {
         if (this.activeLog.checkLogOnActive(dl.id)) {
             this.activeLog.isEnable = false;
         }
-        this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { console.log(response); });
+        this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { if (!response.ok) alert(response.status + ": " + response.statusText); return; });
         this.getTimeLogs();
     }
     ngOnInit() {
-        this.activityService.get().subscribe(data => this.activities = data, error => console.log(error));
-        this.projectService.get().subscribe(data => this.projects = data, error => console.log(error));
+        this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
+        this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 
     }
     onSelectProject(project: Project) {
@@ -105,7 +113,7 @@ export class TableComponent implements OnInit {
     onCloseModal(ok: boolean) {
         if (ok == true) {
             this.newLog.UserID = this.user.ID;
-            this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { console.log(response); });
+            this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { if (!response.ok) alert(response.status + ": " + response.statusText); return; });
             this.getTimeLogs();
         }
     }

@@ -16,7 +16,6 @@ class Timer {
         TimerObservable_1.TimerObservable.create(0, 60000)
             .subscribe(t => {
             this.time = this.startTime + t * 60000 * 10000;
-            console.log(t);
         });
     }
 }

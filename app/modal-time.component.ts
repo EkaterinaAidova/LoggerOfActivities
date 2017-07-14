@@ -32,7 +32,6 @@ export class ModalTimeComponent {
     constructor() { }
     public show(timeLog: TimeLog): void {
         this.date = new Date();
-        console.log(this.dl.date);
         if (timeLog.Status == 1 && timeLog.LastResumeTime != null) this.setMinTime(timeLog.LastResumeTime);
         if (timeLog.Status == 2 && timeLog.LastPauseTime != null) this.setMinTime(timeLog.LastPauseTime);
         this.dl.id = timeLog.TaskID;
@@ -41,11 +40,8 @@ export class ModalTimeComponent {
         setTimeout(() => this.visibleAnimate = true, 100);
     }
     public onChange(val: Date) {
-        console.log(val);
-        console.log(this.date);
         this.maxFullDate = new Date();
         this.checkMinMaxHours();
-
     }
     public hide(param: boolean): void {
         this.visibleAnimate = false;
