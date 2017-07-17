@@ -17,13 +17,15 @@ const project_service_1 = require('./services/project.service');
 const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
 const pager_service_1 = require('./services/pager.service');
+const cookie_service_1 = require('./services/cookie.service');
 let TableComponent = class TableComponent {
-    constructor(userService, timeLogService, projectService, activityService, pagerService) {
+    constructor(userService, timeLogService, projectService, activityService, pagerService, cookieService) {
         this.userService = userService;
         this.timeLogService = timeLogService;
         this.projectService = projectService;
         this.activityService = activityService;
         this.pagerService = pagerService;
+        this.cookieService = cookieService;
         this.user = new user_model_1.User();
         this.logined = false;
         this.timeLogs = [];
@@ -59,6 +61,7 @@ let TableComponent = class TableComponent {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
+            this.cookieService.deleteCookie("userID");
         }
     }
     start(timeLog) {
@@ -95,6 +98,11 @@ let TableComponent = class TableComponent {
         this.getTimeLogs();
     }
     ngOnInit() {
+        let idValue = this.cookieService.getCookie("userID");
+        if (idValue != "") {
+            let id = Number.parseInt(idValue);
+            this.onChanged(id);
+        }
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }
@@ -132,7 +140,7 @@ TableComponent = __decorate([
         templateUrl: './app/html/table.component.html',
         styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     }), 
-    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService])
+    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService, cookie_service_1.CookieService])
 ], TableComponent);
 exports.TableComponent = TableComponent;
 //# sourceMappingURL=table.component.js.map

@@ -15,6 +15,7 @@ import { TimeLogService } from './services/time-log.service';
 import {ActivityService } from './services/activity.service';
 import { ProjectService } from './services/project.service';
 import { PagerService } from './services/pager.service';
+import { CookieService } from './services/cookie.service';
 
 import { EmptyDatePipe } from './pipes/empty-date.pipe';
 import { DurationPipe } from './pipes/date-from-number.pipe';
@@ -25,7 +26,7 @@ import { NguiDatetimePickerModule } from '@ngui/datetime-picker'
     {
         imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, NguiDatetimePickerModule],
         declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe, ModalComponent, ModalTimeComponent],
-        providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService, PagerService ], // регистрация сервисов
+        providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService, PagerService, CookieService ], // регистрация сервисов
         bootstrap: [AppComponent],
         entryComponents: [ModalComponent]
     })

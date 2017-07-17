@@ -11,6 +11,7 @@ import { ProjectService } from './services/project.service';
 import { TimeLogService } from './services/time-log.service'
 import { UserService } from './services/user.service';
 import { PagerService } from './services/pager.service';
+import { CookieService } from './services/cookie.service';
 @Component(
     {
         selector: 'table-logs',
@@ -18,7 +19,7 @@ import { PagerService } from './services/pager.service';
         styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     })
 export class TableComponent implements OnInit {
-    constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService) { }
+    constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService, private cookieService: CookieService) { }
     private user: User = new User();
     public logined: boolean = false;
     public timeLogs: TimeLog[] = [];
@@ -56,6 +57,7 @@ export class TableComponent implements OnInit {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
+            this.cookieService.deleteCookie("userID");
         }
     }
     start(timeLog: TimeLog) {
@@ -91,6 +93,12 @@ export class TableComponent implements OnInit {
         this.getTimeLogs();
     }
     ngOnInit() {
+        let idValue = this.cookieService.getCookie("userID");
+        if (idValue != "")
+        {
+            let id = Number.parseInt(idValue);
+            this.onChanged(id);
+        }
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 

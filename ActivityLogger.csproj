@@ -381,6 +381,7 @@
     <TypeScriptCompile Include="app\pipes\date-from-number.pipe.ts" />
     <TypeScriptCompile Include="app\pipes\empty-date.pipe.ts" />
     <TypeScriptCompile Include="app\services\activity.service.ts" />
+    <TypeScriptCompile Include="app\services\cookie.service.ts" />
     <TypeScriptCompile Include="app\services\login.service.ts" />
     <TypeScriptCompile Include="app\services\pager.service.ts" />
     <TypeScriptCompile Include="app\services\project.service.ts" />
