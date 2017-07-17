@@ -15,7 +15,7 @@ import { PagerService } from './services/pager.service';
     {
         selector: 'table-logs',
         templateUrl: './app/html/table.component.html',
-        styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'  ],
+        styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     })
 export class TableComponent implements OnInit {
     constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService) { }
@@ -36,12 +36,10 @@ export class TableComponent implements OnInit {
             }
             this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
             this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
-           
         },
             error => {
                 alert(error);
             });
-
     }
     onChanged(id: number) {
         this.user.ID = <number>id;
@@ -54,7 +52,6 @@ export class TableComponent implements OnInit {
                 alert(error);
             });
     }
-
     exit(ans: boolean) {
         if (ans) {
             this.user.Name = "";
@@ -118,8 +115,7 @@ export class TableComponent implements OnInit {
         this.pager = this.pagerService.getPager(this.timeLogs.length, page);
         this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
-    onOpenModal(arg: boolean)
-    {
+    onOpenModal(arg: boolean) {
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
         this.newLog.ProjectID = this.projects[0].ID;

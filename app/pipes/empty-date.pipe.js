@@ -14,7 +14,7 @@ let EmptyDatePipe = class EmptyDatePipe {
     transform(date, ...args) {
         if (date == null)
             return "";
-        return moment(date).format('DD/MM/YYYY hh:mm');
+        return moment(date).format('DD/MM/YYYY HH:mm');
     }
 };
 EmptyDatePipe = __decorate([

@@ -7,6 +7,6 @@ import * as moment from 'moment';
 export class EmptyDatePipe implements PipeTransform {
     transform(date: any, ...args: string[]) {
         if (date == null) return ""
-        return moment(date).format('DD/MM/YYYY hh:mm');
+        return moment(date).format('DD/MM/YYYY HH:mm');
     }
 }
