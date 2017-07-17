@@ -1,0 +1,55 @@
+﻿.datetimepicker {
+    min-width: 200px;
+    font-size: 15px;
+}
+
+.table {
+    background-color: lightcyan;
+}
+
+.paused {
+    background-color: lightyellow;
+}
+
+.finished {
+    background-color: mistyrose;
+}
+
+.thead {
+    background-color: whitesmoke;
+}
+
+.userPanel {
+    margin: 10px;
+    position: relative;
+    font-size: 16px;
+}
+
+    .userPanel > button {
+        font-size: 16px;
+    }
+
+.fa-user:before,
+.fa-plus-circle:before,
+.fa-times-circle:before {
+    color: #00e0ff;
+}
+
+.fa-play-circle:before {
+    color: #1ea176;
+}
+
+.fa-pause-circle:before {
+    color: #fd872a;
+}
+
+.fa-stop-circle:before {
+    color: #f83d54;
+}
+
+.pagination > li.active > a {
+    background-color: #00e0ff;
+    color: #000000;
+}
+
+

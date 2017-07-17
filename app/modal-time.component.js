@@ -126,11 +126,7 @@ ModalTimeComponent = __decorate([
     core_1.Component({
         selector: 'app-modal-time',
         templateUrl: './app/html/modal-time.component.html',
-        styles: [`
-    .modal {
-      background: rgba(0,0,0,0.6);
-    }
-  `]
+        styleUrls: ['./app/styles/shared.css']
     }), 
     __metadata('design:paramtypes', [])
 ], ModalTimeComponent);

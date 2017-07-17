@@ -1,0 +1,13 @@
+﻿.btn-link {
+    margin-left: 95%;
+}
+
+.close, 
+.close:hover, 
+.close:active {
+    color: #f83d54;
+}
+
+ .modal {
+      background: rgba(0,0,0,0.6);
+ }

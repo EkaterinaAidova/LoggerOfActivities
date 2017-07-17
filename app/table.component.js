@@ -126,21 +126,7 @@ TableComponent = __decorate([
     core_1.Component({
         selector: 'table-logs',
         templateUrl: './app/html/table.component.html',
-        styles: ['.datetimepicker{min-width: 200px; font-size: 15px;}',
-            '.table{background-color: lightcyan}',
-            '.paused{background-color: lightyellow}',
-            '.finished{background-color: mistyrose}',
-            '.thead{background-color:whitesmoke}',
-            ` .userPanel{
-             margin: 10px;
-             position: relative;
-font-siz: 16px;
-font-weight: bold;
-
-             }
-             .fa-user:before{ color: #00e0ff;}
-}    `
-        ],
+        styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     }), 
     __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService])
 ], TableComponent);

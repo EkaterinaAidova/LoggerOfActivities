@@ -37,32 +37,7 @@ __decorate([
 LoginComponent = __decorate([
     core_1.Component({
         selector: 'login',
-        styles: [`
-        input.ng-touched.ng-invalid {border:solid red 2px;}
-        input.ng-touched.ng-valid {border:solid green 2px;}
-        #login {
-     width: 300px;
-    margin: 80px auto 40px;
-    padding: 10px;
-    position: relative; 
-    /* Styles */
-    box-shadow: 
-        0 0 1px rgba(0, 0, 0, 0.3), 
-        0 3px 7px rgba(0, 0, 0, 0.3), 
-        inset 0 1px rgba(255,255,255,1),
-        inset 0 -3px 2px rgba(0,0,0,0.25);
-    border-radius: 5px;
-    background: linear-gradient(#eeefef, #00e0ff 10%);
-    font-size: 18px;
-    color: white;
-    }
-.button
-{
- padding-top: 10px;
- position: relative;
-}
-
-    `],
+        styleUrls: ['./app/styles/login.component.css', './app/styles/shared.css'],
         templateUrl: './app/html/login.component.html'
     }), 
     __metadata('design:paramtypes', [login_service_1.LoginService])

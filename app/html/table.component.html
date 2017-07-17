@@ -4,7 +4,7 @@
         <span class="userIcon"><i class="fa fa-user fa-2x fa-wh"></i>  Сотрудник: {{user.Name}} </span>
      <br />
     
-    <button class="btn btn-default" (click)="modal.show()"> <i class="fa fa-plus-square-o fa-wh"> </i> Новое задание</button>
+    <button class="btn btn-default" (click)="modal.show()"> <i class="fa fa-plus-circle fa-wh"> </i> Новое задание</button>
     <app-modal #modal (ok)=onCloseModal($event)>
         <div class="app-modal-header"> Выберите нужный проект и должность</div>
         <div class="app-modal-body">
@@ -25,10 +25,10 @@
             <div *ngIf="!activeLog.isEnable"> Вы уверены, что хотите выйти? </div>
         </div>
         <div class="app-modal-footer" >
-            <button *ngIf="active" class="btn btn-default" (click)="activeOnPause()"> Остановить </button>
+            <button *ngIf="activeLog.isEnable" class="btn btn-default" (click)="activeOnPause()"> Остановить </button>
         </div>
     </app-modal>
-    <button class="btn btn-default" (click)="modalExit.show()"> <i class="fa fa-times-circle-o fa-wh"></i> Выйти</button>
+    <button class="btn btn-default" (click)="modalExit.show()"> <i class="fa fa-times-circle fa-wh"></i> Выйти</button>
     </div>
     <table class="table table-hover">
         <thead class="thead">
@@ -64,19 +64,19 @@
     <!-- pager -->
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
         <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(1)">First</a>
+            <a (click)="setPage(1)">Начало</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            <a (click)="setPage(pager.currentPage - 1)">Назад</a>
         </li>
         <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
             <a (click)="setPage(page)">{{page}}</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            <a (click)="setPage(pager.currentPage + 1)">Вперед</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.totalPages)">Last</a>
+            <a (click)="setPage(pager.totalPages)">Конец</a>
         </li>
     </ul>
 </div> <login *ngIf="!logined" (changedID)="onChanged($event)"> </login>

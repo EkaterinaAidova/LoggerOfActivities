@@ -15,21 +15,7 @@ import { PagerService } from './services/pager.service';
     {
         selector: 'table-logs',
         templateUrl: './app/html/table.component.html',
-        styles: ['.datetimepicker{min-width: 200px; font-size: 15px;}',
-            '.table{background-color: lightcyan}',
-            '.paused{background-color: lightyellow}',
-            '.finished{background-color: mistyrose}',
-            '.thead{background-color:whitesmoke}',
-            ` .userPanel{
-             margin: 10px;
-             position: relative;
-font-siz: 16px;
-font-weight: bold;
-
-             }
-             .fa-user:before{ color: #00e0ff;}
-}    `
-        ],
+        styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'  ],
     })
 export class TableComponent implements OnInit {
     constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService) { }

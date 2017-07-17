@@ -1,14 +1,26 @@
 ﻿<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
      [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
     <div class="modal-dialog">
+       
         <div class="modal-content">
-            <div class="modal-header">
+           
+            <div class="modal-header">    
+                <button class="btn btn-link" (click)="hide(false)">
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </button>        
                 <ng-content select=".app-modal-header"></ng-content>
                 <div *ngIf="isEarly" class="alert alert-danger">
-                    Вы не можете выбрать время раньше, чем {{minFullDate | date:"yyyy-MM-dd hh:mm"}}
+                    <button class="btn btn-link" (click)="isEarly=false">
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </button>
+                    Вы не можете выбрать время раньше, чем {{minFullDate | date:"yyyy-MM-dd hh:mm"}}                    
                 </div>
                 <div *ngIf="isLater" class="alert alert-danger">
+                    <button class="btn btn-link" (click)="isLater=false">
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </button>
                     Вы не можете выбрать время позже, чем {{maxFullDate | date:"yyyy-MM-dd hh:mm"}}
+                   
                 </div>
          </div>
             <div class="modal-body">
@@ -22,9 +34,10 @@
                         />
             </div>
             <div class="modal-footer">
-                <ng-content select=".app-modal-footer"></ng-content>
                 <button class="btn btn-default" (click)="hide(true)">Ок</button>
                 <button class="btn btn-default" (click)="hide(false)">Отмена</button>
+                <ng-content select=".app-modal-footer"></ng-content>
+               
             </div>
         </div>
 

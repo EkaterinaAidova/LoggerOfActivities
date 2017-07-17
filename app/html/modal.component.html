@@ -4,6 +4,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <button class="btn btn-link" (click)="hide(false)" >
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </button>
                 <ng-content select=".app-modal-header"></ng-content>
             </div>
             <div class="modal-body">

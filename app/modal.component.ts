@@ -4,11 +4,7 @@
 @Component({
     selector: 'app-modal',
     templateUrl:'./app/html/modal.component.html' ,
-    styles: [`
-    .modal {
-      background: rgba(0,0,0,0.6);
-    }
-  `]
+    styleUrls: ['./app/styles/shared.css']
 })
 export class ModalComponent {
 
