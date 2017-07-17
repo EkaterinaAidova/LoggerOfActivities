@@ -36,8 +36,7 @@ export class TableComponent implements OnInit {
             }
             this.pager = this.pagerService.getPager(this.timeLogs.length, this.pager.currentPage);
             this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
-            this.newLog.ProjectID = this.projects[0].ID;
-            this.newLog.ActivityID = this.activities[0].ID;
+           
         },
             error => {
                 alert(error);
@@ -118,5 +117,12 @@ export class TableComponent implements OnInit {
         }
         this.pager = this.pagerService.getPager(this.timeLogs.length, page);
         this.pagedItems = this.timeLogs.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
+    onOpenModal(arg: boolean)
+    {
+        this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
+        this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
+        this.newLog.ProjectID = this.projects[0].ID;
+        this.newLog.ActivityID = this.activities[0].ID;
     }
 }

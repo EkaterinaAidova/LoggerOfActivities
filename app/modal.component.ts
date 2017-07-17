@@ -11,9 +11,11 @@ export class ModalComponent {
     public visible = false;
     private visibleAnimate = false;
     @Output() ok = new EventEmitter<boolean>();
+    @Output() openned = new EventEmitter<boolean>();
     constructor() { }
 
     public show(): void {
+        this.openned.emit(true);
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
     }

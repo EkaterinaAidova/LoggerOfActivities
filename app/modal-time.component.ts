@@ -2,7 +2,6 @@
 import { TimeLog } from './models/time-log.model';
 import { DateLog } from './models/info-from-time-modal.model';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl }   from '@angular/forms';
-import { Ng2Datetime } from "ng2-datetime-picker";
 @Component({
     selector: 'app-modal-time',
     templateUrl: './app/html/modal-time.component.html',

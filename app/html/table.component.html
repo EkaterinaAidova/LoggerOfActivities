@@ -5,7 +5,7 @@
      <br />
     
     <button class="btn btn-default" (click)="modal.show()"> <i class="fa fa-plus-circle fa-wh"> </i> Новое задание</button>
-    <app-modal #modal (ok)=onCloseModal($event)>
+    <app-modal #modal (ok)=onCloseModal($event) (openned)="onOpenModal($event)">
         <div class="app-modal-header"> Выберите нужный проект и должность</div>
         <div class="app-modal-body">
             Проект:

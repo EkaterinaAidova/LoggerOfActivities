@@ -14,8 +14,10 @@ let ModalComponent = class ModalComponent {
         this.visible = false;
         this.visibleAnimate = false;
         this.ok = new core_1.EventEmitter();
+        this.openned = new core_1.EventEmitter();
     }
     show() {
+        this.openned.emit(true);
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
     }
@@ -34,6 +36,10 @@ __decorate([
     core_1.Output(), 
     __metadata('design:type', Object)
 ], ModalComponent.prototype, "ok", void 0);
+__decorate([
+    core_1.Output(), 
+    __metadata('design:type', Object)
+], ModalComponent.prototype, "openned", void 0);
 ModalComponent = __decorate([
     core_1.Component({
         selector: 'app-modal',
