@@ -16,7 +16,7 @@ require('rxjs/add/operator/catch');
 let ProjectService = class ProjectService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:49666/api/project";
+        this.url = "api/project";
     }
     get() {
         return this.http.get(this.url + "/")

@@ -8,7 +8,7 @@ import {LoginingForm} from '../models/autorization.model';
 @Injectable()
 export class LoginService {
     constructor(private http: Http) { }
-    private url: string = "http://localhost:49666/api/autorization";
+    private url: string = "api/autorization";
     public get(login: string, password: string): Observable<LoginingForm> {
         return this.http.get(this.url + "?login=" + login + "&password=" + password)
             .map((resp: Response) => {

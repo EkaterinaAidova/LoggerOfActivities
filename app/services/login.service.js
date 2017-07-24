@@ -16,7 +16,7 @@ require('rxjs/add/operator/catch');
 let LoginService = class LoginService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:49666/api/autorization";
+        this.url = "api/autorization";
     }
     get(login, password) {
         return this.http.get(this.url + "?login=" + login + "&password=" + password)

@@ -10,7 +10,7 @@ import { TimeLogInfoForCreating } from '../models/time-log-create.model'
 
 @Injectable()
 export class TimeLogService {
-    private url: string = "http://localhost:49666/api/timeLog";
+    private url: string = "api/timeLog";
     constructor(private http: Http) {
     }
     public getData(id: number): Observable<TimeLog[]> {

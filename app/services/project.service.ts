@@ -8,7 +8,7 @@ import { Project } from "../models/project.model";
 export class ProjectService {
     constructor(private http: Http) {
     }
-    private url: string = "http://localhost:49666/api/project";
+    private url: string = "api/project";
     public get(): Observable<Project[]> {
         return this.http.get(this.url + "/" )
             .map((resp: Response) => {

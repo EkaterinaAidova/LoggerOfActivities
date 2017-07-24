@@ -16,7 +16,7 @@ require('rxjs/add/operator/catch');
 let ActivityService = class ActivityService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:49666/api/activity";
+        this.url = "api/activity";
     }
     get() {
         return this.http.get(this.url + "/")

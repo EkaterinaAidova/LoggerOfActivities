@@ -9,7 +9,7 @@ import { Activity } from "../models/activity.model";
 export class ActivityService {
     constructor(private http: Http) {
     }
-    private url: string = "http://localhost:49666/api/activity";
+    private url: string = "api/activity";
     public get(): Observable<Activity[]> {
         return this.http.get(this.url + "/")
             .map((resp: Response) => {
