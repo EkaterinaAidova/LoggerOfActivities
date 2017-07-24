@@ -17,7 +17,7 @@ const time_log_update_model_1 = require('../models/time-log-update.model');
 let TimeLogService = class TimeLogService {
     constructor(http) {
         this.http = http;
-        this.url = "api/timeLog";
+        this.url = "http://localhost:49666/api/timeLog";
     }
     getData(id) {
         return this.http.get(this.url + "/" + id)

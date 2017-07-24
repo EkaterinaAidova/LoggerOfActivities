@@ -16,7 +16,7 @@ require('rxjs/add/operator/catch');
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
-        this.url = "api/user";
+        this.url = "http://localhost:49666/api/user";
     }
     get(id) {
         return this.http.get(this.url + "/" + id)

@@ -7,7 +7,7 @@ import { User } from "../models/user.model";
 @Injectable()
 export class UserService {
     constructor(private http: Http) { }
-    private url: string = "api/user";
+    private url: string = "http://localhost:49666/api/user";
     public get(id: number): Observable<User> {
         return this.http.get(this.url + "/" + id)
             .map((resp: Response) => {
