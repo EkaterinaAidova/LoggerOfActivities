@@ -57,7 +57,7 @@ export class TableComponent implements OnInit {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
-            this.cookieService.deleteCookie("userID");
+            //this.cookieService.deleteCookie("userID");
         }
     }
     start(timeLog: TimeLog) {
@@ -93,12 +93,12 @@ export class TableComponent implements OnInit {
         this.getTimeLogs();
     }
     ngOnInit() {
-        let idValue = this.cookieService.getCookie("userID");
+     /*   let idValue = this.cookieService.getCookie("userID");
         if (idValue != "")
         {
             let id = Number.parseInt(idValue);
             this.onChanged(id);
-        }
+        }*/
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 

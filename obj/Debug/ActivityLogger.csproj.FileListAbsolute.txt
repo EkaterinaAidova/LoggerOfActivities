@@ -52,3 +52,9 @@ C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\obj\Debug\ActivityLogger.dll
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\obj\Debug\ActivityLogger.pdb
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\obj\Debug\ActivityLogger.csprojResolveAssemblyReference.cache
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.Data.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.Security.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.WebData.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.Data.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.WebData.xml
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Microsoft.Web.Helpers.dll

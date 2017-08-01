@@ -61,7 +61,6 @@ let TableComponent = class TableComponent {
         if (ans) {
             this.user.Name = "";
             this.logined = false;
-            this.cookieService.deleteCookie("userID");
         }
     }
     start(timeLog) {
@@ -98,11 +97,12 @@ let TableComponent = class TableComponent {
         this.getTimeLogs();
     }
     ngOnInit() {
-        let idValue = this.cookieService.getCookie("userID");
-        if (idValue != "") {
-            let id = Number.parseInt(idValue);
-            this.onChanged(id);
-        }
+        /*   let idValue = this.cookieService.getCookie("userID");
+           if (idValue != "")
+           {
+               let id = Number.parseInt(idValue);
+               this.onChanged(id);
+           }*/
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }

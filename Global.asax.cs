@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ActivityLogger.App_Start;
+using WebMatrix.WebData;
 
 namespace ActivityLogger
 {
