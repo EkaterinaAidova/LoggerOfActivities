@@ -27,7 +27,7 @@ let TableComponent = class TableComponent {
         this.pagerService = pagerService;
         this.cookieService = cookieService;
         this.user = new user_model_1.User();
-        this.logined = false;
+        this.logined = true;
         this.timeLogs = [];
         this.projects = [];
         this.activities = [];
@@ -103,6 +103,10 @@ let TableComponent = class TableComponent {
                let id = Number.parseInt(idValue);
                this.onChanged(id);
            }*/
+        this.logined = true;
+        this.userService.getCurrentUser().subscribe(data => this.user = data, error => alert(error));
+        //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
+        // this.getTimeLogs();
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }

@@ -21,7 +21,7 @@ import { CookieService } from './services/cookie.service';
 export class TableComponent implements OnInit {
     constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService, private cookieService: CookieService) { }
     private user: User = new User();
-    public logined: boolean = false;
+    public logined: boolean = true;
     public timeLogs: TimeLog[] = [];
     public projects: Project[] = [];
     public activities: Activity[] = [];
@@ -99,6 +99,10 @@ export class TableComponent implements OnInit {
             let id = Number.parseInt(idValue);
             this.onChanged(id);
         }*/
+        this.logined = true;
+        this.userService.getCurrentUser().subscribe(data => this.user = data, error => alert(error));
+      //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
+       // this.getTimeLogs();
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 

@@ -13,6 +13,7 @@ const http_1 = require('@angular/http');
 const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
+const user_model_1 = require("../models/user.model");
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
@@ -24,6 +25,14 @@ let UserService = class UserService {
             let user = resp.json();
             return user;
         }).catch((error) => Observable_1.Observable.throw(error));
+    }
+    getCurrentUser() {
+        let user = new user_model_1.User(); // =8;
+        return this.http.get(this.url + "/")
+            .map((resp) => {
+            user = resp.json();
+            return user;
+        });
     }
 };
 UserService = __decorate([

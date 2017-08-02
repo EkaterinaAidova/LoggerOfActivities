@@ -1,6 +1,7 @@
 ﻿using ActivityLogger.BusinessLogic.DataTransferObjects;
 using ActivityLogger.Filters;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebMatrix.WebData;
 
 namespace ActivityLogger.Controllers
@@ -45,5 +46,39 @@ namespace ActivityLogger.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegistrationModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    WebSecurity.CreateUserAndAccount(model.Email, model.Password,
+                        new { Name = model.Name });
+                    WebSecurity.Login(model.Email, model.Password);
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+            }
+            return View(model);
+        }
+        public JsonResult CheckEmail(string email)
+        {
+            var result = WebSecurity.UserExists(email);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+         [HttpGet]
+        public JsonResult GetCurrentUser()
+        {
+            return Json(WebSecurity.CurrentUserId);
+        }
+        public void Logout(){
+            WebSecurity.Logout();
+       }
     }
 }

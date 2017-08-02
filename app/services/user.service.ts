@@ -15,4 +15,11 @@ export class UserService {
                 return user;
             }).catch((error: any) =>  Observable.throw(error));
     }
+    public getCurrentUser(): Observable<User> {
+        let user: User = new User();// =8;
+       return this.http.get(this.url+"/")
+            .map((resp: Response) => {
+                user = resp.json(); return user;
+           });
+    }
 }

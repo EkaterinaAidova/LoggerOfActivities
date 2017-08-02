@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataAnnotationsExtensions;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace ActivityLogger.BusinessLogic.DataTransferObjects
 {

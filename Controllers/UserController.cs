@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
+using WebMatrix.WebData;
+
 namespace ActivityLogger.Controllers
 {
     public class UserController : ApiController
@@ -22,6 +24,16 @@ namespace ActivityLogger.Controllers
             }
             Logger.Log.Error(String.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));
             return NotFound();
+        }
+        [HttpGet]
+        public IHttpActionResult GetUser()
+        {
+            if (WebSecurity.IsAuthenticated)
+            {
+                return Get(WebSecurity.GetUserId(WebSecurity.CurrentUserName));
+             }
+            return NotFound();
+
         }
     }
 }

@@ -58,3 +58,4 @@ C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLo
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.Data.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\WebMatrix.WebData.xml
 C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\Microsoft.Web.Helpers.dll
+C:\Users\eaidova\Documents\Visual Studio 2012\Projects\ActivityLogger\ActivityLogger\bin\DataAnnotationsExtensions.dll

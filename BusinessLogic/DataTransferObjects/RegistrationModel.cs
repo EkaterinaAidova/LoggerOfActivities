@@ -4,22 +4,32 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
+using System.Web.Mvc;
+
 namespace ActivityLogger.BusinessLogic.DataTransferObjects
 {
     public class RegistrationModel
     {
-        [Required(ErrorMessage = "Enter User name")]
-        public string UserName { get; set; }
-        [Required(ErrorMessage = "Enter EmailID")]
-        public string EmailID { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Поле Email должно быть обязательно заполнено")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Адрес электронной почты")]
+        [Remote("CheckEmail", "Account", ErrorMessage = "Пользователь с таким адроесом электронной почты уже существует")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Поле пароль должно быть обязательно заполнено")]
+        [StringLength(100, ErrorMessage = "Пароль не может быть меньше 6 и больше 100 символов", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string password { get; set; }
+        [Display(Name = "Пароль")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Поле подтверждения пароля должно быть обязательно заполнено")]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string Confirmpassword { get; set; }
+        [Display(Name = "Подтвердите пароль")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "пароли не совпадают")]
+        public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Поле ФИО должно быть обязательно заполнено")]
+        [Display(Name = "ФИО")]
+        public string Name { get; set; }
     }
 }
