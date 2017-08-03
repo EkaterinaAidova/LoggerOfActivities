@@ -22,4 +22,8 @@ export class UserService {
                 user = resp.json(); return user;
            });
     }
+    public userLogOff()
+    {
+        this.http.get(this.url + "/LogOut");
+    }
 }

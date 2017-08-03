@@ -14,6 +14,7 @@ namespace ActivityLogger.Controllers
             definingService = service;
         }
         [HttpGet]
+        [Route("api/user/{id:int}")]
         public IHttpActionResult Get(int id)
         {
             var user = definingService.GetUser(id);
@@ -26,6 +27,7 @@ namespace ActivityLogger.Controllers
             return NotFound();
         }
         [HttpGet]
+       [Route("api/user")]
         public IHttpActionResult GetUser()
         {
             if (WebSecurity.IsAuthenticated)
@@ -35,5 +37,7 @@ namespace ActivityLogger.Controllers
             return NotFound();
 
         }
+      
+  
     }
 }

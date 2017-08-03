@@ -77,8 +77,11 @@ namespace ActivityLogger.Controllers
         {
             return Json(WebSecurity.CurrentUserId);
         }
-        public void Logout(){
+        [Route("Account/LogOut")]
+        [HttpGet]
+        public ActionResult Logout(){
             WebSecurity.Logout();
-       }
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

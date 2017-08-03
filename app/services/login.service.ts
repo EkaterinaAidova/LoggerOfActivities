@@ -16,4 +16,7 @@ export class LoginService {
                 return user;
             }).catch((error: any) => { return Observable.throw(error); });
     }
+    public logout() {
+        return this.http.get(this.url);
+    }
 }

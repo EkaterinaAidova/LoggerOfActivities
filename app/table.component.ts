@@ -12,6 +12,7 @@ import { TimeLogService } from './services/time-log.service'
 import { UserService } from './services/user.service';
 import { PagerService } from './services/pager.service';
 import { CookieService } from './services/cookie.service';
+import { LoginService } from './services/login.service';
 @Component(
     {
         selector: 'table-logs',
@@ -19,7 +20,14 @@ import { CookieService } from './services/cookie.service';
         styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     })
 export class TableComponent implements OnInit {
-    constructor(private userService: UserService, private timeLogService: TimeLogService, private projectService: ProjectService, private activityService: ActivityService, private pagerService: PagerService, private cookieService: CookieService) { }
+    constructor(
+        private userService: UserService,
+        private timeLogService: TimeLogService,
+        private projectService: ProjectService,
+        private activityService: ActivityService,
+        private pagerService: PagerService,
+        private cookieService: CookieService,
+        private loginService: LoginService) { }
     private user: User = new User();
     public logined: boolean = true;
     public timeLogs: TimeLog[] = [];
@@ -56,8 +64,14 @@ export class TableComponent implements OnInit {
     exit(ans: boolean) {
         if (ans) {
             this.user.Name = "";
-            this.logined = false;
+            this.loginService.logout().subscribe(resp => {
+                if (resp.ok)
+                { location.reload(true); }
+                else { alert(resp.text);}
+            })
+          //  this.logined = false;
             //this.cookieService.deleteCookie("userID");
+            this.userService.userLogOff();
         }
     }
     start(timeLog: TimeLog) {
@@ -100,9 +114,8 @@ export class TableComponent implements OnInit {
             this.onChanged(id);
         }*/
         this.logined = true;
-        this.userService.getCurrentUser().subscribe(data => this.user = data, error => alert(error));
+        this.userService.getCurrentUser().subscribe(data => { this.user = data; this.getTimeLogs(); }, error => alert(error));
       //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
-       // this.getTimeLogs();
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 

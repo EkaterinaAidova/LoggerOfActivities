@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
+using WebMatrix.WebData;
 
 namespace ActivityLogger.Controllers
 {
@@ -10,22 +11,29 @@ namespace ActivityLogger.Controllers
         {
             loginingService = service;
         }
+        /*   [HttpGet]
+           public IHttpActionResult Get( string login, string password)
+           {
+               if (loginingService.IsInsertValid(login, password))
+               {
+                   var loginingResult = loginingService.LogIn(login, password);
+                   if (loginingResult == null)
+                   {
+                       Logger.Log.Error("Controller: autorization  - Autorisation is failed. User is not found.");
+                       return NotFound();
+                   }
+                   Logger.Log.Info("Controller: autorization  - Auturisation is success. Data is got");
+                   return Ok(loginingResult);
+               }
+               Logger.Log.Error("Controller: autorization  - Autorisation is failed. Data is not valid.");
+               return BadRequest();
+           }
+       }*/
         [HttpGet]
-        public IHttpActionResult Get( string login, string password)
+        public IHttpActionResult LogOut()
         {
-            if (loginingService.IsInsertValid(login, password))
-            {
-                var loginingResult = loginingService.LogIn(login, password);
-                if (loginingResult == null)
-                {
-                    Logger.Log.Error("Controller: autorization  - Autorisation is failed. User is not found.");
-                    return NotFound();
-                }
-                Logger.Log.Info("Controller: autorization  - Auturisation is success. Data is got");
-                return Ok(loginingResult);
-            }
-            Logger.Log.Error("Controller: autorization  - Autorisation is failed. Data is not valid.");
-            return BadRequest();
+            WebSecurity.Logout();
+            return Ok();
         }
     }
 }

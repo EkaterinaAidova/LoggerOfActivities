@@ -34,6 +34,9 @@ let UserService = class UserService {
             return user;
         });
     }
+    userLogOff() {
+        this.http.get(this.url + "/LogOut");
+    }
 };
 UserService = __decorate([
     core_1.Injectable(), 

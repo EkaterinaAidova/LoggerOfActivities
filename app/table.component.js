@@ -18,14 +18,16 @@ const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
 const pager_service_1 = require('./services/pager.service');
 const cookie_service_1 = require('./services/cookie.service');
+const login_service_1 = require('./services/login.service');
 let TableComponent = class TableComponent {
-    constructor(userService, timeLogService, projectService, activityService, pagerService, cookieService) {
+    constructor(userService, timeLogService, projectService, activityService, pagerService, cookieService, loginService) {
         this.userService = userService;
         this.timeLogService = timeLogService;
         this.projectService = projectService;
         this.activityService = activityService;
         this.pagerService = pagerService;
         this.cookieService = cookieService;
+        this.loginService = loginService;
         this.user = new user_model_1.User();
         this.logined = true;
         this.timeLogs = [];
@@ -60,7 +62,17 @@ let TableComponent = class TableComponent {
     exit(ans) {
         if (ans) {
             this.user.Name = "";
-            this.logined = false;
+            this.loginService.logout().subscribe(resp => {
+                if (resp.ok) {
+                    location.reload(true);
+                }
+                else {
+                    alert(resp.text);
+                }
+            });
+            //  this.logined = false;
+            //this.cookieService.deleteCookie("userID");
+            this.userService.userLogOff();
         }
     }
     start(timeLog) {
@@ -104,9 +116,8 @@ let TableComponent = class TableComponent {
                this.onChanged(id);
            }*/
         this.logined = true;
-        this.userService.getCurrentUser().subscribe(data => this.user = data, error => alert(error));
+        this.userService.getCurrentUser().subscribe(data => { this.user = data; this.getTimeLogs(); }, error => alert(error));
         //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
-        // this.getTimeLogs();
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }
@@ -144,7 +155,7 @@ TableComponent = __decorate([
         templateUrl: './app/html/table.component.html',
         styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     }), 
-    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService, cookie_service_1.CookieService])
+    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService, cookie_service_1.CookieService, login_service_1.LoginService])
 ], TableComponent);
 exports.TableComponent = TableComponent;
 //# sourceMappingURL=table.component.js.map
