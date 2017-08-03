@@ -10,7 +10,7 @@ export class ProjectService {
     }
     private url: string = "api/project";
     public get(): Observable<Project[]> {
-        return this.http.get(this.url + "/" )
+        return this.http.get(this.url )
             .map((resp: Response) => {
                 let projectList = resp.json();
                 let projects: Project[]=[];

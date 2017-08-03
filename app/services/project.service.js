@@ -19,7 +19,7 @@ let ProjectService = class ProjectService {
         this.url = "api/project";
     }
     get() {
-        return this.http.get(this.url + "/")
+        return this.http.get(this.url)
             .map((resp) => {
             let projectList = resp.json();
             let projects = [];

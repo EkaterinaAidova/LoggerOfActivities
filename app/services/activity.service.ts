@@ -11,7 +11,7 @@ export class ActivityService {
     }
     private url: string = "api/activity";
     public get(): Observable<Activity[]> {
-        return this.http.get(this.url + "/")
+        return this.http.get(this.url)
             .map((resp: Response) => {
                 let activityList = resp.json();
                 let activities: Activity[] = [];

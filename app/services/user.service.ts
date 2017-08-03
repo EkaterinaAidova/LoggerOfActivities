@@ -18,19 +18,19 @@ export class UserService {
     }
     public getCurrentUser(): Observable<UserAccount> {
         let user: UserAccount = new UserAccount();// =8;
-       return this.http.get(this.url+"/")
+       return this.http.get(this.url)
             .map((resp: Response) => {
                 user = resp.json(); return user;
            });
     }
     public getUsers(): Observable<User[]>
     {
-        return this.http.get(this.url + "/" + true).
+        return this.http.get(this.url + "/All").
             map((resp: Response) => {
                 let userList = resp.json();
                 let users: User[] = [];
                 for (let index in userList) {
-                    let user = userList[index].UserInfo;
+                    let user = userList[index];
                     users.push({
                         ID: user.ID,
                         Email: user.Email,

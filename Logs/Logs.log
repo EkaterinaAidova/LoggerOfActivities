@@ -147,3 +147,20 @@
 2017-08-03 16:47:59,099  INFO  Controller: activity - Activities' list is received
 2017-08-03 16:48:37,834  INFO  Controller: activity - Activities' list is received
 2017-08-03 16:49:43,919  INFO  Controller: activity - Activities' list is received
+2017-08-03 17:35:06,129  INFO  Controller: activity - Activities' list is received
+2017-08-03 17:35:09,893  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:35:10,098  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-03 17:35:15,735  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:35:46,315  INFO  Controller: activity - Activities' list is received
+2017-08-03 17:35:51,739  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:35:51,789  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-03 17:36:02,047  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:37:47,083  INFO  Controller: activity - Activities' list is received
+2017-08-03 17:37:49,891  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:37:49,959  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-03 17:37:55,388  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:40:40,265  INFO  Controller: activity - Activities' list is received
+2017-08-03 17:40:43,145  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:40:43,166  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-03 17:41:10,240  INFO  Controller: users - User 1 is logged in
+2017-08-03 17:41:38,463  INFO  Controller: users - User 1 is logged in

@@ -4,6 +4,7 @@ using ActivityLogger.BusinessLogic.Services.Contracts;
 
 namespace ActivityLogger.Controllers
 {
+    [RoutePrefix("api/activity")]
     public class ActivityController : ApiController
     {
         IDefineActivityService activityService;
@@ -12,12 +13,14 @@ namespace ActivityLogger.Controllers
             activityService = service;
         }
         [HttpGet]
+        [Route("")]
         public IHttpActionResult Get()
         {
             Logger.Log.Info("Controller: activity - Activities' list is received");
             return Ok(activityService.GetActivityList());
         }
         [HttpGet]
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
             var activity = activityService.GetActivity(id);

@@ -1,12 +1,11 @@
 ﻿using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using WebMatrix.WebData;
-using System.Web;
-using System.Web.Security;
-using System;
+
 
 namespace ActivityLogger.Controllers
 {
+    [RoutePrefix("api/authorization")]
     public class AutorizationController : ApiController
     {
         ILoginingService loginingService;
@@ -33,6 +32,7 @@ namespace ActivityLogger.Controllers
            }
        }*/
         [HttpGet]
+        [Route("")]
         public IHttpActionResult LogOut()
         {
             WebSecurity.Logout();

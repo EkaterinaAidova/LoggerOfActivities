@@ -19,7 +19,7 @@ let ActivityService = class ActivityService {
         this.url = "api/activity";
     }
     get() {
-        return this.http.get(this.url + "/")
+        return this.http.get(this.url)
             .map((resp) => {
             let activityList = resp.json();
             let activities = [];

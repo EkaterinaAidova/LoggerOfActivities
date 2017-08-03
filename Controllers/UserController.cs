@@ -33,6 +33,7 @@ namespace ActivityLogger.Controllers
             return NotFound();
         }
         [HttpGet]
+        [Route("api/user")]
         public IHttpActionResult GetUser()
         {
             if (WebSecurity.IsAuthenticated)
@@ -50,9 +51,11 @@ namespace ActivityLogger.Controllers
         }
       
         [HttpGet]
-        public IHttpActionResult GetAll(bool enable)
+        [Route("api/user/All")]
+        public IHttpActionResult GetAll()
         {
-            return Ok(definingService.GetUsers());
+            var users = definingService.GetUsers();
+            return Ok(users);
         }
 
   
