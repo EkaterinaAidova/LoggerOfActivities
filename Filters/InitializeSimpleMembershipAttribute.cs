@@ -24,7 +24,7 @@ namespace ActivityLogger.Filters
         {
             public SimpleMembershipInitializer()
             { 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Users", "ID", "Name", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Users", "ID", "Email", autoCreateTables: true);
                 var roles = (SimpleRoleProvider)Roles.Provider;
                 var membership = (SimpleMembershipProvider)Membership.Provider;
 
@@ -32,13 +32,17 @@ namespace ActivityLogger.Filters
                 {
                     roles.CreateRole("Admin");
                 }
-                if (membership.GetUser("Admin", false) == null)
+                if (!roles.RoleExists("User"))
                 {
-                    membership.CreateUserAndAccount("Admin", "SuperAdminPassword");
+                    roles.CreateRole("User");
                 }
-                if (!roles.GetRolesForUser("Admin").Contains("Admin"))
+                if (membership.GetUser("admin@admin.ru", false) == null)
                 {
-                    roles.AddUsersToRoles(new[] { "Admin" }, new[] { "Admin" });
+                    WebSecurity.CreateUserAndAccount("admin@admin.ru", "SuperAdminPassword", new { Name="Admin" });
+                }
+                if (!roles.GetRolesForUser("admin@admin.ru").Contains("Admin"))
+                {
+                    roles.AddUsersToRoles(new[] { "admin@admin.ru" }, new[] { "Admin" });
                 }
             }
         }

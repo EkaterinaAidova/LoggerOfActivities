@@ -8,6 +8,7 @@ import { LoginComponent } from './login.component';
 import {TableComponent} from './table.component';
 import { ModalComponent } from './modal.component';
 import { ModalTimeComponent } from './modal-time.component'
+import { ModalAdminComponent } from './modal-admin.component'
 
 import { LoginService} from './services/login.service';
 import { UserService } from "./services/user.service";
@@ -25,7 +26,7 @@ import { NguiDatetimePickerModule } from '@ngui/datetime-picker'
 @NgModule(
     {
         imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, NguiDatetimePickerModule],
-        declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe, ModalComponent, ModalTimeComponent],
+        declarations: [AppComponent, LoginComponent, TableComponent, EmptyDatePipe, DurationPipe, ModalComponent, ModalTimeComponent, ModalAdminComponent],
         providers: [LoginService, UserService, TimeLogService, ProjectService, ActivityService, PagerService, CookieService ], // регистрация сервисов
         bootstrap: [AppComponent],
         entryComponents: [ModalComponent]

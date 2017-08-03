@@ -195,10 +195,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\ActivityInfo.cs" />
-    <Compile Include="BusinessLogic\DataTransferObjects\AuthorizationModel.cs" />
+    <Compile Include="BusinessLogic\DataTransferObjects\UserAccount.cs" />
+    <Compile Include="Models\AuthorizationModel.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\ProjectInfo.cs" />
-    <Compile Include="BusinessLogic\DataTransferObjects\RegistrationModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\TimeLogForCreationInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\TimeLogInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\TimeLogInfoForUpdate.cs" />
@@ -245,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\html\login.component.html" />
+    <Content Include="app\html\modal-admin.component.html" />
     <Content Include="app\html\modal-time.component.html" />
     <Content Include="app\html\modal.component.html" />
     <Content Include="app\html\table.component.html" />
@@ -393,6 +395,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\modal-admin.component.ts" />
     <TypeScriptCompile Include="app\modal-time.component.ts" />
     <TypeScriptCompile Include="app\modal.component.ts" />
     <TypeScriptCompile Include="app\models\active-log.model.ts" />
@@ -404,6 +407,7 @@
     <TypeScriptCompile Include="app\models\time-log-update.model.ts" />
     <TypeScriptCompile Include="app\models\time-log.model.ts" />
     <TypeScriptCompile Include="app\models\timer.ts" />
+    <TypeScriptCompile Include="app\models\user-account.model.ts" />
     <TypeScriptCompile Include="app\models\user.model.ts" />
     <TypeScriptCompile Include="app\pipes\date-from-number.pipe.ts" />
     <TypeScriptCompile Include="app\pipes\empty-date.pipe.ts" />

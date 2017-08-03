@@ -1,6 +1,9 @@
 ﻿using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using WebMatrix.WebData;
+using System.Web;
+using System.Web.Security;
+using System;
 
 namespace ActivityLogger.Controllers
 {

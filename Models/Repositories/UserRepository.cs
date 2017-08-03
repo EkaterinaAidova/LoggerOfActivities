@@ -19,7 +19,7 @@ namespace ActivityLogger.Models.Repositories
             List<User> users = new List<User>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                users = db.Query<User>("SELECT * FROM Users").ToList();
+                users = db.Query<User>("SELECT ID, Name, Email FROM Users").ToList();
             }
             return users;
         }
@@ -28,7 +28,7 @@ namespace ActivityLogger.Models.Repositories
             User user = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                user = db.Query<User>("SELECT ID, Name FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
+                user = db.Query<User>("SELECT ID, Name, Email FROM Users WHERE Id = @id", new { id }).FirstOrDefault();
             }
             return user;
         }
@@ -36,7 +36,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Users (Name) VALUES(@Name) OUTPUT INSERTED.ID";
+                var sqlQuery = "INSERT INTO Users (Name, Email) VALUES(@Name, @Email) OUTPUT INSERTED.ID";
                 int? userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
                 user.ID = userId.Value;
             }
@@ -46,7 +46,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Users SET Name = @Name WHERE Id = @Id";
+                var sqlQuery = "UPDATE Users SET Name = @Name, Email = @Email WHERE Id = @Id";
                 db.Execute(sqlQuery, user);
             }
         }

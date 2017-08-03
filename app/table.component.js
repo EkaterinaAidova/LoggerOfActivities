@@ -29,7 +29,7 @@ let TableComponent = class TableComponent {
         this.cookieService = cookieService;
         this.loginService = loginService;
         this.user = new user_model_1.User();
-        this.logined = true;
+        this.isAdmin = false;
         this.timeLogs = [];
         this.projects = [];
         this.activities = [];
@@ -49,30 +49,19 @@ let TableComponent = class TableComponent {
             alert(error);
         });
     }
-    onChanged(id) {
-        this.user.ID = id;
-        this.logined = true;
-        this.userService.get(this.user.ID).subscribe(user => {
-            this.user = user;
-            this.getTimeLogs();
-        }, error => {
-            alert(error);
-        });
-    }
     exit(ans) {
         if (ans) {
             this.user.Name = "";
+            this.isAdmin = false;
             this.loginService.logout().subscribe(resp => {
                 if (resp.ok) {
                     location.reload(true);
+                    sessionStorage.clear();
                 }
                 else {
                     alert(resp.text);
                 }
             });
-            //  this.logined = false;
-            //this.cookieService.deleteCookie("userID");
-            this.userService.userLogOff();
         }
     }
     start(timeLog) {
@@ -109,15 +98,17 @@ let TableComponent = class TableComponent {
         this.getTimeLogs();
     }
     ngOnInit() {
-        /*   let idValue = this.cookieService.getCookie("userID");
-           if (idValue != "")
-           {
-               let id = Number.parseInt(idValue);
-               this.onChanged(id);
-           }*/
-        this.logined = true;
-        this.userService.getCurrentUser().subscribe(data => { this.user = data; this.getTimeLogs(); }, error => alert(error));
-        //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
+        this.userService.getCurrentUser().subscribe(data => {
+            this.user = data.UserInfo;
+            console.log(data.UserRoles);
+            this.getTimeLogs();
+            for (let role in data.UserRoles) {
+                if (role.localeCompare("Admin")) {
+                    this.isAdmin = true;
+                    break;
+                }
+            }
+        }, error => alert(error));
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }

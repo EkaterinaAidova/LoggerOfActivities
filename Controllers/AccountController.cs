@@ -1,5 +1,5 @@
-﻿using ActivityLogger.BusinessLogic.DataTransferObjects;
-using ActivityLogger.Filters;
+﻿using ActivityLogger.Filters;
+using ActivityLogger.Models;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -67,21 +67,12 @@ namespace ActivityLogger.Controllers
             }
             return View(model);
         }
-        public JsonResult CheckEmail(string email)
+        [AllowAnonymous]
+        public JsonResult CheckEmail(string Email)
         {
-            var result = WebSecurity.UserExists(email);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var result = WebSecurity.UserExists(Email);
+            return Json(!result, JsonRequestBehavior.AllowGet);
         }
-         [HttpGet]
-        public JsonResult GetCurrentUser()
-        {
-            return Json(WebSecurity.CurrentUserId);
-        }
-        [Route("Account/LogOut")]
-        [HttpGet]
-        public ActionResult Logout(){
-            WebSecurity.Logout();
-            return RedirectToAction("Login", "Account");
-        }
+       
     }
 }

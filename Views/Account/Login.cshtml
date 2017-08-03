@@ -1,18 +1,18 @@
-﻿@model ActivityLogger.BusinessLogic.DataTransferObjects.AuthorizationModel
+﻿@model ActivityLogger.Models.AuthorizationModel
 
 @{
     ViewBag.Title = "Login";
 }
 
 <section id="loginForm">
-    <h2>Вход с помочью учетной записи</h2>
+    <h2>Вход с помощью учетной записи</h2>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
        
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <ol>
+            <ul>
                 <li>
                     @Html.LabelFor(m => m.Email)
                     @Html.TextBoxFor(m => m.Email)
@@ -27,7 +27,7 @@
                     @Html.CheckBoxFor(m => m.RememberMe)
                     @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
                 </li>
-            </ol>
+            </ul>
             <input type="submit" value="Войти" />
         </fieldset>
         <p>

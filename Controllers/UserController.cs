@@ -3,6 +3,8 @@ using System.Linq;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using WebMatrix.WebData;
+using System.Web.Security;
+using ActivityLogger.BusinessLogic.DataTransferObjects;
 
 namespace ActivityLogger.Controllers
 {
@@ -17,17 +19,20 @@ namespace ActivityLogger.Controllers
         [Route("api/user/{id:int}")]
         public IHttpActionResult Get(int id)
         {
+            var roles = (SimpleRoleProvider)Roles.Provider;
             var user = definingService.GetUser(id);
             if (user.IsNotNull())
             {
-                Logger.Log.Info(String.Concat("Controller: users - User ", user.ID.ToString(), " is logged in"));
-                return Ok(user);
+                Logger.Log.Info(string.Concat("Controller: users - User ", user.ID.ToString(), " is logged in"));
+                UserAccount accountInfo = new UserAccount();
+                accountInfo.UserInfo = user;
+                accountInfo.UserRoles = roles.GetRolesForUser(user.Email);
+                return Ok(accountInfo);
             }
-            Logger.Log.Error(String.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));
+            Logger.Log.Error(string.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));
             return NotFound();
         }
         [HttpGet]
-       [Route("api/user")]
         public IHttpActionResult GetUser()
         {
             if (WebSecurity.IsAuthenticated)
@@ -37,7 +42,19 @@ namespace ActivityLogger.Controllers
             return NotFound();
 
         }
+        [HttpDelete]
+        public IHttpActionResult DeleteUser(int id)
+        {
+           definingService.DeleteUser(id);
+            return Ok();
+        }
       
+        [HttpGet]
+        public IHttpActionResult GetAll(bool enable)
+        {
+            return Ok(definingService.GetUsers());
+        }
+
   
     }
 }

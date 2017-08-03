@@ -10,11 +10,10 @@ namespace ActivityLogger
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-           
+             name: "ActionApi",
+             routeTemplate: "api/{controller}/{action}",
+             defaults: null
+             );
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿import { Component, Input, OnInit} from '@angular/core';
 import { TimeLogInfoForCreating } from './models/time-log-create.model';
 import { DateLog } from './models/info-from-time-modal.model';
+import { UserAccount } from './models/user-account.model';
 import { User } from './models/user.model';
 import { TimeLog } from './models/time-log.model';
 import { Activity } from './models/activity.model';
@@ -29,7 +30,7 @@ export class TableComponent implements OnInit {
         private cookieService: CookieService,
         private loginService: LoginService) { }
     private user: User = new User();
-    public logined: boolean = true;
+    public isAdmin: boolean = false;
     public timeLogs: TimeLog[] = [];
     public projects: Project[] = [];
     public activities: Activity[] = [];
@@ -50,28 +51,18 @@ export class TableComponent implements OnInit {
                 alert(error);
             });
     }
-    onChanged(id: number) {
-        this.user.ID = <number>id;
-        this.logined = true;
-        this.userService.get(this.user.ID).subscribe(user => {
-            this.user = user;
-            this.getTimeLogs();
-        },
-            error => {
-                alert(error);
-            });
-    }
     exit(ans: boolean) {
         if (ans) {
             this.user.Name = "";
+            this.isAdmin = false;
             this.loginService.logout().subscribe(resp => {
                 if (resp.ok)
-                { location.reload(true); }
+                {
+                    location.reload(true);
+                    sessionStorage.clear();
+                }
                 else { alert(resp.text);}
             })
-          //  this.logined = false;
-            //this.cookieService.deleteCookie("userID");
-            this.userService.userLogOff();
         }
     }
     start(timeLog: TimeLog) {
@@ -107,15 +98,17 @@ export class TableComponent implements OnInit {
         this.getTimeLogs();
     }
     ngOnInit() {
-     /*   let idValue = this.cookieService.getCookie("userID");
-        if (idValue != "")
-        {
-            let id = Number.parseInt(idValue);
-            this.onChanged(id);
-        }*/
-        this.logined = true;
-        this.userService.getCurrentUser().subscribe(data => { this.user = data; this.getTimeLogs(); }, error => alert(error));
-      //  this.userService.get(this.user.ID).subscribe(data => this.user = data, error => alert(error))
+        this.userService.getCurrentUser().subscribe(data => {
+            this.user = data.UserInfo;
+            console.log(data.UserRoles)
+        this.getTimeLogs();
+        for (let role in data.UserRoles) {
+            if (role.localeCompare("Admin")) {
+                this.isAdmin = true;
+                break;
+            }
+        }
+        }, error => alert(error));
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
 
@@ -146,4 +139,6 @@ export class TableComponent implements OnInit {
         this.newLog.ProjectID = this.projects[0].ID;
         this.newLog.ActivityID = this.activities[0].ID;
     }
+   
+        
 }

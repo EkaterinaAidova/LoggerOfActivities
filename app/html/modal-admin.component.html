@@ -1,0 +1,56 @@
+﻿<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+     [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn btn-link" (click)="hide()">
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </button>
+                <ng-content select=".app-modal-header"></ng-content>
+            </div>
+            <div class="modal-body">
+                <ng-content select=".app-modal-body"></ng-content>
+                <table class="table table-hover">
+                    <thead class="thead">
+                        <tr>
+                            <th>Имя</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let user of pagedItems">
+                    <td>{{user.Name}}</td>
+                    <td>{{user.Email}}</td>
+                    <td>
+                        <button class="btn btn-link" [disabled]="user.ID == userId"  (click)="deleteUser(user.ID)">
+                        <span class="close">
+                            <i class="fa fa-times">
+                            </i></span>
+                        </button>
+                    </td>
+                    </tr>
+</table>
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="setPage(1)">Начало</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="setPage(pager.currentPage - 1)">Назад</a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                        <a (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.currentPage + 1)">Вперед</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.totalPages)">Конец</a>
+                    </li>
+                </ul>
+</div>
+            <div class="modal-footer">
+                <ng-content select=".app-modal-footer"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
