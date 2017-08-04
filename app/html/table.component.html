@@ -1,9 +1,10 @@
-﻿<div class="userInfo" *ngIf="logined">
+﻿<div class="userInfo">
    <div class="userPanel">
       
         <span class="userIcon"><i class="fa fa-user fa-2x fa-wh"></i>  Сотрудник: {{user.Name}} </span>
      <br />
-    
+    <button *ngIf="isAdmin" class="btn btn-default" (click)="modalUsers.show()">Пользователи</button>
+       <app-modal-admin #modalUsers></app-modal-admin>
     <button class="btn btn-default" (click)="modal.show()"> <i class="fa fa-plus-circle fa-wh"> </i> Новое задание</button>
     <app-modal #modal (ok)=onCloseModal($event) (openned)="onOpenModal($event)">
         <div class="app-modal-header"> Выберите нужный проект и должность</div>
@@ -78,6 +79,6 @@
             <a (click)="setPage(pager.totalPages)">Конец</a>
         </li>
     </ul>
-</div> <login *ngIf="!logined" (changedID)="onChanged($event)"> </login>
+</div> 
 
 

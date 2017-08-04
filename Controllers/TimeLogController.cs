@@ -7,6 +7,7 @@ using System.Web.Http.Cors;
 namespace ActivityLogger.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("api/timeLog")]
     public class TimeLogController : ApiController
     {
         IWorkWithLogsService timeLogService;
@@ -15,12 +16,14 @@ namespace ActivityLogger.Controllers
             timeLogService = service;
         }
         [HttpGet]
+        [Route("{id}")]
         public IHttpActionResult GetUsersLogs(int id)
         {
             Logger.Log.Info(string.Concat("Controller: timeLogs  - list of tasks of user ", id.ToString(), " is recieved"));
             return Ok(timeLogService.ShowLogsList(id));
         }
         [HttpPost]
+        [Route("")]
         public IHttpActionResult Post([FromBody]TimeLogForCreationInfo ourLog)
         {
             if (!timeLogService.IsLogValid(ourLog))
@@ -34,6 +37,7 @@ namespace ActivityLogger.Controllers
 
         }
         [HttpPut]
+        [Route("")]
         public IHttpActionResult Put([FromBody]TimeLogInfoForUpdate ourLog)
         {
             switch (ourLog.Status)

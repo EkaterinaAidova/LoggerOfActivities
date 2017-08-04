@@ -8,7 +8,7 @@ namespace ActivityLogger
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-1.*"));
+                        "~/Scripts/jquery-1.*", "~/Scripts/jquery.validate.*"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

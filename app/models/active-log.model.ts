@@ -41,6 +41,7 @@ export class ActiveLog {
     public onPause(): number
     {
         this.isEnable = false;
+        console.log(this.id);
         return this.id;
     }
 }

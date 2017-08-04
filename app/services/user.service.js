@@ -13,6 +13,7 @@ const http_1 = require('@angular/http');
 const Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
+const user_account_model_1 = require("../models/user-account.model");
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
@@ -24,6 +25,36 @@ let UserService = class UserService {
             let user = resp.json();
             return user;
         }).catch((error) => Observable_1.Observable.throw(error));
+    }
+    getCurrentUser() {
+        let user = new user_account_model_1.UserAccount(); // =8;
+        return this.http.get(this.url)
+            .map((resp) => {
+            user = resp.json();
+            return user;
+        });
+    }
+    getUsers() {
+        return this.http.get(this.url + "/All").
+            map((resp) => {
+            let userList = resp.json();
+            let users = [];
+            for (let index in userList) {
+                let user = userList[index];
+                users.push({
+                    ID: user.ID,
+                    Email: user.Email,
+                    Name: user.Name
+                });
+            }
+            return users;
+        }).catch((error) => { return Observable_1.Observable.throw(error); });
+    }
+    delete(id) {
+        return this.http.delete(this.url + "/" + id);
+    }
+    logout() {
+        return this.http.get(this.url + "/Exit");
     }
 };
 UserService = __decorate([

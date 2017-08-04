@@ -42,7 +42,7 @@ let TimeLogService = class TimeLogService {
             return logs;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
-    SetStatus(id, status, date) {
+    setStatus(id, status, date) {
         let data = new time_log_update_model_1.TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
@@ -51,13 +51,13 @@ let TimeLogService = class TimeLogService {
             data.Date = date;
         let headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put(this.url + "/", data, { headers: headers });
+        return this.http.put(this.url, data, { headers: headers });
     }
-    CreateTimeLog(newLog) {
+    createTimeLog(newLog) {
         let headers = new http_1.Headers();
         let body = JSON.stringify(newLog);
         headers.append('Content-Type', 'application/json');
-        return this.http.post(this.url + "/", body, { headers: headers });
+        return this.http.post(this.url, body, { headers: headers });
     }
 };
 TimeLogService = __decorate([

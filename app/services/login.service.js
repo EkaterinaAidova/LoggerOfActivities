@@ -25,6 +25,9 @@ let LoginService = class LoginService {
             return user;
         }).catch((error) => { return Observable_1.Observable.throw(error); });
     }
+    logout() {
+        return this.http.get(this.url);
+    }
 };
 LoginService = __decorate([
     core_1.Injectable(), 

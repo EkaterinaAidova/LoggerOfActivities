@@ -17,17 +17,15 @@ const project_service_1 = require('./services/project.service');
 const time_log_service_1 = require('./services/time-log.service');
 const user_service_1 = require('./services/user.service');
 const pager_service_1 = require('./services/pager.service');
-const cookie_service_1 = require('./services/cookie.service');
 let TableComponent = class TableComponent {
-    constructor(userService, timeLogService, projectService, activityService, pagerService, cookieService) {
+    constructor(userService, timeLogService, projectService, activityService, pagerService) {
         this.userService = userService;
         this.timeLogService = timeLogService;
         this.projectService = projectService;
         this.activityService = activityService;
         this.pagerService = pagerService;
-        this.cookieService = cookieService;
         this.user = new user_model_1.User();
-        this.logined = false;
+        this.isAdmin = false;
         this.timeLogs = [];
         this.projects = [];
         this.activities = [];
@@ -47,62 +45,77 @@ let TableComponent = class TableComponent {
             alert(error);
         });
     }
-    onChanged(id) {
-        this.user.ID = id;
-        this.logined = true;
-        this.userService.get(this.user.ID).subscribe(user => {
-            this.user = user;
-            this.getTimeLogs();
-        }, error => {
-            alert(error);
-        });
-    }
     exit(ans) {
         if (ans) {
             this.user.Name = "";
-            this.logined = false;
-            this.cookieService.deleteCookie("userID");
+            this.isAdmin = false;
+            this.userService.logout().subscribe(resp => {
+                if (resp.ok) {
+                    location.reload(true);
+                    sessionStorage.clear();
+                }
+                else {
+                    alert(resp.text);
+                }
+            });
         }
     }
     start(timeLog) {
-        this.timeLogService.SetStatus(timeLog.TaskID, 1).subscribe((response) => {
-            if (!response.ok) {
-                alert(response.status + ": " + response.statusText);
+        this.timeLogService.setStatus(timeLog.TaskID, 1, new Date()).subscribe((response) => {
+            if (response.ok) {
+                this.getTimeLogs();
             }
+            else
+                alert(response.status + ": " + response.statusText);
             return;
         });
-        this.getTimeLogs();
     }
     stop(dl) {
         if (this.activeLog.checkLogOnActive(dl.id)) {
             this.activeLog.isEnable = false;
         }
-        this.timeLogService.SetStatus(dl.id, 3, dl.date).subscribe((response) => {
-            if (!response.ok) {
-                alert(response.status + ": " + response.statusText);
+        this.timeLogService.setStatus(dl.id, 3, dl.date).subscribe((response) => {
+            if (response.ok) {
+                this.getTimeLogs();
             }
+            else
+                alert(response.status + ": " + response.statusText);
             return;
         });
-        this.getTimeLogs();
     }
     activeOnPause() {
-        this.timeLogService.SetStatus(this.activeLog.onPause(), 2, new Date());
-        this.getTimeLogs();
+        this.timeLogService.setStatus(this.activeLog.onPause(), 2, new Date()).subscribe((response) => {
+            if (response.ok)
+                this.getTimeLogs();
+            else
+                alert(response.status + ": " + response.statusText);
+            return;
+        });
     }
     pause(dl) {
         if (this.activeLog.checkLogOnActive(dl.id)) {
             this.activeLog.isEnable = false;
         }
-        this.timeLogService.SetStatus(dl.id, 2, dl.date).subscribe((response) => { if (!response.ok)
-            alert(response.status + ": " + response.statusText); return; });
-        this.getTimeLogs();
+        this.timeLogService.setStatus(dl.id, 2, dl.date).subscribe((response) => {
+            if (response.ok) {
+                this.getTimeLogs();
+            }
+            else
+                alert(response.status + ": " + response.statusText);
+            return;
+        });
     }
     ngOnInit() {
-        let idValue = this.cookieService.getCookie("userID");
-        if (idValue != "") {
-            let id = Number.parseInt(idValue);
-            this.onChanged(id);
-        }
+        this.userService.getCurrentUser().subscribe(data => {
+            this.user = data.UserInfo;
+            this.getTimeLogs();
+            for (let role in data.UserRoles) {
+                if (role.localeCompare("Admin")) {
+                    this.isAdmin = true;
+                    break;
+                }
+            }
+        }, error => alert(error));
         this.activityService.get().subscribe(data => this.activities = data, error => alert(error));
         this.projectService.get().subscribe(data => this.projects = data, error => alert(error));
     }
@@ -115,9 +128,14 @@ let TableComponent = class TableComponent {
     onCloseModal(ok) {
         if (ok == true) {
             this.newLog.UserID = this.user.ID;
-            this.timeLogService.CreateTimeLog(this.newLog).subscribe((response) => { if (!response.ok)
-                alert(response.status + ": " + response.statusText); return; });
-            this.getTimeLogs();
+            this.timeLogService.createTimeLog(this.newLog).subscribe((response) => {
+                if (response.ok) {
+                    this.getTimeLogs();
+                }
+                else
+                    alert(response.status + ": " + response.statusText);
+                return;
+            });
         }
     }
     setPage(page) {
@@ -140,7 +158,7 @@ TableComponent = __decorate([
         templateUrl: './app/html/table.component.html',
         styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     }), 
-    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService, cookie_service_1.CookieService])
+    __metadata('design:paramtypes', [user_service_1.UserService, time_log_service_1.TimeLogService, project_service_1.ProjectService, activity_service_1.ActivityService, pager_service_1.PagerService])
 ], TableComponent);
 exports.TableComponent = TableComponent;
 //# sourceMappingURL=table.component.js.map

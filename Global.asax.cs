@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ActivityLogger.App_Start;
+using WebMatrix.WebData;
 
 namespace ActivityLogger
 {
@@ -14,13 +15,16 @@ namespace ActivityLogger
     {
         protected void Application_Start()
         {
+           
             AreaRegistration.RegisterAllAreas();
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             Bootstrapper.Run();
             AutoMapperConfig.Initialize();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalConfiguration.Configuration.EnsureInitialized();
+
         }
     }
 }

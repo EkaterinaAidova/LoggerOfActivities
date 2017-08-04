@@ -38,6 +38,7 @@ class ActiveLog {
     }
     onPause() {
         this.isEnable = false;
+        console.log(this.id);
         return this.id;
     }
 }

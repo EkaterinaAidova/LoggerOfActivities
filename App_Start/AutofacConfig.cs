@@ -27,14 +27,12 @@ namespace ActivityLogger.Util
             //Register your Web API controllers.  
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             //services
-            builder.RegisterType<LoginingServiice>().As<ILoginingService>().InstancePerRequest();
             builder.RegisterType<DefineUserService>().As<IDefineUserService>().InstancePerRequest();
             builder.RegisterType<DefineProjectService>().As<IDefineProjectService>().InstancePerRequest();
             builder.RegisterType<DefineActivityService>().As<IDefineActivityService>().InstancePerRequest();
             builder.RegisterType<WorkWithLogsService>().As<IWorkWithLogsService>().InstancePerRequest();
             //repositories
             builder.Register(activiyRep=>new ActivityRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IActivityRepository>().InstancePerRequest();
-            builder.Register(autorizationRep => new AutorizationRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IAutorizationRepository>().InstancePerRequest();
             builder.Register(userRep => new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IUserRepository>().InstancePerRequest();
             builder.Register(projectRep => new ProjectRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IProjectRepository>().InstancePerRequest();
             builder.Register(timeLogRep => new TimeLogRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<ITimeLogRepository>().InstancePerRequest();

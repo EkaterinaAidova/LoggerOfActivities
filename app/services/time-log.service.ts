@@ -37,7 +37,7 @@ export class TimeLogService {
                 return logs;
             }).catch((error: any) => { return Observable.throw(error); });
     }
-    public SetStatus(id: number, status: number, date?: Date) {
+    public setStatus(id: number, status: number, date: Date) {
         let data = new TimeLogInfoForUpdating();
         data.LogId = id;
         data.Status = status;
@@ -46,13 +46,13 @@ export class TimeLogService {
             data.Date = date;
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put(this.url + "/", data, { headers: headers });
+        return this.http.put(this.url, data, { headers: headers });
     }
-    public CreateTimeLog(newLog: TimeLogInfoForCreating) {
+    public createTimeLog(newLog: TimeLogInfoForCreating) {
         let headers = new Headers();
         let body = JSON.stringify(newLog);
         headers.append('Content-Type', 'application/json');
-        return this.http.post(this.url + "/", body, { headers: headers })
+        return this.http.post(this.url, body, { headers: headers });
     }
 }
 
