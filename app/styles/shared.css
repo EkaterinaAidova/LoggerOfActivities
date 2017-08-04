@@ -11,3 +11,9 @@
  .modal {
       background: rgba(0,0,0,0.6);
  }
+
+ .delete,
+ .delete:hover,
+ .delete:active{
+     color:#00e0ff;
+ }

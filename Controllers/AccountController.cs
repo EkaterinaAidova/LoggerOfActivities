@@ -27,19 +27,18 @@ namespace ActivityLogger.Controllers
                     string returnUrl = Request.QueryString["ReturnUrl"];
                     if (returnUrl == null)
                     {
-                        Response.Redirect("~/Home/index");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        Response.Redirect(returnUrl);
+                        return Redirect(returnUrl);
                     }
                 }
+               
             }
-            else
-            {
-                ModelState.AddModelError("Error", "Please enter Username and Password");
-            }
+            ModelState.AddModelError("", "Не удалось войти на сайт. Неверный логин и пароль");
             return View(login);
+
         }
         [HttpGet]
         public ActionResult Register()
