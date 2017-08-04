@@ -197,7 +197,6 @@
     <Compile Include="BusinessLogic\DataTransferObjects\ActivityInfo.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\UserAccount.cs" />
     <Compile Include="Models\AuthorizationModel.cs" />
-    <Compile Include="BusinessLogic\DataTransferObjects\LoginAndPassword.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\ProjectInfo.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="BusinessLogic\DataTransferObjects\TimeLogForCreationInfo.cs" />
@@ -210,10 +209,8 @@
     <Compile Include="BusinessLogic\Services\DefineProjectService.cs" />
     <Compile Include="BusinessLogic\Services\DefineActivityService.cs" />
     <Compile Include="BusinessLogic\Services\DefineUserService.cs" />
-    <Compile Include="BusinessLogic\Services\LoginingServiice.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
-    <Compile Include="Controllers\AutorizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TimeLogController.cs" />
@@ -222,20 +219,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity.cs" />
-    <Compile Include="Models\Autorization.cs" />
     <Compile Include="App_Start\Logger.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Repositories\ActivityRepository.cs" />
-    <Compile Include="Models\Repositories\AutorizationRepository.cs" />
     <Compile Include="Models\Repositories\Contracts\IActivityRepository.cs" />
-    <Compile Include="Models\Repositories\Contracts\IAutorizationRepository.cs" />
     <Compile Include="Models\Repositories\Contracts\IProjectRepository.cs" />
     <Compile Include="Models\Repositories\Contracts\ITimeLogsRepository.cs" />
     <Compile Include="Models\Repositories\Contracts\IUserRepository.cs" />
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
     <Compile Include="Models\Repositories\TimeLogRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
-    <Compile Include="BusinessLogic\Services\Contracts\ILoginingService.cs" />
     <Compile Include="BusinessLogic\Services\Contracts\IWorkWithLogsService.cs" />
     <Compile Include="BusinessLogic\Services\WorkWithLogsService.cs" />
     <Compile Include="Models\TimeLog.cs" />
@@ -250,7 +243,6 @@
     <Content Include="app\html\modal-time.component.html" />
     <Content Include="app\html\modal.component.html" />
     <Content Include="app\html\table.component.html" />
-    <Content Include="app\styles\login.component.css" />
     <Content Include="app\styles\shared.css" />
     <Content Include="app\styles\table.component.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -393,14 +385,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\modal-admin.component.ts" />
     <TypeScriptCompile Include="app\modal-time.component.ts" />
     <TypeScriptCompile Include="app\modal.component.ts" />
     <TypeScriptCompile Include="app\models\active-log.model.ts" />
     <TypeScriptCompile Include="app\models\activity.model.ts" />
-    <TypeScriptCompile Include="app\models\autorization.model.ts" />
     <TypeScriptCompile Include="app\models\info-from-time-modal.model.ts" />
     <TypeScriptCompile Include="app\models\project.model.ts" />
     <TypeScriptCompile Include="app\models\time-log-create.model.ts" />
@@ -412,8 +402,6 @@
     <TypeScriptCompile Include="app\pipes\date-from-number.pipe.ts" />
     <TypeScriptCompile Include="app\pipes\empty-date.pipe.ts" />
     <TypeScriptCompile Include="app\services\activity.service.ts" />
-    <TypeScriptCompile Include="app\services\cookie.service.ts" />
-    <TypeScriptCompile Include="app\services\login.service.ts" />
     <TypeScriptCompile Include="app\services\pager.service.ts" />
     <TypeScriptCompile Include="app\services\project.service.ts" />
     <TypeScriptCompile Include="app\services\time-log.service.ts" />

@@ -1,13 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
 using ActivityLogger.BusinessLogic.Services.Contracts;
 using WebMatrix.WebData;
 using System.Web.Security;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
+using ActivityLogger.Filters;
 
 namespace ActivityLogger.Controllers
 {
+    [InitializeSimpleMembership]
     public class UserController : ApiController
     {
         IDefineUserService definingService;
@@ -43,6 +44,7 @@ namespace ActivityLogger.Controllers
             return NotFound();
 
         }
+        [Route("api/user/{id}")]
         [HttpDelete]
         public IHttpActionResult DeleteUser(int id)
         {
@@ -58,6 +60,12 @@ namespace ActivityLogger.Controllers
             return Ok(users);
         }
 
-  
+        [HttpGet]
+        [Route("api/user/Exit")]
+        public IHttpActionResult LogOut()
+        {
+            WebSecurity.Logout();
+            return Ok();
+        }
     }
 }

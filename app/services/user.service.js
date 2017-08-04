@@ -53,6 +53,9 @@ let UserService = class UserService {
     delete(id) {
         return this.http.delete(this.url + "/" + id);
     }
+    logout() {
+        return this.http.get(this.url + "/Exit");
+    }
 };
 UserService = __decorate([
     core_1.Injectable(), 

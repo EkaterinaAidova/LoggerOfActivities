@@ -44,4 +44,7 @@ export class UserService {
     {
         return this.http.delete(this.url + "/" + id);
     }
+    public logout() {
+        return this.http.get(this.url+"/Exit");
+    }
 }

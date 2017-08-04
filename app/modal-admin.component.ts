@@ -1,20 +1,20 @@
-﻿import {Component, Output, EventEmitter} from '@angular/core';
+﻿import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {UserService} from './services/user.service'
 import {PagerService} from './services/pager.service'
 import {User} from './models/user.model'
 @Component({
     selector: 'app-modal-admin',
     templateUrl: './app/html/modal-admin.component.html',
-    styleUrls: ['./app/styles/shared.css']
+    styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
 })
-export class ModalAdminComponent {
+export class ModalAdminComponent implements OnInit{
 
     public visible = false;
     private visibleAnimate = false;
-    private userList: User[];
+    private userList: User[] =[];
     private userId: number;
     pager: any = {};
-    pagedItems: User[];
+    pagedItems: User[] = [];
     constructor(private pagerService: PagerService, private userService: UserService) { }
 
     public show(): void {
@@ -54,10 +54,17 @@ export class ModalAdminComponent {
     }
     getUsers()
     {
-        this.userService.getUsers().subscribe(data => this.userList = data);
-        this.pager = this.pagerService.getPager(this.userList.length, this.pager.currentPage);
-        this.pagedItems = this.userList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        this.userService.getUsers().subscribe(data => {
+        this.userList = data;
+            this.pager = this.pagerService.getPager(this.userList.length, this.pager.currentPage);
+            this.pagedItems = this.userList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        });
+        
     }
-
+    ngOnInit()
+    {
+        this.userService.getCurrentUser().subscribe(data => this.userId = data.UserInfo.ID);
+        this.getUsers();
+    }
 
 }

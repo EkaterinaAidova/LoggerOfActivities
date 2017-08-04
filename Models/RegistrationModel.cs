@@ -29,7 +29,7 @@ namespace ActivityLogger.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Поле ФИО должно быть обязательно заполнено")]
-        [Display(Name = "ФИО")]
+        [Display(Name = "Фамилия Имя Отчество")]
         public string Name { get; set; }
     }
 }

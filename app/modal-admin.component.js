@@ -17,7 +17,9 @@ let ModalAdminComponent = class ModalAdminComponent {
         this.userService = userService;
         this.visible = false;
         this.visibleAnimate = false;
+        this.userList = [];
         this.pager = {};
+        this.pagedItems = [];
     }
     show() {
         this.userService.getCurrentUser().subscribe(data => this.userId = data.UserInfo.ID);
@@ -52,16 +54,22 @@ let ModalAdminComponent = class ModalAdminComponent {
         this.pagedItems = this.userList.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
     getUsers() {
-        this.userService.getUsers().subscribe(data => this.userList = data);
-        this.pager = this.pagerService.getPager(this.userList.length, this.pager.currentPage);
-        this.pagedItems = this.userList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        this.userService.getUsers().subscribe(data => {
+            this.userList = data;
+            this.pager = this.pagerService.getPager(this.userList.length, this.pager.currentPage);
+            this.pagedItems = this.userList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        });
+    }
+    ngOnInit() {
+        this.userService.getCurrentUser().subscribe(data => this.userId = data.UserInfo.ID);
+        this.getUsers();
     }
 };
 ModalAdminComponent = __decorate([
     core_1.Component({
         selector: 'app-modal-admin',
         templateUrl: './app/html/modal-admin.component.html',
-        styleUrls: ['./app/styles/shared.css']
+        styleUrls: ['./app/styles/table.component.css', './app/styles/shared.css'],
     }), 
     __metadata('design:paramtypes', [pager_service_1.PagerService, user_service_1.UserService])
 ], ModalAdminComponent);
