@@ -54,7 +54,7 @@ namespace ActivityLogger.Models.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Users WHERE Id = @id";
+                var sqlQuery = "DELETE  FROM Users  WHERE Id = @id ";
                 db.Execute(sqlQuery, new { id });
             }
         }

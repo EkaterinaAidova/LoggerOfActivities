@@ -4,6 +4,8 @@ using ActivityLogger.BusinessLogic.Services.Contracts;
 using ActivityLogger.Models.Repositories.Contracts;
 using ActivityLogger.BusinessLogic.DataTransferObjects;
 using System.Collections.Generic;
+using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace ActivityLogger.BusinessLogic.Services
 {
@@ -22,7 +24,9 @@ namespace ActivityLogger.BusinessLogic.Services
          }
         public void DeleteUser(int id)
         {
-            repository.Delete(id);
+            var user = GetUser(id);
+                ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(user.Email);
+               repository.Delete(id);
         }
        public IEnumerable<UserInfo> GetUsers()
         {
