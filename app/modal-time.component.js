@@ -37,6 +37,8 @@ let ModalTimeComponent = class ModalTimeComponent {
             this.setMinTime(timeLog.LastPauseTime);
         this.dl.id = timeLog.TaskID;
         this.visible = true;
+        this.maxFullDate = new Date();
+        this.maxDate = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
         this.checkMinMaxHours();
         setTimeout(() => this.visibleAnimate = true, 100);
     }

@@ -46,7 +46,7 @@ namespace ActivityLogger.Controllers
             switch (ourLog.Status)
             {
                 case 1:
-                    timeLogService.ResumeWork(ourLog.LogId, DateTime.Now);
+                    timeLogService.ResumeWork(ourLog.LogId, ourLog.Date.ToLocalTime());
                     Logger.Log.Info(String.Concat("Controller: timeLogs - TimeLog ", ourLog.LogId.ToString(), " is updated"));
                     return Ok();
                 case 2:

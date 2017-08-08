@@ -51,8 +51,8 @@ namespace ActivityLogger.BusinessLogic.Services
             }
             TimeLog log = Mapper.Map<TimeLogForCreationInfo, TimeLog>(newLog);
             log.Status = 1;
-            log.StartWorkTime = DateTime.Now;
-            log.LastResumeTime = DateTime.Now;
+            log.StartWorkTime = ignoreSeconds(DateTime.Now);
+            log.LastResumeTime = log.StartWorkTime;
             repositoryTimeLog.Create(log);
         }
         public IEnumerable<TimeLogInfo> ShowLogsList(int userID)
@@ -92,6 +92,7 @@ namespace ActivityLogger.BusinessLogic.Services
         }
         public bool SetLogOnPauseWithTime(int id, DateTime time)
         {
+            time = ignoreSeconds(time);
             var log = repositoryTimeLog.Get(id);
             if (log.IsNull()) return false;
             if (log.Status > 1) return false;
@@ -107,6 +108,7 @@ namespace ActivityLogger.BusinessLogic.Services
         }
         public bool FinishWorkWithTime(int id, DateTime time)
         {
+            time = ignoreSeconds(time);
             var log = repositoryTimeLog.Get(id);
             if (log.IsNull()) return false;
             switch (log.Status)
@@ -153,7 +155,7 @@ namespace ActivityLogger.BusinessLogic.Services
                 SetLogOnPauseWithTime(activLog.First().TaskID, DateTime.Now);
             }
             log.Status = 1;
-            log.LastResumeTime = time;
+            log.LastResumeTime = ignoreSeconds(time);
             repositoryTimeLog.Update(log);
         }
         public bool IsLogValid(TimeLogForCreationInfo info)
@@ -164,5 +166,16 @@ namespace ActivityLogger.BusinessLogic.Services
             if (project.IsNull()) return false;
             return true;
         }
+        private DateTime ignoreSeconds(DateTime time)
+        {
+            var seconds = 0;
+            seconds = time.Second;
+            var milisec = 0;
+            milisec = time.Millisecond;
+            var ticks = time.Ticks - seconds * 10000000 - milisec * 10000;
+            var updatedTime = new DateTime(ticks);
+            return updatedTime;
+        }
     }
+   
 }
