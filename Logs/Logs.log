@@ -38,3 +38,13 @@
 2017-08-08 15:35:27,512  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
 2017-08-08 15:35:29,795  INFO  Controller: timeLogs - TimeLog 52 is updated
 2017-08-08 15:35:29,809  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-08 15:39:46,935  INFO  Controller: users - User 1 is logged in
+2017-08-08 15:39:46,937  INFO  Controller: activity - Activities' list is received
+2017-08-08 15:39:46,937  INFO  Controller: project - Project list is received 
+2017-08-08 15:39:46,956  INFO  Controller: users - User 1 is logged in
+2017-08-08 15:39:47,028  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
+2017-08-08 15:40:18,609  INFO  Controller: project - Project list is received 
+2017-08-08 15:40:18,611  INFO  Controller: activity - Activities' list is received
+2017-08-08 15:40:18,627  INFO  Controller: users - User 1 is logged in
+2017-08-08 15:40:18,655  INFO  Controller: users - User 1 is logged in
+2017-08-08 15:40:18,728  INFO  Controller: timeLogs  - list of tasks of user 1 is recieved
