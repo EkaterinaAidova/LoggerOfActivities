@@ -2,46 +2,38 @@
 using System.Web.Http;
 using ActivityLogger.Models;
 using ActivityLogger.Models.Repositories.Contracts;
+using ActivityLogger.BusinessLogic.Services.Contracts;
 
 namespace ActivityLogger.Controllers
 {
     [RoutePrefix("api/project")]
     public class ProjectController : ApiController
     {
-        IProjectRepository repository;
-        public ProjectController(IProjectRepository rep)
+        IDefineProjectService projectService;
+        public ProjectController(IDefineProjectService serv)
         {
-            repository = rep;
+            projectService = serv;
         }
-        [Route("")]
-        [HttpPost]
-        public void Post([FromBody]Project ourProject)
-        {
-            repository.Create(ourProject);
-        }
+        [Authorize]
         [Route("")]
         [HttpGet]
-        public IEnumerable<Project> Get()
+        public IHttpActionResult Get()
         {
-            return repository.GetProjects();
+            Logger.Log.Info(string.Concat("Controller: project - Project list is received "));
+            return Ok(projectService.GetProjectsList());
         }
+        [Authorize]
         [Route("{id}")]
         [HttpGet]
-        public Project Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return repository.Get(id);
-        }
-        [Route("")]
-        [HttpPut]
-        public void Put([FromBody]Project ourProject)
-        {
-            repository.Update(ourProject);
-        }
-        [Route("{id}")]
-        [HttpDelete]
-        public void Delete(int id)
-        {
-            repository.Delete(id);
+            var project = projectService.GetProject(id);
+            if (project == null)
+            {
+                Logger.Log.Error("Controller: project  - Project is not found.");
+                return NotFound();
+            }
+            return Ok(project);
         }
     }
 }

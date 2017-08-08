@@ -16,6 +16,7 @@ namespace ActivityLogger.Controllers
         {
             definingService = service;
         }
+        [Authorize]
         [HttpGet]
         [Route("api/user/{id:int}")]
         public IHttpActionResult Get(int id)
@@ -33,6 +34,7 @@ namespace ActivityLogger.Controllers
             Logger.Log.Error(string.Concat("Controller: users - User ", user.ID.ToString(), " is not exist"));
             return NotFound();
         }
+        [Authorize]
         [HttpGet]
         [Route("api/user")]
         public IHttpActionResult GetUser()
@@ -44,6 +46,7 @@ namespace ActivityLogger.Controllers
             return NotFound();
 
         }
+        [Authorize(Roles="Admin")]
         [Route("api/user/{id}")]
         [HttpDelete]
         public IHttpActionResult DeleteUser(int id)
@@ -51,7 +54,7 @@ namespace ActivityLogger.Controllers
            definingService.DeleteUser(id);
             return Ok();
         }
-      
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("api/user/All")]
         public IHttpActionResult GetAll()
@@ -59,7 +62,7 @@ namespace ActivityLogger.Controllers
             var users = definingService.GetUsers();
             return Ok(users);
         }
-
+        [Authorize]
         [HttpGet]
         [Route("api/user/Exit")]
         public IHttpActionResult LogOut()

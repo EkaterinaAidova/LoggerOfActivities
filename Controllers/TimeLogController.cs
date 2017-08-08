@@ -15,6 +15,7 @@ namespace ActivityLogger.Controllers
         {
             timeLogService = service;
         }
+        [Authorize]
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult GetUsersLogs(int id)
@@ -22,6 +23,7 @@ namespace ActivityLogger.Controllers
             Logger.Log.Info(string.Concat("Controller: timeLogs  - list of tasks of user ", id.ToString(), " is recieved"));
             return Ok(timeLogService.ShowLogsList(id));
         }
+        [Authorize]
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post([FromBody]TimeLogForCreationInfo ourLog)
@@ -36,6 +38,7 @@ namespace ActivityLogger.Controllers
             return Ok();
 
         }
+        [Authorize]
         [HttpPut]
         [Route("")]
         public IHttpActionResult Put([FromBody]TimeLogInfoForUpdate ourLog)

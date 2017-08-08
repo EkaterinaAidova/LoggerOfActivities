@@ -12,6 +12,7 @@ namespace ActivityLogger.Controllers
         {
             activityService = service;
         }
+        [Authorize]
         [HttpGet]
         [Route("")]
         public IHttpActionResult Get()
@@ -19,6 +20,7 @@ namespace ActivityLogger.Controllers
             Logger.Log.Info("Controller: activity - Activities' list is received");
             return Ok(activityService.GetActivityList());
         }
+        [Authorize]
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
